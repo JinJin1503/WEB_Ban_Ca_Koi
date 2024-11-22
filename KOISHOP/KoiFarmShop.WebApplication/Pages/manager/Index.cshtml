@@ -1,0 +1,52 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.IndexModel
+@{
+    Layout = "_ManagerLayout";
+
+    ViewData["Title"] = "Danh Sách Nhân Viên";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<p class="text-center">
+    <a class="btn btn-primary btn-lg" href="/manager/Create">Thêm Nhân Viên Mới</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tên Nhân Viên</th>
+                <th>Vai Trò</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model.StaffList)
+            {
+                <tr>
+                    <td>@staff.StaffId</td>
+                    <td>@staff.StaffName</td>
+                    <td>@staff.Role</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="/manager/Details?staffId=@staff.StaffId">
+                            <i class="fas fa-eye"></i> Chi Tiết
+                        </a>
+                        <a class="btn btn-warning btn-sm" href="/manager/Edit?staffId=@staff.StaffId">
+                            <i class="fas fa-edit"></i> Sửa
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="/manager/Delete?staffId=@staff.StaffId" onclick="return confirm('Bạn có chắc muốn xóa nhân viên này?')">
+                            <i class="fas fa-trash-alt"></i> Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Optional: Add a footer for extra information or page navigation -->
+<div class="text-center">
+    <p>Danh sách nhân viên được cập nhật tự động.</p>
+</div>

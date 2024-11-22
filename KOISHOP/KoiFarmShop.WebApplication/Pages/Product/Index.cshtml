@@ -1,0 +1,128 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Product.IndexModel
+
+<!-- Slides with controls -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/images/kohaku.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/asagi.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/koi karashi.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/shusui.png" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="~/images/showa.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div><!-- End Slides with controls -->
+<!-- Add this style to create space between carousel and products -->
+<style>
+    #carouselExampleControls {
+        margin-bottom: 40px; /* Adjust as needed */
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        @if (Model.KoiFish != null && Model.KoiFish.Any())
+        {
+            int count = 0;
+            <!-- Biến đếm số lượng sản phẩm đã hiển thị -->
+            int videoIndex = 0;
+            <!-- Biến dùng để lấy video theo nhóm -->
+            string[] videoUrls = new string[]
+            {
+        Url.Content("~/images/video1.mp4"), // Video cho nhóm 1
+        Url.Content("~/images/video2.mp4"), // Video cho nhóm 2
+        Url.Content("~/images/video3.mp4"), // Video cho nhóm 3
+        Url.Content("~/images/video4.mp4"), // Video cho nhóm 4
+        Url.Content("~/images/video5.mp4")  // Video cho nhóm 5
+            };
+
+            foreach (var koi in Model.KoiFish)
+            {
+                <!-- Kiểm tra xem đã đủ 5 sản phẩm chưa và thêm video vào đúng nhóm -->
+                if (count % 5 == 0 && count != 0)
+                {
+                    <!-- Thêm video cho mỗi nhóm 5 sản phẩm -->
+                    <div class="col-12 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Video giới thiệu các loại cá Koi</h5>
+                                <video class="w-100" style="max-height: 500px; object-fit: cover;" controls>
+                                    <source src="@videoUrls[videoIndex]" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    videoIndex++;
+                    <!-- Chuyển sang video tiếp theo cho nhóm sau -->
+                }
+
+                <!-- Hiển thị sản phẩm cá -->
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <img src="@koi.ImageURL" class="card-img-top" alt="@koi.KoiName" style="height: 200px; width: 100%; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">@koi.KoiName</h5>
+                            <p class="card-text">
+                                <strong>Giá:</strong> @string.Format("{0:N0} VND", koi.PricePerKoi)<br />
+                                <strong>Xuất xứ:</strong> @koi.Origin<br />
+                                <strong>Kích thước:</strong> @koi.Size cm<br />
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a asp-page="./Details" asp-route-id="@koi.KoiId" class="btn btn-primary">Chi tiết</a>
+                                <form method="post" asp-page-handler="AddToCart">
+                                    <input type="hidden" name="KoiId" value="@koi.KoiId" />
+                                    <button type="submit" class="btn btn-success">Bỏ vào giỏ hàng</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tăng biến đếm số lượng sản phẩm đã hiển thị -->
+                count++;
+            }
+
+            <!-- Nếu còn video chưa hiển thị, thêm video cho nhóm cuối -->
+            if (count % 5 != 0)
+            {
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Video giới thiệu các loại cá Koi</h5>
+                            <video class="w-100" style="max-height: 500px; object-fit: cover;" controls>
+                                <source src="@videoUrls[videoIndex]" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-center">Không có sản phẩm nào được tìm thấy.</p>
+        }
+    </div>
+</div>
+

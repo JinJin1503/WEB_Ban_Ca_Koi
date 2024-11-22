@@ -1,0 +1,21 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.DeleteStaffModel
+@{
+    Layout = "_ManagerLayout";
+
+    ViewData["Title"] = "Xóa Nhân Viên";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Bạn có chắc muốn xóa nhân viên này không?</h4>
+    <p><strong>ID:</strong> @Model.StaffToDelete.StaffId</p>
+    <p><strong>Tên Nhân Viên:</strong> @Model.StaffToDelete.StaffName</p>
+    <p><strong>Vai Trò:</strong> @Model.StaffToDelete.Role</p>
+</div>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="/manager/Index" class="btn btn-secondary">Hủy</a>
+</form>

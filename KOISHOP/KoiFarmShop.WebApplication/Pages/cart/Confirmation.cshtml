@@ -1,0 +1,36 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Cart.ConfirmationModel
+
+<h2>Đặt Hàng Thành Công</h2>
+
+<p>Đơn hàng của bạn đã được xác nhận. Dưới đây là thông tin đơn hàng:</p>
+
+<div>
+    <strong>Mã Đơn Hàng: </strong>@Model.Order.OrderId
+</div>
+<div>
+    <strong>Ngày Đặt Hàng: </strong>@Model.Order.OrderDate.ToString("dd/MM/yyyy")
+</div>
+
+<h3>Chi Tiết Đơn Hàng:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên Sản Phẩm</th>
+            <th>Số Lượng</th>
+            <th>Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in Model.Order.OrderDetails)
+        {
+            <tr>
+                <td>@detail.Koi.KoiName</td>
+                <td>@detail.QuantityPerKoi</td>
+                <td>@(detail.Koi.PricePerKoi * detail.QuantityPerKoi)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Index" class="btn btn-primary">Quay lại trang chủ</a>

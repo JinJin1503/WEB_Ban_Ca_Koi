@@ -1,0 +1,32 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Trangchu.DetailsModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <!-- Căn giữa toàn bộ trang -->
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <!-- Cập nhật kích thước ảnh và căn giữa -->
+                <img src="@Model.KoiFish.ImageURL" class="card-img-top" alt="@Model.KoiFish.KoiName" style="width: 100%; height: 500px; object-fit: contain; display: block; margin: 0 auto; border-radius: 8px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center">@Model.KoiFish.KoiName</h5>
+                    <p class="card-text">
+                        <strong>Giá:</strong> @string.Format("{0:N0} VND", Model.KoiFish.PricePerKoi)<br />
+                        <strong>Xuất xứ:</strong> @Model.KoiFish.Origin<br />
+                        <strong>Giới tính:</strong> @Model.KoiFish.Gender<br />
+                        <strong>Tuổi:</strong> @Model.KoiFish.Age năm<br />
+                        <strong>Kích thước:</strong> @Model.KoiFish.Size cm<br />
+                        <strong>Loại giống:</strong> @Model.KoiFish.BreedType<br />
+                        <strong>Tính cách:</strong> @Model.KoiFish.Personality<br />
+                        <strong>Chế độ ăn:</strong> @Model.KoiFish.DailyFeed g/ngày<br />
+                        <strong>Tỷ lệ kiểm tra sức khỏe:</strong> @Model.KoiFish.ScreeningRate %<br />
+                        <strong>Trạng thái sức khỏe:</strong> @Model.KoiFish.HealthStatus<br />
+                        <strong>Giải thưởng:</strong> @Model.KoiFish.Awards
+                    </p>
+                    <a asp-page="./Index" class="btn btn-secondary w-100">Quay lại</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

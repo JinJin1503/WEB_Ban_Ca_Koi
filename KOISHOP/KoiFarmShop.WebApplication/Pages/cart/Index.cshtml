@@ -1,0 +1,83 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.cart.IndexModel
+
+@using System.Globalization
+
+@{
+    var totalAmount = Model.CartItems.Sum(item =>
+        (item.Koi.PricePerKoi * item.QuantityPerKoi) +
+        (item.Koi.PricePerBatch * item.QuantityPerBatch)
+    );
+}
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h2>Giỏ Hàng</h2>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ảnh Sản Phẩm</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Số Lượng Cá Thể</th>
+                <th>Số Lượng Lô</th>
+                <th>Giá Cá Thể</th>
+                <th>Giá Lô Koi</th>
+                <th>Tổng </th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td><img src="@item.Koi.ImageURL" alt="@item.Koi.KoiName" width="50" height="50" /></td>
+                    <td>@item.Koi.KoiName</td>
+                    <form method="post" asp-page-handler="Edit" asp-route-cartItemId="@item.CartItemId">
+                    <td>
+                        <input type="number" name="newQuantityPerKoi" value="@item.QuantityPerKoi" min="0" style="width: 80px;" />
+                    </td>
+                    <td>
+                        <input type="number" name="newQuantityPerBatch" value="@item.QuantityPerBatch" min="0" style="width: 80px;" />
+                        <button type="submit" class="btn btn-sm btn-info">Cập nhật</button>
+                    </td>
+                    </form>
+                    <td>@item.Koi.PricePerKoi.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                    <td>@item.Koi.PricePerBatch.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                    <td>@((item.Koi.PricePerKoi * item.QuantityPerKoi) + (item.Koi.PricePerBatch * item.QuantityPerBatch))</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-cartItemId="@item.CartItemId">
+                            <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="cart-footer">
+        <div class="total">
+            <strong>Tổng Tiền:</strong> @totalAmount.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))
+        </div>
+
+        <!-- Payment Button -->
+        <form method="post" asp-page-handler="Payment">
+            <button type="submit" class="btn btn-success">Đặt hàng</button>
+        </form>
+    </div>
+</div>

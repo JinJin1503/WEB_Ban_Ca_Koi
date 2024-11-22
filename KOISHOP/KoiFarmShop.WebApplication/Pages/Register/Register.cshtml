@@ -1,0 +1,89 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Register.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+        <div class="d-flex justify-content-center py-4">
+            <a href="/" class="logo d-flex align-items-center w-auto">
+                <img src="~/images/logo.jpg" alt="">
+                <span class="d-none d-lg-block">KoiFarmShop</span>
+            </a>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Tạo tài khoản</h5>
+                    <p class="text-center small">Đăng ký để bắt đầu sử dụng dịch vụ của chúng tôi.</p>
+                </div>
+
+                <form method="post">
+                    <div class="text-danger text-center">
+                        @Model.ErrorMessage
+                    </div>
+
+                    <!-- Tên người dùng -->
+                    <div class="col-12">
+                        <label for="yourName" class="form-label">Tên khách hàng</label>
+                        <input type="text" asp-for="CustomerName" class="form-control" id="yourName" required>
+                        <span asp-validation-for="CustomerName" class="text-danger" style="float:left;"></span>
+                    </div>
+
+                    <!-- Địa chỉ Email -->
+                    <div class="col-12">
+                        <label for="yourEmail" class="form-label">Email</label>
+                        <input type="email" asp-for="Email" class="form-control" id="yourEmail" required>
+                        <span asp-validation-for="Email" class="text-danger" style="float:left;"></span>
+                    </div>
+
+                    <!-- Tên đăng nhập -->
+                    <div class="col-12">
+                        <label for="yourUsername" class="form-label">Tên đăng nhập</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@@</span>
+                            <input type="text" asp-for="UserName" class="form-control" id="yourUsername" required>
+                            <span asp-validation-for="UserName" class="text-danger" style="float:left;"></span>
+                            <div class="invalid-feedback">Please enter your username.</div>
+                        </div>
+                    </div>
+
+                    <!-- Mật khẩu -->
+                    <div class="col-12">
+                        <label for="yourPassword" class="form-label">Mật khẩu</label>
+                        <input type="password" asp-for="Password" class="form-control" id="yourPassword" required>
+                        <span asp-validation-for="Password" class="text-danger" style="float:left;"></span>
+                    </div>
+
+                    <!-- Xác nhận mật khẩu -->
+                    <div class="col-12">
+                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                        <input type="password" asp-for="ConfirmPassword" class="form-control" id="confirmPassword" required>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger" style="float:left;"></span>
+                    </div>
+
+                    <!-- Đồng ý với điều khoản -->
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="AcceptTerms" type="checkbox" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">Tôi đồng ý với <a href="#">điều khoản và điều kiện</a></label>
+                            <span class="text-danger" asp-validation-for="AcceptTerms"></span>
+                        </div>
+                    </div>
+
+                    <!-- Nút đăng ký -->
+                    <div class="col-12">
+                        <button class="btn btn-primary w-100" type="submit">Tạo tài khoản</button>
+                    </div>
+
+                  
+                    <div class="col-12">
+                        <p class="small mb-0">Bạn đã có tài khoản chưa?  <a asp-page="/Login/Login">Đăng nhập</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ namespace KoiFarmShop.Repositories.Interfaces
 
 		Task<List<KoiFish>> GetKoiFishByIdsAsync(List<int> koiId);
 
-
+		Task<List<KoiFish>> SearchKoiFishAsync(string keyword);
 
 
 

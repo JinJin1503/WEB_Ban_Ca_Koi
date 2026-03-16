@@ -39,6 +39,44 @@
 </style>
 
 <div class="container">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success mb-4">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mb-4">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="row mb-4 align-items-end">
+        <div class="col-lg-8">
+            <h2 class="mb-1">Danh sách cá Koi</h2>
+            <p class="text-muted mb-0">Tìm kiếm theo tên, xuất xứ, giống, giới tính hoặc danh mục.</p>
+        </div>
+        <div class="col-lg-4">
+            <form method="get" class="d-flex gap-2">
+                <input type="text" name="keyword" value="@Model.Keyword" class="form-control" placeholder="Nhập từ khóa tìm kiếm..." />
+                <button type="submit" class="btn btn-outline-primary">Tìm</button>
+                @if (!string.IsNullOrWhiteSpace(Model.Keyword))
+                {
+                    <a asp-page="./Index" class="btn btn-outline-secondary">Xóa</a>
+                }
+            </form>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Keyword))
+    {
+        <div class="alert alert-info">
+            Kết quả tìm kiếm cho từ khóa: <strong>@Model.Keyword</strong>
+        </div>
+    }
+
     <div class="row">
         @if (Model.KoiFish != null && Model.KoiFish.Any())
         {
@@ -91,6 +129,7 @@
                                 <a asp-page="./Details" asp-route-id="@koi.KoiId" class="btn btn-primary">Chi tiết</a>
                                 <form method="post" asp-page-handler="AddToCart">
                                     <input type="hidden" name="KoiId" value="@koi.KoiId" />
+                                    <input type="hidden" name="Keyword" value="@Model.Keyword" />
                                     <button type="submit" class="btn btn-success">Bỏ vào giỏ hàng</button>
                                 </form>
 
@@ -121,7 +160,9 @@
         }
         else
         {
-            <p class="text-center">Không có sản phẩm nào được tìm thấy.</p>
+            <div class="col-12">
+                <p class="text-center">Không có sản phẩm nào được tìm thấy.</p>
+            </div>
         }
     </div>
 </div>

@@ -1,0 +1,29 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Visual Studio
+.vs/
+
+# Build
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# Logs
+*.log

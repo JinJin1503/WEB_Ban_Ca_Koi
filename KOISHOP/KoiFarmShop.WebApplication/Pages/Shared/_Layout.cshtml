@@ -48,8 +48,8 @@
         </div><!-- End Logo -->
 
         <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="GET" action="/Search">
-                <input type="text" name="query" placeholder="Nhập từ khóa tìm kiếm..." title="Nhập từ khóa tìm kiếm" required>
+            <form class="search-form d-flex align-items-center" method="get" asp-page="/Product/Index">
+                <input type="text" name="keyword" value="@(Context.Request.Query["keyword"])" placeholder="Nhập từ khóa tìm kiếm..." title="Nhập từ khóa tìm kiếm" required>
                 <button type="submit" title="Tìm kiếm"><i class="bi bi-search"></i></button>
             </form>
         </div>
@@ -69,17 +69,17 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" asp-page="/Profile/Index" data-bs-toggle="dropdown">
-                      
-                        
+
+
 
                         @if (!string.IsNullOrEmpty(username))
-                            {
+                        {
                             <span class="d-none d-md-block dropdown-toggle ps-2">@username</span>
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <span class="d-none d-md-block dropdown-toggle ps-2">Chưa đăng nhập</span>
-                            }
+                        }
 
                     </a><!-- End Profile Iamge Icon -->
 
@@ -150,7 +150,7 @@
                 </a>
             </li>
 
-        
+
 
 
             <!-- Giỏ hàng -->
@@ -167,7 +167,7 @@
                         </a>
                     </li>
                     <li>
-               
+
                 </ul>
             </li>
 
@@ -287,21 +287,21 @@
                                 <a href="https://www.instagram.com/huynhngoyendi?igsh=MTgxbGE0YngyeXE5ZA==" class="instagram"><i class="bi bi-instagram"></i></a>
                             </div>
                     </div>
-                        </ul>
+                    </ul>
+                </div>
+
+                <!-- Phần bản quyền -->
+                <div class="container d-md-flex py-4">
+
+                    <div class="me-md-auto text-center text-md-start">
+                        <div class="copyright">
+                            <strong><span>KoiFarmShop</span></strong>
+                        </div>
+                        <div class="credits">
+                            Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
+                        </div>
                     </div>
-
-        <!-- Phần bản quyền -->
-        <div class="container d-md-flex py-4">
-
-            <div class="me-md-auto text-center text-md-start">
-                <div class="copyright">
-                  <strong><span>KoiFarmShop</span></strong>
                 </div>
-                <div class="credits">
-                    Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
-                </div>
-            </div>
-        </div>
     </footer>
 
 

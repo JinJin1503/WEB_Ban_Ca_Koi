@@ -19,5 +19,6 @@ namespace KoiFarmShop.Services.Interfaces
 
 		// Thêm phương thức CompareKoiAsync
 		Task<List<KoiFish>> CompareKoiAsync(List<int> koiIds);
+		Task<List<KoiFish>> SearchKoiByKeywordAsync(string keyword);
 	}
 }

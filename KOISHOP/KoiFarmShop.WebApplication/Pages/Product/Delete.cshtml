@@ -94,10 +94,10 @@
             @Html.DisplayNameFor(model => model.KoiFish.Category)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KoiFish.Category.CategoryId)
+            @Html.DisplayFor(model => model.KoiFish.Category.CategoryName)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="KoiFish.KoiId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

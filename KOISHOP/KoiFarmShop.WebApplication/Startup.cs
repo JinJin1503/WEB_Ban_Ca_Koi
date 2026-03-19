@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Repositories.Interfaces;  
 using KoiFarmShop.Repositories.Repositories;
+using KoiFarmShop.Repositories.Repositories;
+using KoiFarmShop.Services;
+using KoiFarmShop.Services.Implementations;
+using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.Services.Services;
+using KoiFarmShop.WebApplication.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using KoiFarmShop.Repositories.Interfaces;  
-using KoiFarmShop.Repositories.Repositories;
-using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.Services.Services;
-using Microsoft.AspNetCore.Identity;
-using KoiFarmShop.Services.Implementations;
-using KoiFarmShop.Services;
 
 
 namespace KoiFarmShop.WebApplication
@@ -48,13 +50,13 @@ namespace KoiFarmShop.WebApplication
 			services.AddScoped<ICareServiceService, CareServiceService>();
 			services.AddScoped<IUserRepository, UserRepository>();
 			services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICustomerService, CustomerService>(); 
-            services.AddScoped<IPasswordHasher, PasswordHasher>();
-            services.AddScoped<ICartService, CartService>();
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IStaffService, StaffService>();
+			services.AddScoped<ICustomerService, CustomerService>();
+			services.AddScoped<IPasswordHasher, PasswordHasher>();
+			services.AddScoped<ICartService, CartService>();
+			services.AddScoped<IOrderService, OrderService>();
+			services.AddScoped<IStaffService, StaffService>();
 			services.AddScoped<IKoiCategoryService, KoiCategoryService>();
-		
+
 			// Đăng ký PasswordHasher
 			services.AddScoped(typeof(IPasswordHasher), typeof(PasswordHasher));
 
@@ -68,9 +70,41 @@ namespace KoiFarmShop.WebApplication
 				options.Cookie.IsEssential = true; // Đảm bảo session hoạt động
 			});
 
+			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options =>
+				{
+					options.LoginPath = "/Login/Login";
+					options.AccessDeniedPath = "/AccessDenied";
+					options.SlidingExpiration = true;
+					options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+				});
+
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy(AppPolicies.ManagerOnly, policy =>
+				{
+					policy.RequireAuthenticatedUser();
+					policy.RequireRole(AppRoles.Manager);
+				});
+
+				options.AddPolicy(AppPolicies.CustomerOnly, policy =>
+				{
+					policy.RequireAuthenticatedUser();
+					policy.RequireRole(AppRoles.Customer);
+					policy.RequireClaim(AppClaimTypes.CustomerId);
+				});
+			});
 
 			// Các dịch vụ khác
-			services.AddRazorPages();
+			services.AddRazorPages(options =>
+			{
+				options.Conventions.AuthorizeFolder("/cart", AppPolicies.CustomerOnly);
+				options.Conventions.AuthorizeFolder("/Profile");
+				options.Conventions.AuthorizeFolder("/manager", AppPolicies.ManagerOnly);
+				options.Conventions.AuthorizePage("/Product/Create", AppPolicies.ManagerOnly);
+				options.Conventions.AuthorizePage("/Product/Edit", AppPolicies.ManagerOnly);
+				options.Conventions.AuthorizePage("/Product/Delete", AppPolicies.ManagerOnly);
+			});
 
 		}
 
@@ -91,9 +125,10 @@ namespace KoiFarmShop.WebApplication
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseSession();
 			app.UseRouting();
+			app.UseSession();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			// Tự động chạy migration và chèn dữ liệu mẫu
@@ -106,7 +141,7 @@ namespace KoiFarmShop.WebApplication
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapRazorPages();
-			
+
 
 			});
 		}

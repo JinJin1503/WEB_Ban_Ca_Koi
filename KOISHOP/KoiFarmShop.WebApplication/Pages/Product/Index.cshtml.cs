@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.WebApplication.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace KoiFarmShop.WebApplication.Pages.Product
 {
@@ -46,13 +48,17 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 		// This is the handler method for adding to the cart
 		public async Task<IActionResult> OnPostAddToCartAsync()
 		{
-			// Get the CustomerId from the session (you may want to handle the case where it's not found)
-			var customerIdString = HttpContext.Session.GetString("CustomerId");
-
-			if (string.IsNullOrEmpty(customerIdString))
+			if (User.Identity?.IsAuthenticated != true)
 			{
-				// Redirect to login if CustomerId is not found in the session
-				return RedirectToPage("/Login/Login");
+				return Challenge(new Microsoft.AspNetCore.Authentication.AuthenticationProperties
+				{
+					RedirectUri = Url.Page("/Product/Index", new { keyword = Keyword })
+				}, CookieAuthenticationDefaults.AuthenticationScheme);
+			}
+
+			if (!User.IsInRole(AppRoles.Customer))
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
 			}
 
 			if (KoiId <= 0)
@@ -61,12 +67,17 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				return RedirectToPage(new { keyword = Keyword });
 			}
 
-			int customerId = int.Parse(customerIdString);
+			int? customerId = User.GetCustomerId();
+			if (!customerId.HasValue)
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
 
-			await _cartService.AddCartItemToCartAsync(customerId, KoiId, 1, 0, 0, 0);
+			await _cartService.AddCartItemToCartAsync(customerId.Value, KoiId, 1, 0, 0, 0);
 			TempData["SuccessMessage"] = "Đã thêm sản phẩm vào giỏ hàng.";
 
 			return RedirectToPage(new { keyword = Keyword });
 		}
 	}
 }
+

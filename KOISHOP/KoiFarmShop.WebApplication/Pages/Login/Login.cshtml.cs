@@ -1,12 +1,17 @@
-﻿using KoiFarmShop.Repositories.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Threading.Tasks;
+using KoiFarmShop.WebApplication.Security;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
@@ -14,14 +19,12 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 	{
 		private readonly IUserService _userService;
 		private readonly ICustomerService _customerService;
-		private readonly IPasswordHasher _passwordHasher;
 		private readonly IStaffService _staffService;
 
-		public LoginModel(IUserService userService, IPasswordHasher passwordHasher, ICustomerService customerService, IStaffService staffService)
+		public LoginModel(IUserService userService, ICustomerService customerService, IStaffService staffService)
 		{
 			_userService = userService;
-            _customerService = customerService;
-			_passwordHasher = passwordHasher;
+			_customerService = customerService;
 			_staffService = staffService;
 		}
 
@@ -31,65 +34,128 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 		[BindProperty]
 		public string Password { get; set; }
 
+		[BindProperty(SupportsGet = true)]
+		public string ReturnUrl { get; set; }
+
 		public string ErrorMessage { get; set; }
-		public void OnGet()
+
+		public IActionResult OnGet()
 		{
-			// Logic khi người dùng truy cập trang lần đầu (GET)
+			if (User.Identity?.IsAuthenticated == true)
+			{
+				return RedirectToLocalOrDefault(GetDefaultRedirectPage());
+			}
+
+			return Page();
 		}
-		public async Task<IActionResult> OnPostAsync(User users, string UserName, string Password)
+
+		public async Task<IActionResult> OnPostAsync()
 		{
-			// Attempt to login the user with provided credentials
 			var user = await _userService.LoginAsync(UserName, Password);
 
 			if (user == null)
 			{
-				// If login fails, return an error message
 				ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng.";
 				return Page();
 			}
 
-			// Check if the user exists in the Staff table
-			var staff = await _staffService.GetStaffByUserIdAsync(user.UserId);
+			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			HttpContext.Session.Clear();
 
+			var staff = await _staffService.GetStaffByUserIdAsync(user.UserId);
 			if (staff != null)
 			{
-				// If the user is found in the staff table, check for roles
-				if (staff.Role.Equals("Manager", StringComparison.OrdinalIgnoreCase))
+				string normalizedRole = NormalizeStaffRole(staff.Role);
+				var claims = new List<Claim>
 				{
-					// If the user is a Manager, redirect to the Manager page
-					HttpContext.Session.SetString("UserName", user.UserName);
-					HttpContext.Session.SetString("UserId", user.UserId.ToString());
-					HttpContext.Session.SetString("CustomerId", "");  // No customer ID for staff roles
-					return RedirectToPage("/Manager/Index");
-				}
+					new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+					new Claim(ClaimTypes.Name, user.UserName),
+					new Claim(ClaimTypes.Role, normalizedRole),
+					new Claim(AppClaimTypes.StaffId, staff.StaffId.ToString())
+				};
 
-				// If the user is a staff member (but not a manager), redirect to the staff page
+				await SignInUserAsync(claims);
+
 				HttpContext.Session.SetString("UserName", user.UserName);
 				HttpContext.Session.SetString("UserId", user.UserId.ToString());
-				HttpContext.Session.SetString("CustomerId", "");  // No customer ID for staff roles
-				return RedirectToPage("/Manager/Index");
+				HttpContext.Session.Remove("CustomerId");
+
+				if (normalizedRole == AppRoles.Manager)
+				{
+					return RedirectToLocalOrDefault("/manager/Index");
+				}
+
+				return RedirectToLocalOrDefault("/Trangchu/Index");
 			}
 
-			// If not a staff member, check if the user is a customer
 			var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);
-
 			if (customer == null)
 			{
-				// Handle the case where the customer does not exist (Optional)
 				ErrorMessage = "Khách hàng không tồn tại.";
 				return Page();
 			}
 
-			// Store the UserName, UserId, and CustomerId in the session for customers
+			var customerClaims = new List<Claim>
+			{
+				new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+				new Claim(ClaimTypes.Name, user.UserName),
+				new Claim(ClaimTypes.Role, AppRoles.Customer),
+				new Claim(AppClaimTypes.CustomerId, customer.CustomerId.ToString())
+			};
+
+			await SignInUserAsync(customerClaims);
+
 			HttpContext.Session.SetString("UserName", user.UserName);
 			HttpContext.Session.SetString("UserId", user.UserId.ToString());
 			HttpContext.Session.SetString("CustomerId", customer.CustomerId.ToString());
 
-			// Redirect the customer to the home page
-			return RedirectToPage("/Trangchu/Index");
+			return RedirectToLocalOrDefault("/Trangchu/Index");
 		}
 
+		private async Task SignInUserAsync(IEnumerable<Claim> claims)
+		{
+			var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+			var principal = new ClaimsPrincipal(identity);
 
+			await HttpContext.SignInAsync(
+				CookieAuthenticationDefaults.AuthenticationScheme,
+				principal,
+				new AuthenticationProperties
+				{
+					IsPersistent = false,
+					ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+				});
+		}
 
+		private string NormalizeStaffRole(string role)
+		{
+			if (string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase) ||
+				string.Equals(role, "Quản lý", StringComparison.OrdinalIgnoreCase))
+			{
+				return AppRoles.Manager;
+			}
+
+			return AppRoles.Staff;
+		}
+
+		private IActionResult RedirectToLocalOrDefault(string defaultPage)
+		{
+			if (!string.IsNullOrWhiteSpace(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+			{
+				return LocalRedirect(ReturnUrl);
+			}
+
+			return RedirectToPage(defaultPage);
+		}
+
+		private string GetDefaultRedirectPage()
+		{
+			if (User.IsInRole(AppRoles.Manager))
+			{
+				return "/manager/Index";
+			}
+
+			return "/Trangchu/Index";
+		}
 	}
 }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using KoiFarmShop.WebApplication.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using CartEntities = KoiFarmShop.Repositories.Entities.Cart;  // Alias for Cart class
 
 namespace KoiFarmShop.WebApplication.Pages.cart
@@ -26,14 +28,12 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 
 		public async Task<IActionResult> OnGetAsync()
 		{
-			var customerIdString = HttpContext.Session.GetString("CustomerId");
-
-			if (string.IsNullOrEmpty(customerIdString))
+			var authResult = GetAuthorizedCustomerId(out int customerId);
+			if (authResult != null)
 			{
-				return RedirectToPage("/Login/Login");
+				return authResult;
 			}
 
-			int customerId = int.Parse(customerIdString);
 			var cart = await _cartService.GetCartByCustomerIdAsync(customerId);
 			CartItems = await _cartService.GetCartItemsAsync(customerId);
 			Carts = cart != null ? new List<CartEntities> { cart } : new List<CartEntities>();
@@ -44,11 +44,10 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 		// Method for updating cart item quantities (Edit)
 		public async Task<IActionResult> OnPostEditAsync(int cartItemId, int newQuantityPerKoi, int newQuantityPerBatch)
 		{
-			var customerIdString = HttpContext.Session.GetString("CustomerId");
-
-			if (string.IsNullOrEmpty(customerIdString))
+			var authResult = GetAuthorizedCustomerId(out int customerId);
+			if (authResult != null)
 			{
-				return RedirectToPage("/Login/Login");
+				return authResult;
 			}
 
 			if (newQuantityPerKoi < 0 || newQuantityPerBatch < 0)
@@ -57,8 +56,7 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 				return RedirectToPage();
 			}
 
-			var cartItem = await _cartService.GetCartItemByIdAsync(cartItemId);
-
+			var cartItem = await GetOwnedCartItemAsync(customerId, cartItemId);
 			if (cartItem == null)
 			{
 				TempData["ErrorMessage"] = "Không tìm thấy sản phẩm trong giỏ hàng.";
@@ -84,11 +82,17 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 		// Method for deleting a cart item
 		public async Task<IActionResult> OnPostDeleteAsync(int cartItemId)
 		{
-			var customerIdString = HttpContext.Session.GetString("CustomerId");
-
-			if (string.IsNullOrEmpty(customerIdString))
+			var authResult = GetAuthorizedCustomerId(out int customerId);
+			if (authResult != null)
 			{
-				return RedirectToPage("/Login/Login");
+				return authResult;
+			}
+
+			var cartItem = await GetOwnedCartItemAsync(customerId, cartItemId);
+			if (cartItem == null)
+			{
+				TempData["ErrorMessage"] = "Không tìm thấy sản phẩm trong giỏ hàng.";
+				return RedirectToPage();
 			}
 
 			await _cartService.DeleteCartItemAsync(cartItemId);
@@ -99,14 +103,11 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 		// Method for processing payment
 		public async Task<IActionResult> OnPostPaymentAsync()
 		{
-			var customerIdString = HttpContext.Session.GetString("CustomerId");
-
-			if (string.IsNullOrEmpty(customerIdString))
+			var authResult = GetAuthorizedCustomerId(out int customerId);
+			if (authResult != null)
 			{
-				return RedirectToPage("/Login/Login");
+				return authResult;
 			}
-
-			int customerId = int.Parse(customerIdString);
 
 			// Fetch the cart items for this customer
 			var cartItems = await _cartService.GetCartItemsAsync(customerId);
@@ -148,5 +149,36 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 			TempData["SuccessMessage"] = "Thanh toán thành công! Đơn hàng của bạn đã được xử lý.";
 			return RedirectToPage("/cart/Confirmation", new { orderId = order.OrderId });
 		}
+
+		private IActionResult GetAuthorizedCustomerId(out int customerId)
+		{
+			customerId = 0;
+
+			if (User.Identity?.IsAuthenticated != true)
+			{
+				return Challenge(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
+
+			if (!User.IsInRole(AppRoles.Customer))
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
+
+			int? currentCustomerId = User.GetCustomerId();
+			if (!currentCustomerId.HasValue)
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
+
+			customerId = currentCustomerId.Value;
+			return null;
+		}
+
+		private async Task<CartItem> GetOwnedCartItemAsync(int customerId, int cartItemId)
+		{
+			var cartItems = await _cartService.GetCartItemsAsync(customerId);
+			return cartItems.FirstOrDefault(item => item.CartItemId == cartItemId);
+		}
 	}
 }
+

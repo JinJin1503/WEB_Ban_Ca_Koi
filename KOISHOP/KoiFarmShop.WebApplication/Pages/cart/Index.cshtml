@@ -50,7 +50,8 @@
                     <tr>
                         <td><img src="@item.Koi.ImageURL" alt="@item.Koi.KoiName" width="50" height="50" /></td>
                         <td>@item.Koi.KoiName</td>
-                        <form method="post" asp-page-handler="Edit" asp-route-cartItemId="@item.CartItemId">
+                        <form method="post" action="@($"{Url.Page("/cart/Index")}?handler=Edit&cartItemId={item.CartItemId}")">
+                            @Html.AntiForgeryToken()
                         <td>
                             <input type="number" name="newQuantityPerKoi" value="@item.QuantityPerKoi" min="0" style="width: 80px;" />
                         </td>
@@ -63,7 +64,8 @@
                         <td>@item.Koi.PricePerBatch.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
                         <td>@((item.Koi.PricePerKoi * item.QuantityPerKoi) + (item.Koi.PricePerBatch * item.QuantityPerBatch))</td>
                         <td>
-                            <form method="post" asp-page-handler="Delete" asp-route-cartItemId="@item.CartItemId">
+                            <form method="post" action="@($"{Url.Page("/cart/Index")}?handler=Delete&cartItemId={item.CartItemId}")">
+                                @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
                             </form>
                         </td>

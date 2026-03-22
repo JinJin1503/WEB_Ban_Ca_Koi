@@ -143,6 +143,16 @@
                 </a>
             </li>
 
+            @if (isManager)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/manager/Index">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Trang admin</span>
+                    </a>
+                </li>
+            }
+
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cart-menu" role="button" aria-expanded="false" aria-controls="cart-menu">
                     <i class="bi bi-cart"></i>

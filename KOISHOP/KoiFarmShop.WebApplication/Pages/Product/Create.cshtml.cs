@@ -49,3 +49,4 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 		}
 	}
 }
+

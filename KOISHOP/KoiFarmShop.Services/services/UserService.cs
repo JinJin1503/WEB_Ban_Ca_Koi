@@ -45,14 +45,6 @@ namespace KoiFarmShop.Services.Services
 				return user;
 			}
 
-			// Ho tro du lieu seed cu con luu mat khau dang plain text va nang cap len dang bam sau khi dang nhap.
-			if (string.Equals(user.PasswordHasher, password, StringComparison.Ordinal))
-			{
-				user.PasswordHasher = _passwordHasher.HashPassword(password);
-				await _userRepository.UpdateUserAsync(user);
-				return user;
-			}
-
 			return null;
 		}
 

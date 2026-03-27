@@ -1,0 +1,86 @@
+﻿@page 
+@model KoiFarmShop.WebApplication.Pages.Dichvuchamsoc.IndexCareModel
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ký gửi cá Koi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Dịch vụ ký gửi chăm sóc cá Koi</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <h3 class="mb-3 text-center">Thông tin ký gửi</h3>
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.KoiName" class="form-label"></label>
+                        <input asp-for="ConsignmentRequest.KoiName" class="form-control" />
+                        <span asp-validation-for="ConsignmentRequest.KoiName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.KoiAge" class="form-label"></label>
+                        <input asp-for="ConsignmentRequest.KoiAge" class="form-control" />
+                        <span asp-validation-for="ConsignmentRequest.KoiAge" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.KoiSize" class="form-label"></label>
+                        <input asp-for="ConsignmentRequest.KoiSize" class="form-control" />
+                        <span asp-validation-for="ConsignmentRequest.KoiSize" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.KoiBreed" class="form-label"></label>
+                        <select asp-for="ConsignmentRequest.KoiBreed" class="form-select">
+                            <option value="">-- Chọn giống cá --</option>
+                            <option value="Imported">Nhập khẩu</option>
+                            <option value="Domestic">Thuần Việt</option>
+                            <option value="Hybrid">Lai F1</option>
+                        </select>
+                        <span asp-validation-for="ConsignmentRequest.KoiBreed" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.ConsignmentDate" class="form-label"></label>
+                        <input asp-for="ConsignmentRequest.ConsignmentDate" class="form-control" />
+                        <span asp-validation-for="ConsignmentRequest.ConsignmentDate" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.ConsignmentDuration" class="form-label"></label>
+                        <select asp-for="ConsignmentRequest.ConsignmentDuration" class="form-select">
+                            <option value="">-- Chọn thời gian --</option>
+                            <option value="1">1 tháng</option>
+                            <option value="3">3 tháng</option>
+                            <option value="6">6 tháng</option>
+                            <option value="12">12 tháng</option>
+                        </select>
+                        <span asp-validation-for="ConsignmentRequest.ConsignmentDuration" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dịch vụ chăm sóc cá</label>
+                        <div>
+                            <input asp-for="ConsignmentRequest.CareService" type="checkbox" />
+                            <label asp-for="ConsignmentRequest.CareService" class="ms-2"></label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.Remarks" class="form-label"></label>
+                        <textarea asp-for="ConsignmentRequest.Remarks" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConsignmentRequest.KoiImage" class="form-label"></label>
+                        <input asp-for="ConsignmentRequest.KoiImage" class="form-control" type="file" />
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="submit" class="btn btn-success">Xác nhận ký gửi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

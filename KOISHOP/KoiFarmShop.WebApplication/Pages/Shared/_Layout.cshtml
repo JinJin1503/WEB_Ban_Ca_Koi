@@ -69,17 +69,17 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" asp-page="/Profile/Index" data-bs-toggle="dropdown">
-                      
-                        
+
+
 
                         @if (!string.IsNullOrEmpty(username))
-                            {
+                        {
                             <span class="d-none d-md-block dropdown-toggle ps-2">@username</span>
-                            }
-                            else
-                            {
+                        }
+                        else
+                        {
                             <span class="d-none d-md-block dropdown-toggle ps-2">Chưa đăng nhập</span>
-                            }
+                        }
 
                     </a><!-- End Profile Iamge Icon -->
 
@@ -118,9 +118,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" asp-page="/Login/Logout">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Thoát</span>
+                                <span>Đăng xuất</span>
                             </a>
                         </li>
 
@@ -150,7 +150,7 @@
                 </a>
             </li>
 
-        
+
 
 
             <!-- Giỏ hàng -->
@@ -167,7 +167,7 @@
                         </a>
                     </li>
                     <li>
-               
+
                 </ul>
             </li>
 
@@ -287,21 +287,21 @@
                                 <a href="https://www.instagram.com/huynhngoyendi?igsh=MTgxbGE0YngyeXE5ZA==" class="instagram"><i class="bi bi-instagram"></i></a>
                             </div>
                     </div>
-                        </ul>
+                    </ul>
+                </div>
+
+                <!-- Phần bản quyền -->
+                <div class="container d-md-flex py-4">
+
+                    <div class="me-md-auto text-center text-md-start">
+                        <div class="copyright">
+                            <strong><span>KoiFarmShop</span></strong>
+                        </div>
+                        <div class="credits">
+                            Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
+                        </div>
                     </div>
-
-        <!-- Phần bản quyền -->
-        <div class="container d-md-flex py-4">
-
-            <div class="me-md-auto text-center text-md-start">
-                <div class="copyright">
-                  <strong><span>KoiFarmShop</span></strong>
                 </div>
-                <div class="credits">
-                    Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
-                </div>
-            </div>
-        </div>
     </footer>
 
 

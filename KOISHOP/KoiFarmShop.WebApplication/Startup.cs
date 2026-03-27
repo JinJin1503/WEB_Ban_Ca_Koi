@@ -18,6 +18,7 @@ using KoiFarmShop.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 namespace KoiFarmShop.WebApplication
@@ -68,9 +69,15 @@ namespace KoiFarmShop.WebApplication
 				options.Cookie.IsEssential = true; // Đảm bảo session hoạt động
 			});
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie(options =>
+				{
+					options.LoginPath = "/Login/Login"; 
+					options.AccessDeniedPath = "/Error"; // Trỏ về trang báo lỗi 403 Không có quyền
+				});
 
-			// Các dịch vụ khác
-			services.AddRazorPages();
+            // Các dịch vụ khác
+            services.AddRazorPages();
 
 		}
 
@@ -91,10 +98,20 @@ namespace KoiFarmShop.WebApplication
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseSession();
+            // Thêm đoạn này để chặn trình duyệt lưu Cache các trang bảo mật
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "-1";
+                await next();
+            });
+
+            app.UseSession();
 			app.UseRouting();
 
-			app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 			// Tự động chạy migration và chèn dữ liệu mẫu
 			using (var scope = app.ApplicationServices.CreateScope())

@@ -1,0 +1,57 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.ManageConsignmentModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Quản lý Ký gửi Bán & Chăm sóc";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">@ViewData["Title"]</h1>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-table me-1"></i> Danh sách yêu cầu từ khách hàng
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Loại dịch vụ</th>
+                        <th>Tên cá Koi</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Requests)
+                    {
+                        <tr>
+                            <td>#@item.RequestId</td>
+                            <td>@item.Customer?.CustomerName</td>
+                            <td>
+                                <span class="badge @(item.ConsignmentType == "Bán" ? "bg-info" : "bg-success")">
+                                    @item.ConsignmentType
+                                </span>
+                            </td>
+                            <td>@item.KoiName</td>
+                            <td>
+                                <span class="badge @(item.Status == "Approved" ? "bg-secondary" : "bg-warning text-dark")">
+                                    @item.Status
+                                </span>
+                            </td>
+                            <td>
+                                <form method="post" asp-page-handler="Approve" asp-route-id="@item.RequestId" style="display:inline;">
+                                    <button class="btn btn-success btn-sm" onclick="return confirm('Phê duyệt đơn này?')">
+                                        <i class="fas fa-check"></i> Duyệt
+                                    </button>
+                                </form>
+                                <a class="btn btn-primary btn-sm" href="/manager/DetailsConsignment?id=@item.RequestId">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.DetailsConsignmentModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Chi Tiết Đơn Ký Gửi";
+    // THÊM DÒNG NÀY ĐỂ TẮT DASHBOARD
+    ViewData["HideDashboard"] = true;
+}
+
+<div class="container-fluid px-4 mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Chi Tiết Đơn Ký Gửi #@Model.ConsignmentRequest.RequestId</h2>
+        <a href="/manager/ManageConsignment" class="btn btn-outline-secondary">Quay lại danh sách</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle"></i> Thông Tin Chung</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Khách hàng:</strong> @Model.ConsignmentRequest.Customer?.CustomerName</p>
+                    <p>
+                        <strong>Loại dịch vụ:</strong>
+                        <span class="badge @(Model.ConsignmentRequest.ConsignmentType == "Bán" ? "bg-info" : "bg-success")">
+                            @Model.ConsignmentRequest.ConsignmentType
+                        </span>
+                    </p>
+                    <p><strong>Ngày gửi yêu cầu:</strong> @Model.ConsignmentRequest.RequestDate.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p>
+                        <strong>Trạng thái hiện tại:</strong>
+                        <span class="badge @(Model.ConsignmentRequest.Status == "Approved" ? "bg-secondary" : "bg-warning text-dark")">
+                            @Model.ConsignmentRequest.Status
+                        </span>
+                    </p>
+                    @if (Model.ConsignmentRequest.CareService)
+                    {
+                        <p><strong>Yêu cầu đặc biệt:</strong> <span class="text-danger fw-bold">Có sử dụng dịch vụ chăm sóc</span></p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-fish"></i> Hồ Sơ Cá Koi</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Tên cá:</strong> @Model.ConsignmentRequest.KoiName</p>
+                    <p><strong>Giống cá (Breed):</strong> @Model.ConsignmentRequest.KoiBreed</p>
+                    <p><strong>Tuổi:</strong> @Model.ConsignmentRequest.KoiAge tháng</p>
+                    <p><strong>Kích thước:</strong> @Model.ConsignmentRequest.KoiSize cm</p>
+                    <p><strong>Mô tả chi tiết:</strong> @Model.ConsignmentRequest.Remarks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.ConsignmentRequest.Status == "Chờ duyệt" || Model.ConsignmentRequest.Status == "Pending")
+    {
+        <div class="card shadow-sm">
+            <div class="card-body text-center">
+                <form method="post" asp-page-handler="Approve" asp-route-id="@Model.ConsignmentRequest.RequestId" class="d-inline">
+                    <button type="submit" class="btn btn-success btn-lg mx-2" onclick="return confirm('Bạn chắc chắn muốn duyệt đơn này?')">
+                        <i class="fas fa-check-circle"></i> Phê Duyệt Đơn
+                    </button>
+                </form>
+                <button type="submit" class="btn btn-danger btn-lg mx-2" onclick="return confirm('Bạn có chắc chắn muốn TỪ CHỐI đơn ký gửi này? Hành động này không thể hoàn tác!')">
+                    <i class="fas fa-times-circle"></i> Từ Chối
+                </button>
+            </div>
+        </div>
+    }
+</div>

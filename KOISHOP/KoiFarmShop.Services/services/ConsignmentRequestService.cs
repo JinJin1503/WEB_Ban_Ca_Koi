@@ -76,5 +76,18 @@ namespace KoiFarmShop.Services.Implementations
 			_context.ConsignmentRequests.Update(request);
 			await _context.SaveChangesAsync();
 		}
-	}
+        public async Task RejectRequestAsync(int requestId)
+        {
+            var request = await _context.ConsignmentRequests.FindAsync(requestId);
+            if (request == null)
+                throw new Exception("Yêu cầu ký gửi không tồn tại.");
+
+            // Cập nhật trạng thái thành "Từ chối" hoặc "Rejected"
+            request.Status = "Từ chối";
+
+            // Tùy chọn: Có thể lưu thêm ghi chú tại sao bị từ chối vào cột Remarks hoặc Notes
+            _context.ConsignmentRequests.Update(request);
+            await _context.SaveChangesAsync();
+        }
+    }
 }

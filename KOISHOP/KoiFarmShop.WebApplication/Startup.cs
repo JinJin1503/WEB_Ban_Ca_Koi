@@ -17,7 +17,11 @@ using KoiFarmShop.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services;
+<<<<<<< HEAD
+using Microsoft.AspNetCore.Mvc;
+=======
 using Microsoft.AspNetCore.Authentication.Cookies;
+>>>>>>> main
 
 
 namespace KoiFarmShop.WebApplication
@@ -42,12 +46,20 @@ namespace KoiFarmShop.WebApplication
                         // Giữ nguyên cấu hình thư mục Migration của bạn
                         builder.MigrationsAssembly("KoiFarmShop.Repositories");
 
+<<<<<<< HEAD
+            services.AddRazorPages()
+				.AddRazorPagesOptions(options =>
+				{
+					options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+				});
+=======
                         // Thêm "áo giáp" chống sập: Bắt ứng dụng thử kết nối lại tối đa 5 lần, mỗi lần chờ 30s
                         builder.EnableRetryOnFailure(
                             maxRetryCount: 5,
                             maxRetryDelay: TimeSpan.FromSeconds(30),
                             errorNumbersToAdd: null);
                     }));
+>>>>>>> main
 
             // Đăng ký repository
             services.AddScoped<IKoiFishRepository, KoiFishRepository>();

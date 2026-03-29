@@ -1,0 +1,58 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.historydichvu.IndexModel
+@{
+    ViewData["Title"] = "Lịch sử dịch vụ";
+}
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Quản lý lịch sử Ký gửi của bạn</h2>
+
+    @if (Model.MyRequests == null || !Model.MyRequests.Any())
+    {
+        <div class="alert alert-info text-center shadow-sm">
+            Bạn chưa có đơn ký gửi nào. Hãy trải nghiệm dịch vụ của chúng tôi nhé!
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-bordered table-hover align-middle mb-0">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Mã Đơn</th>
+                        <th>Ngày gửi</th>
+                        <th>Loại dịch vụ</th>
+                        <th>Tên cá Koi</th>
+                        <th>Giống cá</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MyRequests)
+                    {
+                        <tr>
+                            <td class="text-center fw-bold">#@item.RequestId</td>
+                            <td class="text-center">@item.RequestDate.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td class="text-center">
+                                <span class="badge @(item.ConsignmentType == "Bán" ? "bg-primary" : "bg-success") px-3 py-2">
+                                    <i class="fas @(item.ConsignmentType == "Bán" ? "fa-store" : "fa-hand-holding-water") me-1"></i>
+                                    @item.ConsignmentType
+                                </span>
+                            </td>
+                            <td class="fw-semibold text-primary">@item.KoiName</td>
+                            <td class="text-center">@item.KoiBreed</td>
+                            <td class="text-center">
+                                @{
+                                    var badgeColor = item.Status == "Chờ duyệt" ? "bg-warning text-dark" :
+                                    item.Status == "Đã duyệt" ? "bg-info" :
+                                    item.Status == "Đang chăm sóc" ? "bg-primary" : "bg-secondary";
+                                }
+                                <span class="badge @badgeColor">@item.Status</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

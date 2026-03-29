@@ -129,7 +129,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             CartItemId = 1,
                             CartId = 1,
-                            DateAdded = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(750),
+                            DateAdded = new DateTime(2026, 3, 27, 16, 24, 13, 172, DateTimeKind.Local).AddTicks(9796),
                             KoiId = 1,
                             QuantityPerBatch = 1,
                             QuantityPerKoi = 2
@@ -138,7 +138,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             CartItemId = 2,
                             CartId = 2,
-                            DateAdded = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(1161),
+                            DateAdded = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(92),
                             KoiId = 2,
                             QuantityPerBatch = 2,
                             QuantityPerKoi = 3
@@ -183,19 +183,19 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             ConsignmentKoiId = 1,
                             AgreedPrice = 150000,
-                            EndDate = new DateTime(2025, 5, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(4502),
+                            EndDate = new DateTime(2026, 9, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(2402),
                             KoiId = 1,
                             RequestId = 1,
-                            StartDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(4366)
+                            StartDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(2305)
                         },
                         new
                         {
                             ConsignmentKoiId = 2,
                             AgreedPrice = 200000,
-                            EndDate = new DateTime(2025, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(4868),
+                            EndDate = new DateTime(2027, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(2692),
                             KoiId = 2,
                             RequestId = 2,
-                            StartDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(4861)
+                            StartDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(2691)
                         });
                 });
 
@@ -206,8 +206,17 @@ namespace KoiFarmShop.Repositories.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("CareService")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Certificate")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ConsignmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ConsignmentDuration")
+                        .HasColumnType("int");
 
                     b.Property<int>("ConsignmentFee")
                         .HasColumnType("int");
@@ -218,7 +227,25 @@ namespace KoiFarmShop.Repositories.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("KoiAge")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KoiBreed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KoiImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("KoiName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("KoiSize")
+                        .HasColumnType("float");
+
                     b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RequestDate")
@@ -237,23 +264,33 @@ namespace KoiFarmShop.Repositories.Migrations
                         new
                         {
                             RequestId = 1,
+                            CareService = false,
                             Certificate = "Giấy chứng nhận 001",
+                            ConsignmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsignmentDuration = 0,
                             ConsignmentFee = 50000,
                             ConsignmentType = "Bán",
                             CustomerId = 1,
+                            KoiAge = 0,
+                            KoiSize = 0.0,
                             Notes = "Yêu cầu bán cá Koi loại A",
-                            RequestDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(2972),
+                            RequestDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(1296),
                             Status = "Đang xử lý"
                         },
                         new
                         {
                             RequestId = 2,
+                            CareService = false,
                             Certificate = "Giấy chứng nhận 002",
+                            ConsignmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsignmentDuration = 0,
                             ConsignmentFee = 70000,
                             ConsignmentType = "Chăm sóc",
                             CustomerId = 2,
+                            KoiAge = 0,
+                            KoiSize = 0.0,
                             Notes = "Chăm sóc cá Koi loại B",
-                            RequestDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(3868),
+                            RequestDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(1934),
                             Status = "Hoàn thành"
                         });
                 });
@@ -301,7 +338,7 @@ namespace KoiFarmShop.Repositories.Migrations
                             Email = "giakhanhngo1503@gmail.com",
                             Phone = "0123456789",
                             Points = 100,
-                            RegistrationDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(2115),
+                            RegistrationDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(773),
                             UserId = 3
                         },
                         new
@@ -312,7 +349,7 @@ namespace KoiFarmShop.Repositories.Migrations
                             Email = "yendi1907@gmai.com",
                             Phone = "0987654321",
                             Points = 200,
-                            RegistrationDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(2521),
+                            RegistrationDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(1050),
                             UserId = 4
                         });
                 });
@@ -353,7 +390,7 @@ namespace KoiFarmShop.Repositories.Migrations
                             FeedbackId = 1,
                             Comment = "Cá Koi đẹp và khỏe mạnh",
                             CustomerId = 1,
-                            FeedbackDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(5507),
+                            FeedbackDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(3423),
                             KoiId = 1,
                             Rating = 5
                         },
@@ -362,7 +399,7 @@ namespace KoiFarmShop.Repositories.Migrations
                             FeedbackId = 2,
                             Comment = "Dịch vụ chăm sóc tốt, nhưng giao hàng chậm",
                             CustomerId = 2,
-                            FeedbackDate = new DateTime(2024, 11, 17, 18, 26, 42, 615, DateTimeKind.Local).AddTicks(5874),
+                            FeedbackDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(3692),
                             KoiId = 2,
                             Rating = 4
                         });
@@ -1056,14 +1093,14 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             OrderId = 1,
                             CustomerId = 1,
-                            OrderDate = new DateTime(2024, 11, 17, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(824),
+                            OrderDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(8332),
                             StaffId = 1
                         },
                         new
                         {
                             OrderId = 2,
                             CustomerId = 2,
-                            OrderDate = new DateTime(2024, 11, 16, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(1204),
+                            OrderDate = new DateTime(2026, 3, 26, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(8642),
                             StaffId = 2
                         });
                 });
@@ -1100,18 +1137,18 @@ namespace KoiFarmShop.Repositories.Migrations
                             PromotionId = 1,
                             Description = "Giảm giá 10% cho tất cả các sản phẩm trong mùa hè.",
                             DiscountRate = 0.10m,
-                            EndDate = new DateTime(2024, 12, 17, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(2041),
+                            EndDate = new DateTime(2026, 4, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(9254),
                             PromotionName = "Khuyến mãi mùa hè",
-                            StartDate = new DateTime(2024, 11, 17, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(1903)
+                            StartDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(9159)
                         },
                         new
                         {
                             PromotionId = 2,
                             Description = "Giảm giá 15% cho các đơn hàng trên 5 triệu.",
                             DiscountRate = 0.15m,
-                            EndDate = new DateTime(2024, 11, 27, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(2378),
+                            EndDate = new DateTime(2026, 4, 6, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(9445),
                             PromotionName = "Khuyến mãi Tết Nguyên Đán",
-                            StartDate = new DateTime(2024, 11, 7, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(2367)
+                            StartDate = new DateTime(2026, 3, 17, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(9441)
                         });
                 });
 
@@ -1142,7 +1179,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         new
                         {
                             ReportId = 1,
-                            ReportDate = new DateTime(2024, 11, 17, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(2826),
+                            ReportDate = new DateTime(2026, 3, 27, 16, 24, 13, 173, DateTimeKind.Local).AddTicks(9727),
                             Summary = "Doanh thu tháng này tăng 10% so với tháng trước.",
                             TotalCustomers = 100,
                             TotalRevenue = 5000000
@@ -1150,7 +1187,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         new
                         {
                             ReportId = 2,
-                            ReportDate = new DateTime(2024, 10, 17, 18, 26, 42, 616, DateTimeKind.Local).AddTicks(3308),
+                            ReportDate = new DateTime(2026, 2, 27, 16, 24, 13, 174, DateTimeKind.Local).AddTicks(92),
                             Summary = "Doanh thu tháng trước ổn định.",
                             TotalCustomers = 80,
                             TotalRevenue = 4500000
@@ -1196,7 +1233,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             StaffId = 1,
                             Email = "dihny5348@ut.edu.vn",
-                            JoinDate = new DateTime(2022, 11, 17, 18, 26, 42, 613, DateTimeKind.Local).AddTicks(9626),
+                            JoinDate = new DateTime(2024, 3, 27, 16, 24, 13, 171, DateTimeKind.Local).AddTicks(6343),
                             Phone = "0905681918",
                             Role = "Quản lý",
                             Salary = 20000000,
@@ -1207,7 +1244,7 @@ namespace KoiFarmShop.Repositories.Migrations
                         {
                             StaffId = 2,
                             Email = "Khanhng5776@ut.edu.vn",
-                            JoinDate = new DateTime(2023, 11, 17, 18, 26, 42, 614, DateTimeKind.Local).AddTicks(7994),
+                            JoinDate = new DateTime(2025, 3, 27, 16, 24, 13, 172, DateTimeKind.Local).AddTicks(7812),
                             Phone = "0344883755",
                             Role = "Nhân viên bán hàng",
                             Salary = 15000000,

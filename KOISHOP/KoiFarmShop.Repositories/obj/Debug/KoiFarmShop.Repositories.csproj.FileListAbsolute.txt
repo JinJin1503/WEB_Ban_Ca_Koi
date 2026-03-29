@@ -1,0 +1,353 @@
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll.config
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.pdb
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.ComponentModel.Annotations.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.pdb
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.AssemblyReference.cache
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.CoreCompileInputs.cache
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmS.C7495FF9.Up2Date
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.dll
+D:\CNPM\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll.config
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.ComponentModel.Annotations.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.xml
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.AssemblyReference.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.CoreCompileInputs.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmS.C7495FF9.Up2Date
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll.config
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.ComponentModel.Annotations.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.AssemblyReference.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.CoreCompileInputs.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmS.C7495FF9.Up2Date
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll.config
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\KoiFarmShop.Repositories.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.ComponentModel.Annotations.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Bcl.HashCode.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Data.SqlClient.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.EntityFrameworkCore.SqlServer.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Options.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Extensions.Primitives.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.Identity.Client.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Logging.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\Newtonsoft.Json.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Buffers.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Collections.Immutable.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Memory.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Numerics.Vectors.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.AssemblyReference.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.dll.config
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.csproj.CoreCompileInputs.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmS.C7495FF9.Up2Date
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.Repositories\obj\Debug\KoiFarmShop.Repositories.pdb

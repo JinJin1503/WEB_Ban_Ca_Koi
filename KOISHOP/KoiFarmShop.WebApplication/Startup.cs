@@ -12,13 +12,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using KoiFarmShop.Repositories.Interfaces;  
-using KoiFarmShop.Repositories.Repositories;
 using KoiFarmShop.Services.Interfaces;
 using KoiFarmShop.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Mvc;
+=======
+using Microsoft.AspNetCore.Authentication.Cookies;
+>>>>>>> main
 
 
 namespace KoiFarmShop.WebApplication
@@ -35,16 +38,28 @@ namespace KoiFarmShop.WebApplication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// Cấu hình DbContext
-			services.AddDbContext<KoiFarmDbContext>(options =>
-				options.UseSqlServer(Configuration["ConnectionStrings:ConnectedDb"],
-			builder => builder.MigrationsAssembly("KoiFarmShop.Repositories")));
+            // Cấu hình DbContext
+            services.AddDbContext<KoiFarmDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:ConnectedDb"],
+                    builder =>
+                    {
+                        // Giữ nguyên cấu hình thư mục Migration của bạn
+                        builder.MigrationsAssembly("KoiFarmShop.Repositories");
 
+<<<<<<< HEAD
             services.AddRazorPages()
 				.AddRazorPagesOptions(options =>
 				{
 					options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
 				});
+=======
+                        // Thêm "áo giáp" chống sập: Bắt ứng dụng thử kết nối lại tối đa 5 lần, mỗi lần chờ 30s
+                        builder.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    }));
+>>>>>>> main
 
             // Đăng ký repository
             services.AddScoped<IKoiFishRepository, KoiFishRepository>();
@@ -75,9 +90,17 @@ namespace KoiFarmShop.WebApplication
 				options.Cookie.IsEssential = true; // Đảm bảo session hoạt động
 			});
 
+            // Cấu hình Authentication (Xác thực người dùng bằng Cookie)
+            services.AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+               
+                    options.LoginPath = "/Login/Login";
+                    options.AccessDeniedPath = "/AccessDenied"; // Đường dẫn khi không đủ quyền truy cập
+                });
 
-			// Các dịch vụ khác
-			services.AddRazorPages();
+            // Các dịch vụ khác
+            services.AddRazorPages();
 
 		}
 
@@ -98,10 +121,20 @@ namespace KoiFarmShop.WebApplication
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseSession();
+            // Thêm đoạn này để chặn trình duyệt lưu Cache các trang bảo mật
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "-1";
+                await next();
+            });
+
+            app.UseSession();
 			app.UseRouting();
 
-			app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 			// Tự động chạy migration và chèn dữ liệu mẫu
 			using (var scope = app.ApplicationServices.CreateScope())

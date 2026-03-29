@@ -1,0 +1,502 @@
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.AssemblyReference.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.GeneratedMSBuildEditorConfig.editorconfig
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfoInputs.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfo.cs
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.CoreCompileInputs.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.MvcApplicationPartsAssemblyInfo.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cs
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.Development.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.staticwebassets.runtime.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.exe
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.deps.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.runtimeconfig.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.HashCode.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.Sqlite.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\dotnet-aspnet-codegenerator-design.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Newtonsoft.Json.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\NuGet.Frameworks.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.core.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.AttributedModel.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Convention.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Hosting.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Runtime.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.TypedParts.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Runtime.Caching.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Permissions.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\browser-wasm\nativeassets\net6.0\e_sqlite3.a
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll.config
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll.config
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.development.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.KoiFarmShop.WebApplication.Microsoft.AspNetCore.StaticWebAssets.props
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.build.KoiFarmShop.WebApplication.props
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.KoiFarmShop.WebApplication.props
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.KoiFarmShop.WebApplication.props
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.pack.json
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\scopedcss\bundle\KoiFarmShop.WebApplication.styles.css
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmS.58129A9F.Up2Date
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\refint\KoiFarmShop.WebApplication.dll
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.genruntimeconfig.cache
+G:\KOISHOP (2)\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\ref\KoiFarmShop.WebApplication.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.Development.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.staticwebassets.runtime.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.staticwebassets.endpoints.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.exe
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.deps.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.runtimeconfig.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.HashCode.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.Sqlite.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\dotnet-aspnet-codegenerator-design.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\NuGet.Frameworks.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.core.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.AttributedModel.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Convention.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Hosting.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Runtime.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.TypedParts.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\browser-wasm\nativeassets\net6.0\e_sqlite3.a
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll.config
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll.config
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.AssemblyReference.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.GeneratedMSBuildEditorConfig.editorconfig
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfoInputs.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfo.cs
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.CoreCompileInputs.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.MvcApplicationPartsAssemblyInfo.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cs
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\scopedcss\bundle\KoiFarmShop.WebApplication.styles.css
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.development.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.KoiFarmShop.WebApplication.Microsoft.AspNetCore.StaticWebAssets.props
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.KoiFarmShop.WebApplication.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.build.KoiFarmShop.WebApplication.props
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.KoiFarmShop.WebApplication.props
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.KoiFarmShop.WebApplication.props
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.pack.json
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmS.58129A9F.Up2Date
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\refint\KoiFarmShop.WebApplication.dll
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.genruntimeconfig.cache
+D:\KHÁNH\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\ref\KoiFarmShop.WebApplication.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\refint\KoiFarmShop.WebApplication.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.Development.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\appsettings.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.staticwebassets.runtime.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.staticwebassets.endpoints.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.exe
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.deps.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.runtimeconfig.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.WebApplication.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Bcl.HashCode.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Razor.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Data.Sqlite.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\dotnet-aspnet-codegenerator-design.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\NuGet.Frameworks.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.core.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.AttributedModel.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Convention.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Hosting.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.Runtime.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Composition.TypedParts.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-arm64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\browser-wasm\nativeassets\net6.0\e_sqlite3.a
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Repositories.dll.config
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.pdb
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\bin\Debug\net6.0\KoiFarmShop.Services.dll.config
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.AssemblyReference.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\rpswa.dswa.cache.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.GeneratedMSBuildEditorConfig.editorconfig
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfoInputs.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.AssemblyInfo.cs
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.csproj.CoreCompileInputs.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.MvcApplicationPartsAssemblyInfo.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.RazorAssemblyInfo.cs
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.sourcelink.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\rjimswa.dswa.cache.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\rjsmrazor.dswa.cache.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\rjsmcshtml.dswa.cache.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\scopedcss\bundle\KoiFarmShop.WebApplication.styles.css
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.json.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.development.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmS.58129A9F.Up2Date
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\KoiFarmShop.WebApplication.genruntimeconfig.cache
+D:\khanh\WEB_Ban_Ca_Koi\KOISHOP\KoiFarmShop.WebApplication\obj\Debug\net6.0\ref\KoiFarmShop.WebApplication.dll

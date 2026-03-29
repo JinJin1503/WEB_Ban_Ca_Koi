@@ -1,29 +1,53 @@
-# Build folders
+# Environment files
+.env
+
+# Build outputs
 bin/
 obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
 
-# Visual Studio
+# IDE and user-specific files
 .vs/
-*.user
+.vscode/
+.idea/
 *.suo
+*.user
+*.rsuser
+*.userosscache
+*.sln.docstates
 
 # Logs
 *.log
+*.tlog
+*.binlog
 
-# OS
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# Node
+node_modules/
+
+# Test and coverage outputs
+[Tt]est[Rr]esult*/
+TestResult.xml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# OS files
 .DS_Store
 Thumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
 
-# Visual Studio
-.vs/
-
-# Build
-bin/
-obj/
-
-# User files
-*.user
-*.suo
-
-# Logs
-*.log
+# Local history and editor temp files
+.history/
+.localhistory/
+*.swp

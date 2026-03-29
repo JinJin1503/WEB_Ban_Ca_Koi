@@ -1,0 +1,41 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Order.IndexModel
+
+<h2>Quản Lý Đơn Hàng</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Khách hàng</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Tổng tiền</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+        <tr>
+            <td>@order.OrderId</td>
+            <td>@order.CustomerId</td>
+            <td>@order.OrderDate</td>
+            <td>@order.Status</td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="orderId" value="@order.OrderId" />
+
+                    <button type="submit" asp-page-handler="Approve" class="btn btn-success">
+                        Duyệt
+                    </button>
+
+                    <button type="submit" asp-page-handler="Shipping" class="btn btn-warning">
+                        Giao hàng
+                    </button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

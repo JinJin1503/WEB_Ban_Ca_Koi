@@ -1,4 +1,5 @@
-﻿using KoiFarmShop.Repositories.Entities;
+﻿using Microsoft.AspNetCore.Authorization;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager
 {
-	public class IndexModel : PageModel
+    [Authorize(Roles = "Quản lý,Nhân viên bán hàng,giám đốc")]
+    public class IndexModel : PageModel
 	{
 		private readonly IStaffService _staffService;
 

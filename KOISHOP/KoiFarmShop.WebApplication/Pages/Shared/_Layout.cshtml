@@ -1,4 +1,4 @@
-﻿@using KoiFarmShop.WebApplication.Security
+@using KoiFarmShop.WebApplication.Security
 @{
     var isAuthenticated = User.Identity?.IsAuthenticated == true;
     var username = isAuthenticated ? User.Identity?.Name : null;
@@ -97,7 +97,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" asp-page="/Logout">
+                                <a class="dropdown-item d-flex align-items-center" asp-page="/Login/Logout">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Thoát</span>
                                 </a>
@@ -212,7 +212,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" asp-page="/Logout">
+                    <a class="nav-link collapsed" asp-page="/Login/Logout">
                         <i class="bi bi-box-arrow-right"></i>
                         <span>Thoát</span>
                     </a>
@@ -312,4 +312,3 @@
 </body>
 
 </html>
-

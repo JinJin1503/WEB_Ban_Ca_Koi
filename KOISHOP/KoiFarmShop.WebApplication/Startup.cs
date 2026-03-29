@@ -17,6 +17,7 @@ using KoiFarmShop.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 namespace KoiFarmShop.WebApplication
@@ -108,7 +109,16 @@ namespace KoiFarmShop.WebApplication
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
-			app.UseSession();
+            // Thêm đoạn này để chặn trình duyệt lưu Cache các trang bảo mật
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+                context.Response.Headers["Pragma"] = "no-cache";
+                context.Response.Headers["Expires"] = "-1";
+                await next();
+            });
+
+            app.UseSession();
 			app.UseRouting();
 
             app.UseAuthentication();

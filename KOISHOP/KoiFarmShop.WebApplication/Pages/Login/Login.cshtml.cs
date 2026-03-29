@@ -1,20 +1,17 @@
-﻿using KoiFarmShop.Repositories.Entities;
-using KoiFarmShop.Services;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Threading.Tasks;
-
-// CÁC THƯ VIỆN BẮT BUỘC PHẢI THÊM ĐỂ LÀM BẢO MẬT:
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
+    [IgnoreAntiforgeryToken] // Giữ lại của bạn để test Postman không bị lỗi
     public class LoginModel : PageModel
     {
         private readonly IUserService _userService;
@@ -43,10 +40,8 @@ namespace KoiFarmShop.WebApplication.Pages.Login
             // Logic khi người dùng truy cập trang lần đầu (GET)
         }
 
-        // Đã bỏ các tham số thừa trong ngoặc, vì UserName và Password đã dùng [BindProperty]
         public async Task<IActionResult> OnPostAsync()
         {
-            // Kiểm tra đăng nhập
             var user = await _userService.LoginAsync(UserName, Password);
 
             if (user == null)
@@ -55,25 +50,26 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 return Page();
             }
 
-            // 1. CHUẨN BỊ THẺ ĐỊNH DANH (CLAIMS) - Bắt buộc cho [Authorize]
+            // 1. TẠO DANH SÁCH THÔNG TIN CƠ BẢN (CLAIMS)
             var claims = new List<Claim>
             {
-                // Lưu UserId vào định danh để trang Ký gửi Bán có thể lấy ra dùng
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName)
             };
 
             string redirectUrl = "";
 
-            // Kiểm tra xem có phải là Nhân viên/Quản lý không
+            // 2. KIỂM TRA NHÂN VIÊN VÀ PHÂN QUYỀN
             var staff = await _staffService.GetStaffByUserIdAsync(user.UserId);
 
             if (staff != null)
             {
-                // Thêm quyền Role cho Nhân viên (để sau này có thể phân quyền admin)
-                claims.Add(new Claim(ClaimTypes.Role, staff.Role));
+                // Kiểm tra an toàn trước khi add Role (Logic của bạn)
+                if (!string.IsNullOrEmpty(staff.Role))
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, staff.Role));
+                }
 
-                // Vẫn giữ lại Session của bạn để không làm hỏng code cũ
                 HttpContext.Session.SetString("UserName", user.UserName);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.SetString("CustomerId", "");
@@ -82,18 +78,18 @@ namespace KoiFarmShop.WebApplication.Pages.Login
             }
             else
             {
-                // Nếu không phải Staff thì kiểm tra Khách hàng
+                // 3. NẾU KHÔNG PHẢI NHÂN VIÊN -> KIỂM TRA KHÁCH HÀNG
                 var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);
-
                 if (customer == null)
                 {
                     ErrorMessage = "Khách hàng không tồn tại.";
                     return Page();
                 }
 
+                // Gắn quyền mặc định là Customer cho khách hàng
                 claims.Add(new Claim(ClaimTypes.Role, "Customer"));
 
-                // Vẫn giữ lại Session của bạn
+                // Lưu Session cho khách hàng
                 HttpContext.Session.SetString("UserName", user.UserName);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.SetString("CustomerId", customer.CustomerId.ToString());
@@ -101,7 +97,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 redirectUrl = "/Trangchu/Index";
             }
 
-            // 2. PHÁT COOKIE XÁC THỰC BẢO MẬT (QUAN TRỌNG NHẤT)
+            // 4. PHÁT THẺ BÀI (Gộp code SignIn của cả 2 nhánh cho gọn & thêm IsPersistent của main)
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
             {

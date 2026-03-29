@@ -1,0 +1,44 @@
+﻿# ==========================================
+# File .gitignore chuẩn cho dự án .NET / C#
+# ==========================================
+
+# 1. Bỏ qua các thư mục biên dịch code (Rất nặng và thay đổi liên tục)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Dd]ebug/
+[Rr]elease/
+
+# 2. Bỏ qua file cấu hình cá nhân của Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vsidx
+v17/
+.wsuo
+workspaceFileList.bin
+VSWorkspaceState.json
+slnx.sqlite
+
+# 3. Bỏ qua cấu hình cá nhân của Visual Studio Code (nếu bạn có mở bằng VS Code)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# 4. Bỏ qua các file Database ảo chạy ở Local
+*.mdf
+*.ldf
+*.ndf
+*.sqlite
+
+# 5. Bỏ qua file môi trường cá nhân (để không lộ chuỗi kết nối lên mạng)
+appsettings.Development.json
+
+# 6. Bỏ qua file cache của web
+*.cache
+*.cache.json
+*.sourcelink.json

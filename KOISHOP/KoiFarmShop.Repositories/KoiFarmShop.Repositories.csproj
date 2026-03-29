@@ -193,6 +193,10 @@
     <Compile Include="Migrations\20241117112642_FirstMigration.Designer.cs">
       <DependentUpon>20241117112642_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20260327092413_UpdateConsignmentFields.cs" />
+    <Compile Include="Migrations\20260327092413_UpdateConsignmentFields.Designer.cs">
+      <DependentUpon>20260327092413_UpdateConsignmentFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\KoiFarmDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositories\CareServiceRepository.cs" />

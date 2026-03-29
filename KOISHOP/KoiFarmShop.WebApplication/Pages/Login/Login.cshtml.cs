@@ -4,7 +4,6 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services;
-using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -12,6 +11,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using KoiFarmShop.WebApplication.Security;
+
+// CÁC THƯ VIỆN BẮT BUỘC PHẢI THÊM ĐỂ LÀM BẢO MẬT:
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Collections.Generic;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
@@ -28,11 +33,11 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 			_staffService = staffService;
 		}
 
-		[BindProperty]
-		public string UserName { get; set; }
+        [BindProperty]
+        public string UserName { get; set; }
 
-		[BindProperty]
-		public string Password { get; set; }
+        [BindProperty]
+        public string Password { get; set; }
 
 		[BindProperty(SupportsGet = true)]
 		public string ReturnUrl { get; set; }

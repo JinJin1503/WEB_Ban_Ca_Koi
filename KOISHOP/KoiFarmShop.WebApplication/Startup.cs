@@ -36,13 +36,23 @@ namespace KoiFarmShop.WebApplication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			// Cấu hình DbContext
-			services.AddDbContext<KoiFarmDbContext>(options =>
-				options.UseSqlServer(Configuration["ConnectionStrings:ConnectedDb"],
-			builder => builder.MigrationsAssembly("KoiFarmShop.Repositories")));
+            // Cấu hình DbContext
+            services.AddDbContext<KoiFarmDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:ConnectedDb"],
+                    builder =>
+                    {
+                        // Giữ nguyên cấu hình thư mục Migration của bạn
+                        builder.MigrationsAssembly("KoiFarmShop.Repositories");
 
-			// Đăng ký repository
-			services.AddScoped<IKoiFishRepository, KoiFishRepository>();
+                        // Thêm "áo giáp" chống sập: Bắt ứng dụng thử kết nối lại tối đa 5 lần, mỗi lần chờ 30s
+                        builder.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    }));
+
+            // Đăng ký repository
+            services.AddScoped<IKoiFishRepository, KoiFishRepository>();
 			services.AddScoped<IKoiCategoryRepository, KoiCategoryRepository>();
 			// Đăng ký service
 			services.AddScoped<IKoiFishService, KoiFishService>();  // Đăng ký dịch vụ IKoiFishService

@@ -20,40 +20,45 @@
             <!-- Mô tả thông tin cá -->
             <div class="col-md-6">
                 <h3 class="mb-3 text-center">Thông tin cá Koi bạn muốn ký gửi</h3>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
-                        <label for="KoiName" class="form-label">Tên cá</label>
-                        <input type="text" class="form-control" id="KoiName" name="KoiName" required />
+                        <label asp-for="ConsignmentRequest.KoiName" class="form-label">Tên cá Koi</label>
+                        <input asp-for="ConsignmentRequest.KoiName" class="form-control" required />
+                        <span asp-validation-for="ConsignmentRequest.KoiName" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="KoiAge" class="form-label">Tuổi cá (năm)</label>
-                        <input type="number" class="form-control" id="KoiAge" name="KoiAge" required />
+                        <label asp-for="ConsignmentRequest.KoiAge" class="form-label">Tuổi cá (năm)</label>
+                        <input asp-for="ConsignmentRequest.KoiAge" class="form-control" required />
+                        <span asp-validation-for="ConsignmentRequest.KoiAge" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="KoiSize" class="form-label">Kích thước cá (cm)</label>
-                        <input type="number" class="form-control" id="KoiSize" name="KoiSize" required />
+                        <label asp-for="ConsignmentRequest.KoiSize" class="form-label">Kích thước cá (cm)</label>
+                        <input asp-for="ConsignmentRequest.KoiSize" class="form-control" required />
+                        <span asp-validation-for="ConsignmentRequest.KoiSize" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="KoiBreed" class="form-label">Giống cá</label>
-                        <select class="form-select" id="KoiBreed" name="KoiBreed" required>
+                        <label asp-for="ConsignmentRequest.KoiBreed" class="form-label">Giống cá</label>
+                        <select asp-for="ConsignmentRequest.KoiBreed" class="form-select" required>
+                            <option value="">-- Chọn giống cá --</option>
                             <option value="Imported">Nhập khẩu</option>
                             <option value="Domestic">Thuần Việt</option>
                             <option value="Hybrid">Lai F1</option>
                         </select>
+                        <span asp-validation-for="ConsignmentRequest.KoiBreed" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="KoiPrice" class="form-label">Giá cá (VND)</label>
-                        <input type="number" class="form-control" id="KoiPrice" name="KoiPrice" required />
+                        <label asp-for="ConsignmentRequest.ConsignmentFee" class="form-label">Giá cá (VND)</label>
+                        <input asp-for="ConsignmentRequest.ConsignmentFee" class="form-control" required />
+                        <span asp-validation-for="ConsignmentRequest.ConsignmentFee" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="KoiDescription" class="form-label">Mô tả cá</label>
-                        <textarea class="form-control" id="KoiDescription" name="KoiDescription" rows="3" required></textarea>
+                        <label asp-for="ConsignmentRequest.Remarks" class="form-label">Mô tả cá</label>
+                        <textarea asp-for="ConsignmentRequest.Remarks" class="form-control" rows="3" required></textarea>
+                        <span asp-validation-for="ConsignmentRequest.Remarks" class="text-danger"></span>
                     </div>
-
-                    <!-- Thêm ảnh cá -->
                     <div class="mb-3">
-                        <label for="KoiImage" class="form-label">Ảnh cá</label>
-                        <input type="file" class="form-control" id="KoiImage" name="KoiImage" />
+                        <label asp-for="ConsignmentRequest.KoiImage" class="form-label">Ảnh cá</label>
+                        <input asp-for="ConsignmentRequest.KoiImage" type="file" class="form-control" />
                     </div>
 
                     <div class="mb-3 text-center">

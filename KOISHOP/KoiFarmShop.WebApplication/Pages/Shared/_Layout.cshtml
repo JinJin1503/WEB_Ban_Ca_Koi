@@ -1,9 +1,11 @@
-﻿@{
-    var username = Context.Session.GetString("UserName");
+@using KoiFarmShop.WebApplication.Security
+@{
+    var isAuthenticated = User.Identity?.IsAuthenticated == true;
+    var username = isAuthenticated ? User.Identity?.Name : null;
+    var isManager = User.IsInRole(AppRoles.Manager);
+    var isCustomer = User.IsInRole(AppRoles.Customer);
+    var roleLabel = isManager ? "Quản lý" : (isCustomer ? "Khách hàng" : "Nhân viên");
 }
-
-
-@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,15 +13,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -28,51 +27,37 @@
     <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="~/vendor/simple-datatables/style.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
     <link href="~/css/style.css" rel="stylesheet">
-
-
 </head>
 
 <body>
-
-    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
-
         <div class="d-flex align-items-center justify-content-between">
             <a asp-page="/Trangchu/Index" class="logo d-flex align-items-center">
                 <img src="~/images/logo.jpg" alt="">
                 <span class="d-none d-lg-block">KoiFarmShop</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+        </div>
 
         <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="GET" action="/Search">
-                <input type="text" name="query" placeholder="Nhập từ khóa tìm kiếm..." title="Nhập từ khóa tìm kiếm" required>
+            <form class="search-form d-flex align-items-center" method="get" asp-page="/Product/Index">
+                <input type="text" name="keyword" value="@(Context.Request.Query["keyword"])" placeholder="Nhập từ khóa tìm kiếm..." title="Nhập từ khóa tìm kiếm" required>
                 <button type="submit" title="Tìm kiếm"><i class="bi bi-search"></i></button>
             </form>
         </div>
 
-        </div><!-- End Search Bar -->
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-
                 <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <a class="nav-link nav-icon search-bar-toggle" href="#">
                         <i class="bi bi-search"></i>
                     </a>
-                </li><!-- End Search Icon chưa có giao diện -->
-
+                </li>
 
                 <li class="nav-item dropdown pe-3">
-
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" asp-page="/Profile/Index" data-bs-toggle="dropdown">
-
-
-
-                        @if (!string.IsNullOrEmpty(username))
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (isAuthenticated)
                         {
                             <span class="d-none d-md-block dropdown-toggle ps-2">@username</span>
                         }
@@ -80,19 +65,19 @@
                         {
                             <span class="d-none d-md-block dropdown-toggle ps-2">Chưa đăng nhập</span>
                         }
-
-                    </a><!-- End Profile Iamge Icon -->
+                    </a>
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            @if (!string.IsNullOrEmpty(username))
+                            @if (isAuthenticated)
                             {
                                 <h6>@username</h6>
+                                <span>@roleLabel</span>
                             }
                             else
                             {
                                 <h6>Chưa đăng nhập</h6>
-                                <span>Chưa đăng nhập</span>
+                                <span>Vui lòng đăng nhập để sử dụng các chức năng dành cho thành viên.</span>
                             }
                         </li>
 
@@ -100,41 +85,50 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" asp-page="/Profile/Index">
-                                <i class="bi bi-person"></i>
-                                <span>Hồ sơ</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" asp-page="/Login/Logout">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Đăng xuất</span>
-                            </a>
-                        </li>
-
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
-
+                        @if (isAuthenticated)
+                        {
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" asp-page="/Profile/Index">
+                                    <i class="bi bi-person"></i>
+                                    <span>Hồ sơ</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" asp-page="/Login/Logout">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Thoát</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" asp-page="/Login/Login">
+                                    <i class="bi bi-box-arrow-in-right"></i>
+                                    <span>Đăng nhập</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" asp-page="/Register/Register">
+                                    <i class="bi bi-card-list"></i>
+                                    <span>Đăng ký</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </li>
             </ul>
-        </nav><!-- End Icons Navigation -->
+        </nav>
+    </header>
 
-    </header><!-- End Header -->
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
-            <!-- Trang chủ -->
             <li class="nav-item">
                 <a class="nav-link" asp-page="/Trangchu/Index">
                     <i class="bi bi-grid"></i>
@@ -142,7 +136,6 @@
                 </a>
             </li>
 
-            <!-- Sản phẩm -->
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-page="/Product/Index">
                     <i class="bi bi-menu-button-wide"></i>
@@ -150,10 +143,16 @@
                 </a>
             </li>
 
+            @if (isManager)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/manager/Index">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Trang admin</span>
+                    </a>
+                </li>
+            }
 
-
-
-            <!-- Giỏ hàng -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cart-menu" role="button" aria-expanded="false" aria-controls="cart-menu">
                     <i class="bi bi-cart"></i>
@@ -166,12 +165,9 @@
                             <span>Xem giỏ hàng</span>
                         </a>
                     </li>
-                    <li>
-
                 </ul>
             </li>
 
-            <!-- Dịch vụ -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-gear"></i>
@@ -193,7 +189,6 @@
                 </ul>
             </li>
 
-            <!-- F.A.Q -->
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-page="/F.A.Q/Index">
                     <i class="bi bi-question-circle"></i>
@@ -201,7 +196,6 @@
                 </a>
             </li>
 
-            <!-- Liên hệ -->
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-page="/Contact/Index">
                     <i class="bi bi-envelope"></i>
@@ -209,49 +203,51 @@
                 </a>
             </li>
 
-            <!-- Đăng ký -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-page="/Register/Register">
-                    <i class="bi bi-card-list"></i>
-                    <span>Đăng ký</span>
-                </a>
-            </li>
-
-            <!-- Đăng nhập -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-page="/Login/Login">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Đăng nhập</span>
-                </a>
-            </li>
+            @if (isAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/Profile/Index">
+                        <i class="bi bi-person"></i>
+                        <span>Hồ sơ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/Login/Logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Thoát</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/Register/Register">
+                        <i class="bi bi-card-list"></i>
+                        <span>Đăng ký</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/Login/Login">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Đăng nhập</span>
+                    </a>
+                </li>
+            }
         </ul>
     </aside>
 
-
-
-
     <main id="main" class="main">
         @RenderBody()
+    </main>
 
-
-        <!-- GIAO DIỆN TRANG CHỦ -->
-        <!-- DÙNG HÌNH ẢNH VÀ CHỮ -->
-        <!-- GIỚI THIỆU TRANG TRẠI -->
-        <!-- hÌNH ẢNH  TRANG TRẠI -->
-
-
-    </main><!-- End #main -->
-    <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="footer-top">
             <div class="container">
                 <div class="row">
-
-                    <!-- Thông tin liên hệ -->
                     <div class="col-lg-4 col-md-6 footer-info">
                         <h3>KoiFarmShop</h3>
                         <p>
-                            Địa chỉ: 81 Xuân Thới 22, Xuân Thới Đông,Hóc Môn,TP.HCM<br>
+                            Địa chỉ: 81 Xuân Thới 22, Xuân Thới Đông, Hóc Môn, TP.HCM<br>
                             Điện thoại: 0905681918<br>
                             Email: Khanhng5776@ut.edu.vn<br>
                         </p>
@@ -261,19 +257,17 @@
                         </div>
                     </div>
 
-                    <!-- Sản phẩm và dịch vụ -->
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Sản phẩm - Dịch vụ</h4>
                         <ul>
                             <li><i class="bi bi-chevron-right"></i> <a asp-page="/Product/Index">Cá Koi nhập khẩu</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a asp-page="/Product/Index">Cá Koi lai F1</a></li>
-                            <li><i class="bi bi-chevron-right"></i> <a asp-page="/Product/Index">Cá Koi thuần Viêt</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a asp-page="/Product/Index">Cá Koi thuần Việt</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a asp-page="/Dichvu/chamsoc">Chăm sóc cá Koi</a></li>
                             <li><i class="bi bi-chevron-right"></i> <a asp-page="/Dichvu/Consignment">Ký gửi cá Koi</a></li>
                         </ul>
                     </div>
 
-                    <!-- Hỗ trợ khách hàng -->
                     <div class="col-lg-4 col-md-6 footer-support">
                         <h4>Hỗ trợ khách hàng</h4>
                         <p>Liên hệ ngay khi bạn cần hỗ trợ hoặc tư vấn về các dịch vụ của chúng tôi:</p>
@@ -281,33 +275,30 @@
                             <li><i class="bi bi-telephone"></i> Hotline: 0344883755</li>
                             <li><i class="bi bi-envelope"></i> Email: dihny5348@ut.edu.vn</li>
                             <li><i class="bi bi-clock"></i> Giờ làm việc: 9:00 - 17:00 (Thứ 2 - Thứ 6)</li>
-
-                            <div class="social-links">
-                                <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="https://www.instagram.com/huynhngoyendi?igsh=MTgxbGE0YngyeXE5ZA==" class="instagram"><i class="bi bi-instagram"></i></a>
-                            </div>
-                    </div>
-                    </ul>
-                </div>
-
-                <!-- Phần bản quyền -->
-                <div class="container d-md-flex py-4">
-
-                    <div class="me-md-auto text-center text-md-start">
-                        <div class="copyright">
-                            <strong><span>KoiFarmShop</span></strong>
-                        </div>
-                        <div class="credits">
-                            Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
+                        </ul>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/huynhngoyendi?igsh=MTgxbGE0YngyeXE5ZA==" class="instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    <strong><span>KoiFarmShop</span></strong>
+                </div>
+                <div class="credits">
+                    Designed by <a href="https://www.facebook.com/huynhngoyendi?mibextid=LQQJ4d">Team Gia Khánh- Yến Di</a>
+                </div>
+            </div>
+        </div>
     </footer>
-
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
     <script src="~/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/vendor/chart.js/chart.umd.js"></script>
@@ -317,9 +308,7 @@
     <script src="~/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
     <script src="~/js/main.js"></script>
-
 </body>
 
 </html>

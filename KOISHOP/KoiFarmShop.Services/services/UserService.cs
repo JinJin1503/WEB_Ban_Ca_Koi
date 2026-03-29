@@ -35,10 +35,16 @@ namespace KoiFarmShop.Services.Services
 		public async Task<User> LoginAsync(string userName, string password)
 		{
 			var user = await _userRepository.GetUserByUserNameAsync(userName);
-			if (user != null && _passwordHasher.VerifyHashedPassword(user.PasswordHasher, password))
+			if (user == null)
+			{
+				return null;
+			}
+
+			if (_passwordHasher.VerifyHashedPassword(user.PasswordHasher, password))
 			{
 				return user;
 			}
+
 			return null;
 		}
 

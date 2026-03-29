@@ -1,0 +1,58 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.ProductsModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Quản lý sản phẩm";
+}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h1 class="h3 mb-1">Quản lý sản phẩm</h1>
+        <p class="text-muted mb-0">Danh sách cá Koi hiện có trong hệ thống.</p>
+    </div>
+    <a class="btn btn-primary" asp-page="/Product/Create">
+        <i class="bi bi-plus-circle me-1"></i> Thêm cá Koi mới
+    </a>
+</div>
+
+@if (Model.ProductList != null && Model.ProductList.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên cá Koi</th>
+                    <th>Danh mục</th>
+                    <th>Xuất xứ</th>
+                    <th>Giá cá thể</th>
+                    <th>Giá theo lô</th>
+                    <th class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.ProductList)
+                {
+                    <tr>
+                        <td>@product.KoiId</td>
+                        <td>@product.KoiName</td>
+                        <td>@(product.Category?.CategoryName ?? "Chưa phân loại")</td>
+                        <td>@product.Origin</td>
+                        <td>@string.Format("{0:N0} VND", product.PricePerKoi)</td>
+                        <td>@string.Format("{0:N0} VND", product.PricePerBatch)</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-outline-primary" asp-page="/Product/Edit" asp-route-id="@product.KoiId">Sửa</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-page="/Product/Delete" asp-route-id="@product.KoiId">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info mb-0">
+        Hiện chưa có sản phẩm nào trong hệ thống.
+    </div>
+}

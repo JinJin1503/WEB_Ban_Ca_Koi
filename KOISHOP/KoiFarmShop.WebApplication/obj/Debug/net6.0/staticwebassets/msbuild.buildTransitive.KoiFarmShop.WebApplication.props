@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\KoiFarmShop.WebApplication.props" />
-</Project>

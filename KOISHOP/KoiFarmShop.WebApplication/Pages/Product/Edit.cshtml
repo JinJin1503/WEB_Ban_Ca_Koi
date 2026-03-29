@@ -1,10 +1,14 @@
 ﻿@page
 @model KoiFarmShop.WebApplication.Pages.Product.EditModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Cập nhật sản phẩm";
+}
 
-<h4>KoiFish</h4>
+<h4>Cập nhật sản phẩm</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="KoiFish.KoiId" />
@@ -83,17 +87,16 @@
                 <select asp-for="KoiFish.CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="KoiFish.CategoryId" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group mt-3">
+                <input type="submit" value="Lưu thay đổi" class="btn btn-primary" />
+                <a asp-page="/manager/Products" class="btn btn-outline-secondary">Quay lại</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

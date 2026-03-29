@@ -29,46 +29,57 @@
         </div>
     }
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Ảnh Sản Phẩm</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Số Lượng Cá Thể</th>
-                <th>Số Lượng Lô</th>
-                <th>Giá Cá Thể</th>
-                <th>Giá Lô Koi</th>
-                <th>Tổng </th>
-                <th>Hành Động</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.CartItems)
-            {
+    @if (Model.CartItems != null && Model.CartItems.Any())
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td><img src="@item.Koi.ImageURL" alt="@item.Koi.KoiName" width="50" height="50" /></td>
-                    <td>@item.Koi.KoiName</td>
-                    <form method="post" asp-page-handler="Edit" asp-route-cartItemId="@item.CartItemId">
-                    <td>
-                        <input type="number" name="newQuantityPerKoi" value="@item.QuantityPerKoi" min="0" style="width: 80px;" />
-                    </td>
-                    <td>
-                        <input type="number" name="newQuantityPerBatch" value="@item.QuantityPerBatch" min="0" style="width: 80px;" />
-                        <button type="submit" class="btn btn-sm btn-info">Cập nhật</button>
-                    </td>
-                    </form>
-                    <td>@item.Koi.PricePerKoi.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
-                    <td>@item.Koi.PricePerBatch.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
-                    <td>@((item.Koi.PricePerKoi * item.QuantityPerKoi) + (item.Koi.PricePerBatch * item.QuantityPerBatch))</td>
-                    <td>
-                        <form method="post" asp-page-handler="Delete" asp-route-cartItemId="@item.CartItemId">
-                            <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
-                        </form>
-                    </td>
+                    <th>Ảnh Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Số Lượng Cá Thể</th>
+                    <th>Số Lượng Lô</th>
+                    <th>Giá Cá Thể</th>
+                    <th>Giá Lô Koi</th>
+                    <th>Tổng </th>
+                    <th>Hành Động</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td><img src="@item.Koi.ImageURL" alt="@item.Koi.KoiName" width="50" height="50" /></td>
+                        <td>@item.Koi.KoiName</td>
+                        <form method="post" action="@($"{Url.Page("/cart/Index")}?handler=Edit&cartItemId={item.CartItemId}")">
+                            @Html.AntiForgeryToken()
+                        <td>
+                            <input type="number" name="newQuantityPerKoi" value="@item.QuantityPerKoi" min="0" style="width: 80px;" />
+                        </td>
+                        <td>
+                            <input type="number" name="newQuantityPerBatch" value="@item.QuantityPerBatch" min="0" style="width: 80px;" />
+                            <button type="submit" class="btn btn-sm btn-info">Cập nhật</button>
+                        </td>
+                        </form>
+                        <td>@item.Koi.PricePerKoi.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>@item.Koi.PricePerBatch.ToString("C0", CultureInfo.GetCultureInfo("vi-VN"))</td>
+                        <td>@((item.Koi.PricePerKoi * item.QuantityPerKoi) + (item.Koi.PricePerBatch * item.QuantityPerBatch))</td>
+                        <td>
+                            <form method="post" action="@($"{Url.Page("/cart/Index")}?handler=Delete&cartItemId={item.CartItemId}")">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Giỏ hàng của bạn hiện chưa có sản phẩm nào.
+        </div>
+    }
 
     <div class="cart-footer">
         <div class="total">

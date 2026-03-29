@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KoiFarmShop.Repositories.Entities;
@@ -46,5 +47,19 @@ namespace KoiFarmShop.Services
 
             return order;
         }
+        public async Task UpdateStatus(int orderId, string status)
+        {
+            var order = await _dbContext.Orders.FindAsync(orderId);
+            if (order == null) throw new Exception("Order not found");
+
+            order.Status = status;
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Orders>> GetAllOrdersAsync()
+        {
+            return await _dbContext.Orders.ToListAsync();
+        }
+
     }
 }

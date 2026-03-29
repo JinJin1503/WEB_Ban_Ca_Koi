@@ -45,11 +45,26 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				return await _koiFishRepository.GetKoiFishByIdsAsync(new List<int> { categoryId });
+				var koiFishList = await _koiFishRepository.GetKoiFishes();
+				return koiFishList
+					.Where(k => k.CategoryId == categoryId)
+					.ToList();
 			}
 			catch (Exception ex)
 			{
 				throw new Exception($"An error occurred while retrieving Koi fish in category ID {categoryId}.", ex);
+			}
+		}
+
+		public async Task<List<KoiFish>> SearchKoiByKeywordAsync(string keyword)
+		{
+			try
+			{
+				return await _koiFishRepository.SearchKoiFishAsync(keyword);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"An error occurred while searching Koi fish with keyword '{keyword}'.", ex);
 			}
 		}
 

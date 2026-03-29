@@ -1,32 +1,31 @@
-﻿using KoiFarmShop.Repositories.Entities;
-using KoiFarmShop.Services;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.WebApplication.Security;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
-using System.Threading.Tasks;
-
-// CÁC THƯ VIỆN BẮT BUỘC PHẢI THÊM ĐỂ LÀM BẢO MẬT:
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Collections.Generic;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
+    [IgnoreAntiforgeryToken]
     public class LoginModel : PageModel
     {
         private readonly IUserService _userService;
         private readonly ICustomerService _customerService;
-        private readonly IPasswordHasher _passwordHasher;
         private readonly IStaffService _staffService;
 
-        public LoginModel(IUserService userService, IPasswordHasher passwordHasher, ICustomerService customerService, IStaffService staffService)
+        public LoginModel(
+            IUserService userService,
+            ICustomerService customerService,
+            IStaffService staffService)
         {
             _userService = userService;
             _customerService = customerService;
-            _passwordHasher = passwordHasher;
             _staffService = staffService;
         }
 
@@ -36,17 +35,23 @@ namespace KoiFarmShop.WebApplication.Pages.Login
         [BindProperty]
         public string Password { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string ReturnUrl { get; set; }
+
         public string ErrorMessage { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            // Logic khi người dùng truy cập trang lần đầu (GET)
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToLocalOrDefault(GetDefaultRedirectPage());
+            }
+
+            return Page();
         }
 
-        // Đã bỏ các tham số thừa trong ngoặc, vì UserName và Password đã dùng [BindProperty]
         public async Task<IActionResult> OnPostAsync()
         {
-            // Kiểm tra đăng nhập
             var user = await _userService.LoginAsync(UserName, Password);
 
             if (user == null)
@@ -55,66 +60,103 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 return Page();
             }
 
-            // 1. CHUẨN BỊ THẺ ĐỊNH DANH (CLAIMS) - Bắt buộc cho [Authorize]
-            var claims = new List<Claim>
-            {
-                // Lưu UserId vào định danh để trang Ký gửi Bán có thể lấy ra dùng
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
 
-            string redirectUrl = "";
-
-            // Kiểm tra xem có phải là Nhân viên/Quản lý không
             var staff = await _staffService.GetStaffByUserIdAsync(user.UserId);
-
             if (staff != null)
             {
-                // Thêm quyền Role cho Nhân viên (để sau này có thể phân quyền admin)
-                claims.Add(new Claim(ClaimTypes.Role, staff.Role));
+                var normalizedRole = NormalizeStaffRole(staff.Role);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, normalizedRole),
+                    new Claim(AppClaimTypes.StaffId, staff.StaffId.ToString())
+                };
 
-                // Vẫn giữ lại Session của bạn để không làm hỏng code cũ
+                await SignInUserAsync(claims);
+
                 HttpContext.Session.SetString("UserName", user.UserName);
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
-                HttpContext.Session.SetString("CustomerId", "");
+                HttpContext.Session.Remove("CustomerId");
 
-                redirectUrl = "/Manager/Index";
-            }
-            else
-            {
-                // Nếu không phải Staff thì kiểm tra Khách hàng
-                var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);
-
-                if (customer == null)
+                if (normalizedRole == AppRoles.Manager)
                 {
-                    ErrorMessage = "Khách hàng không tồn tại.";
-                    return Page();
+                    return RedirectToLocalOrDefault("/manager/Index");
                 }
 
-                claims.Add(new Claim(ClaimTypes.Role, "Customer"));
-
-                // Vẫn giữ lại Session của bạn
-                HttpContext.Session.SetString("UserName", user.UserName);
-                HttpContext.Session.SetString("UserId", user.UserId.ToString());
-                HttpContext.Session.SetString("CustomerId", customer.CustomerId.ToString());
-
-                redirectUrl = "/Trangchu/Index";
+                return RedirectToLocalOrDefault("/Trangchu/Index");
             }
 
-            // 2. PHÁT COOKIE XÁC THỰC BẢO MẬT (QUAN TRỌNG NHẤT)
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var authProperties = new AuthenticationProperties
+            var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);
+            if (customer == null)
             {
-                IsPersistent = true // Lưu đăng nhập cả khi tắt trình duyệt
+                ErrorMessage = "Khách hàng không tồn tại.";
+                return Page();
+            }
+
+            var customerClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Role, AppRoles.Customer),
+                new Claim(AppClaimTypes.CustomerId, customer.CustomerId.ToString())
             };
+
+            await SignInUserAsync(customerClaims);
+
+            HttpContext.Session.SetString("UserName", user.UserName);
+            HttpContext.Session.SetString("UserId", user.UserId.ToString());
+            HttpContext.Session.SetString("CustomerId", customer.CustomerId.ToString());
+
+            return RedirectToLocalOrDefault("/Trangchu/Index");
+        }
+
+        private async Task SignInUserAsync(IEnumerable<Claim> claims)
+        {
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
+                principal,
+                new AuthenticationProperties
+                {
+                    IsPersistent = false,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
+                });
+        }
 
-            // Chuyển hướng theo đúng Role
-            return RedirectToPage(redirectUrl);
+        private string NormalizeStaffRole(string role)
+        {
+            if (string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(role, "Quản lý", StringComparison.OrdinalIgnoreCase))
+            {
+                return AppRoles.Manager;
+            }
+
+            return AppRoles.Staff;
+        }
+
+        private IActionResult RedirectToLocalOrDefault(string defaultPage)
+        {
+            if (!string.IsNullOrWhiteSpace(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+            {
+                return LocalRedirect(ReturnUrl);
+            }
+
+            return RedirectToPage(defaultPage);
+        }
+
+        private string GetDefaultRedirectPage()
+        {
+            if (User.IsInRole(AppRoles.Manager))
+            {
+                return "/manager/Index";
+            }
+
+            return "/Trangchu/Index";
         }
     }
 }

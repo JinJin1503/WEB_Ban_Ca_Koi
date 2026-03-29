@@ -23,7 +23,10 @@ namespace KoiFarmShop.Repositories.Repositories
 		{
 			try
 			{
-				return await _context.KoiFishs.ToListAsync();
+				return await _context.KoiFishs
+					.Include(k => k.Category)
+					.OrderBy(k => k.KoiId)
+					.ToListAsync();
 			}
 			catch (Exception ex)
 			{
@@ -38,12 +41,43 @@ namespace KoiFarmShop.Repositories.Repositories
 			try
 			{
 				return await _context.KoiFishs
+					.Include(k => k.Category)
 					.FirstOrDefaultAsync(k => k.KoiId == koiId);
 			}
 			catch (Exception ex)
 			{
 				// Xử lý ngoại lệ nếu cần
 				throw new Exception($"An error occurred while retrieving KoiFish with ID {koiId}.", ex);
+			}
+		}
+
+		public async Task<List<KoiFish>> SearchKoiFishAsync(string keyword)
+		{
+			try
+			{
+				if (string.IsNullOrWhiteSpace(keyword))
+				{
+					return await GetKoiFishes();
+				}
+
+				string trimmedKeyword = keyword.Trim();
+				string likePattern = $"%{trimmedKeyword}%";
+
+				return await _context.KoiFishs
+					.Include(k => k.Category)
+					.Where(k =>
+						EF.Functions.Like(k.KoiName, likePattern) ||
+						EF.Functions.Like(k.Origin, likePattern) ||
+						EF.Functions.Like(k.BreedType, likePattern) ||
+						EF.Functions.Like(k.Gender, likePattern) ||
+						EF.Functions.Like(k.HealthStatus, likePattern) ||
+						EF.Functions.Like(k.Category.CategoryName, likePattern))
+					.OrderBy(k => k.KoiId)
+					.ToListAsync();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"An error occurred while searching KoiFish with keyword '{keyword}'.", ex);
 			}
 		}
 
@@ -113,17 +147,5 @@ namespace KoiFarmShop.Repositories.Repositories
 				throw new Exception("An error occurred while retrieving KoiFish by IDs.", ex);
 			}
 		}
-
-
-
-
-
-
-
-
-
-
-
-
 	}
 }

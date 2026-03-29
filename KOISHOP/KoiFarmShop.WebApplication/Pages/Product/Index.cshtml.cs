@@ -2,72 +2,82 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.WebApplication.Security;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace KoiFarmShop.WebApplication.Pages.Product
 {
-    public class IndexModel : PageModel
-    {
-        private readonly IKoiFishService _koiFishService;
-        private readonly ICartService _cartService;  // Add ICartService for cart functionality
+	public class IndexModel : PageModel
+	{
+		private readonly IKoiFishService _koiFishService;
+		private readonly ICartService _cartService;  // Add ICartService for cart functionality
 
-        public IndexModel(IKoiFishService koiFishService, ICartService cartService)
-        {
-            _koiFishService = koiFishService;
-            _cartService = cartService;
-        }
+		public IndexModel(IKoiFishService koiFishService, ICartService cartService)
+		{
+			_koiFishService = koiFishService;
+			_cartService = cartService;
+		}
 
-        public IList<KoiFish> KoiFish { get; set; }
-        public List<KoiFish> Cart { get; set; } = new List<KoiFish>();
+		public IList<KoiFish> KoiFish { get; set; } = new List<KoiFish>();
+		public List<KoiFish> Cart { get; set; } = new List<KoiFish>();
 
-        // This will hold the CartItem and also the quantity
-        [BindProperty]
-        public int KoiId { get; set; }
+		[BindProperty(SupportsGet = true)]
+		public string Keyword { get; set; }
 
-        public async Task OnGetAsync()
-        {
-            KoiFish = await _koiFishService.GetAllKoisAsync();
-        }
+		// This will hold the CartItem and also the quantity
+		[BindProperty]
+		public int KoiId { get; set; }
 
-        // This is the handler method for adding to the cart
-        public async Task<IActionResult> OnPostAddToCartAsync()
-        {
-            // Get the CustomerId from the session (you may want to handle the case where it's not found)
-            var customerIdString = HttpContext.Session.GetString("CustomerId");
+		public async Task OnGetAsync()
+		{
+			if (string.IsNullOrWhiteSpace(Keyword))
+			{
+				KoiFish = await _koiFishService.GetAllKoisAsync();
+				return;
+			}
 
-            if (string.IsNullOrEmpty(customerIdString))
-            {
-                // Redirect to login if CustomerId is not found in the session
-                return RedirectToPage("/Login/Login");
-            }
+			Keyword = Keyword.Trim();
+			KoiFish = await _koiFishService.SearchKoiByKeywordAsync(Keyword);
+		}
 
-            int customerId = int.Parse(customerIdString);
+		// This is the handler method for adding to the cart
+		public async Task<IActionResult> OnPostAddToCartAsync()
+		{
+			if (User.Identity?.IsAuthenticated != true)
+			{
+				return Challenge(new Microsoft.AspNetCore.Authentication.AuthenticationProperties
+				{
+					RedirectUri = Url.Page("/Product/Index", new { keyword = Keyword })
+				}, CookieAuthenticationDefaults.AuthenticationScheme);
+			}
 
-            // Call the service to add the Koi to the cart
-            var cart = await _cartService.GetCartByCustomerIdAsync(customerId);
+			if (!User.IsInRole(AppRoles.Customer))
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
 
-            if (cart == null)
-            {
-                // If no cart exists for the customer, create a new one
-                cart = new Repositories.Entities.Cart
-                {
-                    CustomerId = customerId,
-                    CartItems = new List<CartItem>()
-                };
+			if (KoiId <= 0)
+			{
+				TempData["ErrorMessage"] = "Sản phẩm không hợp lệ.";
+				return RedirectToPage(new { keyword = Keyword });
+			}
 
-                // Add a new cart entry (assuming your cart creation logic is handled by the service)
-                await _cartService.CreateCartAsync(cart);
-            }
+			int? customerId = User.GetCustomerId();
+			if (!customerId.HasValue)
+			{
+				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
+			}
 
-            // Add the Koi to the cart (assuming the cartItem logic is handled here)
-            await _cartService.AddCartItemToCartAsync(customerId, KoiId, 1, 1, 0, 0); // Example: 1 Koi, no batches
+			await _cartService.AddCartItemToCartAsync(customerId.Value, KoiId, 1, 0, 0, 0);
+			TempData["SuccessMessage"] = "Đã thêm sản phẩm vào giỏ hàng.";
 
-            // After adding to the cart, redirect back to the current page
-            return RedirectToPage();
-        }
-    }
+			return RedirectToPage(new { keyword = Keyword });
+		}
+	}
 }
+

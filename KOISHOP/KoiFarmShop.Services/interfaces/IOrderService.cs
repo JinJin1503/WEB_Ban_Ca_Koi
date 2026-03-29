@@ -11,5 +11,7 @@ namespace KoiFarmShop.Services.Interfaces
 	{
 		Task<Orders> GetOrderByIdAsync(int orderId);
         Task CreateOrderAsync(Orders order);
+        Task UpdateStatus(int orderId, string status);
+        Task<List<Orders>> GetAllOrdersAsync();
     }
 }

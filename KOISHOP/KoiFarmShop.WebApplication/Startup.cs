@@ -18,6 +18,7 @@ using KoiFarmShop.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace KoiFarmShop.WebApplication
@@ -39,8 +40,14 @@ namespace KoiFarmShop.WebApplication
 				options.UseSqlServer(Configuration["ConnectionStrings:ConnectedDb"],
 			builder => builder.MigrationsAssembly("KoiFarmShop.Repositories")));
 
-			// Đăng ký repository
-			services.AddScoped<IKoiFishRepository, KoiFishRepository>();
+            services.AddRazorPages()
+				.AddRazorPagesOptions(options =>
+				{
+					options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+				});
+
+            // Đăng ký repository
+            services.AddScoped<IKoiFishRepository, KoiFishRepository>();
 			services.AddScoped<IKoiCategoryRepository, KoiCategoryRepository>();
 			// Đăng ký service
 			services.AddScoped<IKoiFishService, KoiFishService>();  // Đăng ký dịch vụ IKoiFishService

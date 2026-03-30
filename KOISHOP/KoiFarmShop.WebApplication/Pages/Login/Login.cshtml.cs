@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authentication;
@@ -9,20 +6,20 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
-    [IgnoreAntiforgeryToken]
     public class LoginModel : PageModel
     {
         private readonly IUserService _userService;
         private readonly ICustomerService _customerService;
         private readonly IStaffService _staffService;
 
-        public LoginModel(
-            IUserService userService,
-            ICustomerService customerService,
-            IStaffService staffService)
+        public LoginModel(IUserService userService, ICustomerService customerService, IStaffService staffService)
         {
             _userService = userService;
             _customerService = customerService;
@@ -66,7 +63,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
             var staff = await _staffService.GetStaffByUserIdAsync(user.UserId);
             if (staff != null)
             {
-                var normalizedRole = NormalizeStaffRole(staff.Role);
+                string normalizedRole = NormalizeStaffRole(staff.Role);
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),

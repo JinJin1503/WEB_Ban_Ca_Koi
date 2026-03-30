@@ -1,5 +1,6 @@
-﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager
 {
-    [Authorize(Roles = "Quản lý, Nhân viên bán hàng")] 
+    [Authorize(Policy = AppPolicies.ManagerOnly)]
     public class DetailsConsignmentModel : PageModel
     {
         private readonly IConsignmentRequestService _consignmentService;
@@ -27,22 +28,19 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
             {
                 return NotFound();
             }
+
             return Page();
         }
 
-        // Tạo luôn hàm Duyệt ở trong trang chi tiết để Admin tiện thao tác
         public async Task<IActionResult> OnPostApproveAsync(int id)
         {
             await _consignmentService.ApproveRequestAsync(id);
             return RedirectToPage("/manager/ManageConsignment");
         }
-        // THÊM HÀM NÀY ĐỂ XỬ LÝ TỪ CHỐI
+
         public async Task<IActionResult> OnPostRejectAsync(int id)
         {
-            // Gọi hàm từ chối trong Service
             await _consignmentService.RejectRequestAsync(id);
-
-            // Sau khi từ chối xong thì đá về trang danh sách
             return RedirectToPage("/manager/ManageConsignment");
         }
     }

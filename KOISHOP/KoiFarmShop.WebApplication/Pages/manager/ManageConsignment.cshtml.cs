@@ -1,5 +1,6 @@
-﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
+using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager
 {
-    [Authorize(Roles = "Quản lý, Nhân viên bán hàng")]
+    [Authorize(Policy = AppPolicies.ManagerOnly)]
     public class ManageConsignmentModel : PageModel
     {
         private readonly IConsignmentRequestService _consignmentService;
@@ -22,14 +23,12 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
 
         public async Task OnGetAsync()
         {
-            // Lấy toàn bộ danh sách đơn ký gửi (Bán & Chăm sóc)
             Requests = await _consignmentService.GetAllConsignmentRequestsAsync();
         }
 
-        // Logic phê duyệt đơn hàng nhanh
         public async Task<IActionResult> OnPostApproveAsync(int id)
         {
-            await _consignmentService.ApproveRequestAsync(id); //
+            await _consignmentService.ApproveRequestAsync(id);
             return RedirectToPage();
         }
     }

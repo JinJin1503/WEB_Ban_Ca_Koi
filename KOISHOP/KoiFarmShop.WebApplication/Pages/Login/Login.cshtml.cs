@@ -78,12 +78,12 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.Remove("CustomerId");
 
-                if (normalizedRole == AppRoles.Manager)
-                {
-                    return RedirectToLocalOrDefault("/manager/Index");
-                }
+                 if (normalizedRole == AppRoles.Manager || normalizedRole == (AppRoles.Staff))
+                 {
+                     return RedirectToLocalOrDefault("/manager/Index");
+                 }
 
-                return RedirectToLocalOrDefault("/Trangchu/Index");
+                 return RedirectToLocalOrDefault("/Trangchu/Index");
             }
 
             var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);
@@ -127,8 +127,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
         private string NormalizeStaffRole(string role)
         {
-            if (string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(role, "Quản lý", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(role, "Manager", StringComparison.OrdinalIgnoreCase))
             {
                 return AppRoles.Manager;
             }
@@ -148,7 +147,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
         private string GetDefaultRedirectPage()
         {
-            if (User.IsInRole(AppRoles.Manager))
+            if (User.IsInRole(AppRoles.Manager) || User.IsInRole(AppRoles.Staff))
             {
                 return "/manager/Index";
             }

@@ -1,28 +1,16 @@
-using KoiFarmShop.Repositories.Entities;
-using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.WebApplication.Security;
+﻿using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
+// LƯU Ý DÒNG NÀY: Phải là Pages.Manager
 namespace KoiFarmShop.WebApplication.Pages.Manager
 {
-    [Authorize(Policy = AppPolicies.ManagerOnly)]
+    [Authorize(Policy = AppPolicies.StaffOrManager)]
     public class IndexModel : PageModel
     {
-        private readonly IStaffService _staffService;
-
-        public IndexModel(IStaffService staffService)
+        public void OnGet()
         {
-            _staffService = staffService;
-        }
-
-        public List<Staff> StaffList { get; set; }
-
-        public async Task OnGetAsync()
-        {
-            StaffList = await _staffService.GetAllStaffAsync();
+            // Code trang chủ Dashboard của Admin (Biểu đồ, Doanh thu...)
         }
     }
 }

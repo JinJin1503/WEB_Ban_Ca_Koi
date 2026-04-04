@@ -1,0 +1,60 @@
+﻿@page "{id:int}"
+@model KoiFarmShop.WebApplication.Pages.manager.Staffs.DetailsModel
+@{
+    ViewData["Title"] = "Chi tiết Nhân viên";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-info-circle"></i> Hồ sơ nhân viên: @Model.StaffDetails.StaffName</h6>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Mã nhân viên:</div>
+                    <div class="col-md-8">@Model.StaffDetails.StaffId</div>
+                </div>
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Họ và tên:</div>
+                    <div class="col-md-8">@Model.StaffDetails.StaffName</div>
+                </div>
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Số điện thoại:</div>
+                    <div class="col-md-8">@Model.StaffDetails.Phone</div>
+                </div>
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Email:</div>
+                    <div class="col-md-8">@Model.StaffDetails.Email</div>
+                </div>
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Vai trò:</div>
+                    <div class="col-md-8">
+                        <span class="badge bg-info text-dark">@Model.StaffDetails.Role</span>
+                    </div>
+                </div>
+                <div class="row mb-3 border-bottom pb-2">
+                    <div class="col-md-4 fw-bold text-muted">Lương cơ bản:</div>
+                    <div class="col-md-8">@Model.StaffDetails.Salary.ToString("N0") VNĐ</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold text-muted">Ngày tham gia:</div>
+                    <div class="col-md-8">
+                        @Model.StaffDetails.JoinDate.ToString("dd/MM/yyyy")
+                    </div>
+                </div>
+
+                <hr />
+                <div class="text-center mt-4">
+                    <a asp-page="./Index" class="btn btn-secondary me-2">Quay lại danh sách</a>
+
+                    @if (User.IsInRole(KoiFarmShop.WebApplication.Security.AppRoles.Manager))
+                    {
+                        <a asp-page="./Edit" asp-route-id="@Model.StaffDetails.StaffId" class="btn btn-warning">Sửa thông tin</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -81,6 +81,9 @@ namespace KoiFarmShop.WebApplication
                     policy.RequireRole(AppRoles.Manager);
                 });
 
+                options.AddPolicy(AppPolicies.StaffOrManager, policy =>
+                    policy.RequireRole(AppRoles.Manager, AppRoles.Staff));
+
                 options.AddPolicy(AppPolicies.CustomerOnly, policy =>
                 {
                     policy.RequireAuthenticatedUser();
@@ -93,7 +96,7 @@ namespace KoiFarmShop.WebApplication
             {
                 options.Conventions.AuthorizeFolder("/cart", AppPolicies.CustomerOnly);
                 options.Conventions.AuthorizeFolder("/Profile");
-                options.Conventions.AuthorizeFolder("/manager", AppPolicies.ManagerOnly);
+                options.Conventions.AuthorizeFolder("/manager", AppPolicies.StaffOrManager);
                 options.Conventions.AuthorizePage("/Product/Create", AppPolicies.ManagerOnly);
                 options.Conventions.AuthorizePage("/Product/Edit", AppPolicies.ManagerOnly);
                 options.Conventions.AuthorizePage("/Product/Delete", AppPolicies.ManagerOnly);

@@ -1,0 +1,66 @@
+﻿@page "{id:int}"
+@model KoiFarmShop.WebApplication.Pages.manager.Staffs.EditModel
+@{
+    ViewData["Title"] = "Chỉnh Sửa Nhân Viên";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Cập nhật thông tin: @Model.ExistingStaff.StaffName</h6>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" asp-for="ExistingStaff.StaffId" />
+
+                    <div class="form-group mb-3">
+                        <label class="control-label fw-bold">Tên Nhân Viên</label>
+                        <input type="text" class="form-control" asp-for="ExistingStaff.StaffName" required />
+                        <span asp-validation-for="ExistingStaff.StaffName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label fw-bold">Số điện thoại</label>
+                        <input type="text" class="form-control" asp-for="ExistingStaff.Phone" required />
+                        <span asp-validation-for="ExistingStaff.Phone" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label fw-bold">Email</label>
+                        <input type="text" class="form-control" asp-for="ExistingStaff.Email" required />
+                        <span asp-validation-for="ExistingStaff.Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label fw-bold">Vai Trò</label>
+                        <select asp-for="ExistingStaff.Role" class="form-control" required>
+                            <option value="Manager">Manager</option>
+                            <option value="Staff">Staff</option>
+                        </select>
+                        <span asp-validation-for="ExistingStaff.Role" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="control-label fw-bold">Lương cơ bản (VNĐ)</label>
+                        <input type="text" class="form-control" asp-for="ExistingStaff.Salary" required />
+                        <span asp-validation-for="ExistingStaff.Salary" class="text-danger small"></span>
+                    </div>
+
+                    <hr />
+                    <div class="form-group mt-3 text-center">
+                        <a asp-page="./Index" class="btn btn-secondary me-2">Hủy</a>
+                        <button type="submit" class="btn btn-warning">Lưu Cập Nhật</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

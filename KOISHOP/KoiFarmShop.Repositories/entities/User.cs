@@ -16,5 +16,7 @@ namespace KoiFarmShop.Repositories.Entities
         public string UserName { get; set; }
         public string PasswordHasher { get; set; }
         public string Email { get; set; }
+        public int FailedAttemptCount { get; set; } = 0; // Đếm số lần nhập sai (mặc định = 0)
+        public bool IsLocked { get; set; } = false;      // Đánh dấu tài khoản bị khóa (mặc định = false)
     }
 }

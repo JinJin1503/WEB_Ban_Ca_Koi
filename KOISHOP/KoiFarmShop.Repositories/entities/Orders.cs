@@ -27,5 +27,9 @@ namespace KoiFarmShop.Repositories.Entities
 		public List<OrderDetails> OrderDetails { get; set; }
 
         public string Status { get; set; }
+
+        [NotMapped]
+        public double TotalPrice { get; set; }
+
     }
 }

@@ -9262,23 +9262,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BEPO\\.nuget\\packages\\": {},
+    "C:\\Users\\nguye\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\KoiFarmShop.WebApplication.csproj",
+      "projectUniqueName": "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\KoiFarmShop.WebApplication.csproj",
       "projectName": "KoiFarmShop.WebApplication",
-      "projectPath": "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\KoiFarmShop.WebApplication.csproj",
-      "packagesPath": "C:\\Users\\BEPO\\.nuget\\packages\\",
-      "outputPath": "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\obj\\",
+      "projectPath": "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\KoiFarmShop.WebApplication.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.WebApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\BEPO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -9287,17 +9287,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Repositories\\KoiFarmShop.Repositories.csproj": {
-              "projectPath": "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Repositories\\KoiFarmShop.Repositories.csproj"
+            "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Repositories\\KoiFarmShop.Repositories.csproj": {
+              "projectPath": "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Repositories\\KoiFarmShop.Repositories.csproj"
             },
-            "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Services\\KoiFarmShop.Services.csproj": {
-              "projectPath": "D:\\khanh\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Services\\KoiFarmShop.Services.csproj"
+            "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Services\\KoiFarmShop.Services.csproj": {
+              "projectPath": "C:\\Workspace\\c#\\WEB_Ban_Ca_Koi\\KOISHOP\\KoiFarmShop.Services\\KoiFarmShop.Services.csproj"
             }
           }
         }
@@ -9311,8 +9312,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -9366,7 +9366,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

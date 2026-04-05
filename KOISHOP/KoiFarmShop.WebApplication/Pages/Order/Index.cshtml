@@ -1,7 +1,16 @@
 ﻿@page
 @model KoiFarmShop.WebApplication.Pages.Order.IndexModel
 
+<a asp-page="/Manager/Index" class="btn btn-secondary mb-3">
+    ⬅ Quay lại Admin
+</a>
 <h2>Quản Lý Đơn Hàng</h2>
+
+<div class="mb-3">
+    <a class="btn btn-secondary" href="/Order">Tất cả</a>
+    <a class="btn btn-warning" href="/Order?status=Shipping">Shipping</a>
+    <a class="btn btn-success" href="/Order?status=Approved">Approved</a>
+</div>
 
 <table class="table table-bordered">
     <thead>
@@ -9,9 +18,10 @@
             <th>ID</th>
             <th>Khách hàng</th>
             <th>Ngày đặt</th>
-            <th>Trạng thái</th>
-            <th>Tổng tiền</th>
-            <th>Hành động</th>
+			<th>Trạng thái</th>
+			<th>Tổng tiền</th>
+			<th>Hành động</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -20,8 +30,10 @@
         <tr>
             <td>@order.OrderId</td>
             <td>@order.CustomerId</td>
-            <td>@order.OrderDate</td>
-            <td>@order.Status</td>
+			<td>@order.OrderDate</td>
+		    <td>@order.Status</td>
+			<td>@order.TotalPrice</td>
+            
             <td>
                 <form method="post">
                     <input type="hidden" name="orderId" value="@order.OrderId" />

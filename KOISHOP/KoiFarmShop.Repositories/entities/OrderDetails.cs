@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace KoiFarmShop.Repositories.Entities
@@ -47,6 +48,7 @@ namespace KoiFarmShop.Repositories.Entities
 			}
 			set { } // Không cho phép set trực tiếp
 		}
+
 
 
 	}

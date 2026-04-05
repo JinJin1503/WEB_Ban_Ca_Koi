@@ -16,23 +16,7 @@ namespace KoiFarmShop.WebApplication
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-
-            using (var scope = host.Services.CreateScope())
-            {
-                var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-
-                var user = new User
-                {
-                    UserName = "nhanvien1",
-                    Email = "nhanvien1@gmail.com"
-                };
-
-
-                userService.RegisterUserAsync(user, "123456").Wait();
-            }
-
-            host.Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

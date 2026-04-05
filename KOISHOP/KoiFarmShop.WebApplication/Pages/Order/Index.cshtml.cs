@@ -5,6 +5,7 @@ using KoiFarmShop.Repositories.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 namespace KoiFarmShop.WebApplication.Pages.Order;
 
 public class IndexModel : PageModel
@@ -15,15 +16,24 @@ public class IndexModel : PageModel
     {
         _orderService = orderService;
     }
+	public string StatusFilter { get; set; }
+	public List<Orders> Orders { get; set; }
 
-    public List<Orders> Orders { get; set; }
+	public async Task OnGetAsync(string status)
+	{
+		StatusFilter = status;
 
-    public async Task OnGetAsync()
-    {
-        Orders = await _orderService.GetAllOrdersAsync();
-    }
+		var orders = await _orderService.GetAllOrdersAsync();
 
-    public async Task<IActionResult> OnPostApproveAsync(int orderId)
+		if (!string.IsNullOrEmpty(status))
+		{
+			orders = orders.Where(o => o.Status == status).ToList();
+		}
+
+		Orders = orders;
+	}
+
+	public async Task<IActionResult> OnPostApproveAsync(int orderId)
     {
         await _orderService.UpdateStatus(orderId, "Approved");
         return RedirectToPage();

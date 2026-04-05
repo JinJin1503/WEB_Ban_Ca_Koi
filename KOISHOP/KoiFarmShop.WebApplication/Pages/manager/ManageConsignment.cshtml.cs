@@ -1,4 +1,5 @@
-using KoiFarmShop.Repositories.Entities;
+﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services.Interfaces;
 using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +30,45 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
         public async Task<IActionResult> OnPostApproveAsync(int id)
         {
             await _consignmentService.ApproveRequestAsync(id);
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostRejectAsync(int id)
+        {
+            await _consignmentService.RejectRequestAsync(id);
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostReceiveKoiAsync(int id)
+        {
+            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
+            if (request != null)
+            {
+                request.Status = "Đã nhận cá";
+                await _consignmentService.UpdateConsignmentRequestAsync(request);
+            }
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostStartCareAsync(int id)
+        {
+            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
+            if (request != null)
+            {
+                request.Status = "Đang chăm sóc";
+                await _consignmentService.UpdateConsignmentRequestAsync(request);
+            }
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostSoldAsync(int id)
+        {
+            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
+            if (request != null)
+            {
+                request.Status = "Đã bán";
+                await _consignmentService.UpdateConsignmentRequestAsync(request);
+            }
             return RedirectToPage();
         }
     }

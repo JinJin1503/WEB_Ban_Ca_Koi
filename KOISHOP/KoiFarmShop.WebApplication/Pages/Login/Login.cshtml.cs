@@ -90,7 +90,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                     return RedirectToLocalOrDefault("/manager/Index");
                 }
 
-                return RedirectToLocalOrDefault("/Trangchu/Index");
+                 return RedirectToLocalOrDefault("/Trangchu/Index");
             }
 
             var customer = await _customerService.GetCustomerByUserIdAsync(user.UserId);

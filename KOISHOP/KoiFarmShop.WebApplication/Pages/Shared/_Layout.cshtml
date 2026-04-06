@@ -143,7 +143,7 @@
                 </a>
             </li>
 
-            @if (isManager)
+            @if (User.IsInRole(AppRoles.Manager) || User.IsInRole(AppRoles.Staff))
             {
                 <li class="nav-item">
                     <a class="nav-link collapsed" asp-page="/manager/Index">

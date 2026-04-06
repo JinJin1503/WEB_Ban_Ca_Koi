@@ -30,15 +30,19 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
         public class InputModel
         {
             [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
+
+            [StringLength(40, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 đến 40 ký tự.")]
             public string UserName { get; set; }
 
             [Required(ErrorMessage = "Mật khẩu không được để trống")]
+            [StringLength(16, MinimumLength = 8, ErrorMessage = "Mật khẩu phải từ 8 đến 16 ký tự.")]
             public string Password { get; set; }
 
             [Required(ErrorMessage = "Họ tên không được để trống")]
             public string StaffName { get; set; }
 
             [Required(ErrorMessage = "Số điện thoại không được để trống")]
+            [StringLength(10, MinimumLength = 10, ErrorMessage = "Số điện thoại phải có đúng 10 chữ số.")]
             public string Phone { get; set; }
 
             [Required(ErrorMessage = "Email không được để trống")]
@@ -49,6 +53,7 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             public string Role { get; set; }
 
             [Required(ErrorMessage = "Vui lòng nhập lương")]
+            [Range(0, double.MaxValue, ErrorMessage = "Mức lương không được là số âm.")]
             public int Salary { get; set; }
         }
 
@@ -87,7 +92,8 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             }
 
             // 4. Đăng nhập nháp để lấy đối tượng User (lấy cái UserId vừa sinh ra)
-            var createdUser = await _userService.LoginAsync(Input.UserName, Input.Password);
+            var loginResult = await _userService.LoginAsync(Input.UserName, Input.Password);
+            var createdUser = loginResult.user; 
 
             if (createdUser != null)
             {

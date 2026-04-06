@@ -58,19 +58,26 @@
         </div>
     </div>
 
-    @if (Model.ConsignmentRequest.Status == "Chờ duyệt" || Model.ConsignmentRequest.Status == "Pending")
-    {
-        <div class="card shadow-sm">
-            <div class="card-body text-center">
-                <form method="post" asp-page-handler="Approve" asp-route-id="@Model.ConsignmentRequest.RequestId" class="d-inline">
-                    <button type="submit" class="btn btn-success btn-lg mx-2" onclick="return confirm('Bạn chắc chắn muốn duyệt đơn này?')">
-                        <i class="fas fa-check-circle"></i> Phê Duyệt Đơn
-                    </button>
-                </form>
-                <button type="submit" class="btn btn-danger btn-lg mx-2" onclick="return confirm('Bạn có chắc chắn muốn TỪ CHỐI đơn ký gửi này? Hành động này không thể hoàn tác!')">
-                    <i class="fas fa-times-circle"></i> Từ Chối
-                </button>
-            </div>
+    <form method="post">
+        <input type="hidden" asp-for="ConsignmentRequest.RequestId" name="id" />
+
+        <div class="mt-4 mb-4">
+            @if (Model.ConsignmentRequest.Status == "Chờ duyệt")
+            {
+                <button type="submit" asp-page-handler="Approve" class="btn btn-success me-2">Phê duyệt</button>
+
+                <button type="submit" asp-page-handler="Reject" class="btn btn-danger" formnovalidate>Từ chối</button>
+            }
+            else if (Model.ConsignmentRequest.Status == "Approved")
+            {
+                <button type="submit" asp-page-handler="ReceiveKoi" class="btn btn-info text-white">Xác nhận: Đã nhận cá</button>
+            }
+            else if (Model.ConsignmentRequest.Status == "Đã nhận cá")
+            {
+                <button type="submit" asp-page-handler="StartCare" class="btn btn-primary me-2">Đưa vào chăm sóc</button>
+                <button type="submit" asp-page-handler="Sold" class="btn btn-warning">Xác nhận: Đã bán</button>
+            }
+
+            <a asp-page="./ManageConsignment" class="btn btn-secondary ms-2">Quay lại danh sách</a>
         </div>
-    }
-</div>
+    </form>

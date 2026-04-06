@@ -13,7 +13,7 @@ namespace KoiFarmShop.Services.Interfaces
 		Task<ConsignmentRequest> GetConsignmentRequestByIdAsync(int requestId);
 		Task AddConsignmentRequestAsync(ConsignmentRequest request);
 		Task UpdateConsignmentRequestAsync(ConsignmentRequest request);
-		Task DeleteConsignmentRequestAsync(int requestId);
+        Task DeleteConsignmentRequestAsync(int requestId);
 		Task ApproveRequestAsync(int requestId); // Phê duyệt yêu cầu ký gửi
         Task RejectRequestAsync(int requestId);
     }

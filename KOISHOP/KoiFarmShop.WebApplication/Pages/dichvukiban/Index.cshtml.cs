@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace KoiFarmShop.WebApplication.Pages.dichvukiban
 {
     [Authorize] // Yêu cầu đăng nhập mới được vào trang này
-    [IgnoreAntiforgeryToken] // Hỗ trợ Postman test không bị lỗi 400
+    [IgnoreAntiforgeryToken] 
     public class IndexModel : PageModel
     {
         private readonly IConsignmentRequestService _consignmentRequestService;
@@ -45,7 +45,12 @@ namespace KoiFarmShop.WebApplication.Pages.dichvukiban
 
             if (!ModelState.IsValid)
             {
-                return Page(); // Nếu điền thiếu, load lại trang báo lỗi
+                return Page(); 
+            }
+            if (ConsignmentRequest.ConsignmentFee < 0)
+            {
+                ModelState.AddModelError("ConsignmentRequest.ConsignmentFee", "Giá bán không được là số âm.");
+                return Page();
             }
 
             // 2. Xác định Khách hàng đang đăng nhập
@@ -65,7 +70,7 @@ namespace KoiFarmShop.WebApplication.Pages.dichvukiban
             }
             else
             {
-                // MẸO: Nếu test Postman chưa lấy được User Cookie, tạm thời gán ID = 1
+              
                 ConsignmentRequest.CustomerId = 1;
             }
 

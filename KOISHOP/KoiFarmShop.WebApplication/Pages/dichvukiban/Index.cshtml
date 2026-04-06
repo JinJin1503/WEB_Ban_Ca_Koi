@@ -14,12 +14,12 @@
 </head>
 <body>
     <div class="container py-5">
-        <h1 class="text-center mb-4">Yêu cầu ký gửi</h1>
+        <h1 class="text-center mb-4">Dịch vụ ký gửi bán cá Koi</h1>
 
         <div class="row justify-content-center">
             <!-- Mô tả thông tin cá -->
             <div class="col-md-6">
-                <h3 class="mb-3 text-center">Thông tin cá Koi bạn muốn ký gửi</h3>
+                <h3 class="mb-3 text-center">Thông tin ký gửi</h3>
                 <form method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label asp-for="ConsignmentRequest.KoiName" class="form-label">Tên cá Koi</label>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="mb-3">
                         <label asp-for="ConsignmentRequest.ConsignmentFee" class="form-label">Giá cá (VND)</label>
-                        <input asp-for="ConsignmentRequest.ConsignmentFee" class="form-control" required />
+                        <input asp-for="ConsignmentRequest.ConsignmentFee" type="number" min="0" class="form-control" required />
                         <span asp-validation-for="ConsignmentRequest.ConsignmentFee" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-primary">Ký gửi cá</button>
+                        <button type="submit" class="btn btn-success">Xác nhận ký gửi</button>
                     </div>
                 </form>
             </div>

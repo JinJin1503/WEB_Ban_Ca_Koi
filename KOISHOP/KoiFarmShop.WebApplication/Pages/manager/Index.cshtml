@@ -1,8 +1,25 @@
-﻿@page
+@page
 @model KoiFarmShop.WebApplication.Pages.Manager.IndexModel
 @{
     Layout = "_ManagerLayout";
 
-    ViewData["Title"] = "Quản lý nhân viên";
+    ViewData["Title"] = "Dashboard"; 
 }
 
+<h1 class="text-center mb-4 text-gray-800">@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Biểu đồ doanh thu</h6>
+            </div>
+            <div class="card-body text-center p-5">
+                <div class="text-muted">
+                    <i class="bi bi-bar-chart-line" style="font-size: 3rem;"></i>
+                    <p class="mt-3">Tính năng thống kê và sơ đồ doanh thu đang được phát triển...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

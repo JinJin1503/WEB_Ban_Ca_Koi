@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -27,9 +28,13 @@ namespace KoiFarmShop.WebApplication.Pages.Login
         }
 
         [BindProperty]
+        [Required(ErrorMessage = "Tên đăng nhập không được để trống.")]
+        [StringLength(40, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 đến 40 ký tự.")]
         public string UserName { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Mật khẩu không được để trống.")]
+        [StringLength(16, MinimumLength = 8, ErrorMessage = "Mật khẩu phải từ 8 đến 16 ký tự.")]
         public string Password { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -49,13 +54,15 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await _userService.LoginAsync(UserName, Password);
+            var loginResult = await _userService.LoginAsync(UserName, Password);
 
-            if (user == null)
+            if (loginResult.user == null)
             {
-                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                ErrorMessage = loginResult.errorMessage;
                 return Page();
             }
+
+            var user = loginResult.user;
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
@@ -78,10 +85,10 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 HttpContext.Session.SetString("UserId", user.UserId.ToString());
                 HttpContext.Session.Remove("CustomerId");
 
-                 if (normalizedRole == AppRoles.Manager || normalizedRole == (AppRoles.Staff))
-                 {
-                     return RedirectToLocalOrDefault("/manager/Index");
-                 }
+                if (normalizedRole == AppRoles.Manager || normalizedRole == (AppRoles.Staff))
+                {
+                    return RedirectToLocalOrDefault("/manager/Index");
+                }
 
                  return RedirectToLocalOrDefault("/Trangchu/Index");
             }
@@ -109,7 +116,6 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
             return RedirectToLocalOrDefault("/Trangchu/Index");
         }
-
         private async Task SignInUserAsync(IEnumerable<Claim> claims)
         {
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

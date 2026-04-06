@@ -197,6 +197,10 @@
     <Compile Include="Migrations\20260327092413_UpdateConsignmentFields.Designer.cs">
       <DependentUpon>20260327092413_UpdateConsignmentFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20260404181422_AddLockoutColumns.cs" />
+    <Compile Include="Migrations\20260404181422_AddLockoutColumns.Designer.cs">
+      <DependentUpon>20260404181422_AddLockoutColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\KoiFarmDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repositories\CareServiceRepository.cs" />

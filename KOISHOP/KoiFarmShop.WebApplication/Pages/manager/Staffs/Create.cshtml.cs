@@ -30,6 +30,7 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
         public class InputModel
         {
             [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
+
             [StringLength(40, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 đến 40 ký tự.")]
             public string UserName { get; set; }
 

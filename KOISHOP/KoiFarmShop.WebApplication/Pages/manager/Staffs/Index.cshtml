@@ -66,6 +66,27 @@
                 </tbody>
             </table>
         </div>
+      @if (Model.TotalPages > 1)
+        {
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-route-pageIndex="@(Model.CurrentPage - 1)">Trang trước</a>
+                    </li>
+                    
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-route-pageIndex="@i">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" asp-route-pageIndex="@(Model.CurrentPage + 1)">Trang sau</a>
+                    </li>
+                </ul>
+            </nav>
+        }
     </div>
 </div>
 

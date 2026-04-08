@@ -14,7 +14,9 @@ namespace KoiFarmShop.Services.Services
 		private readonly IUserRepository _userRepository;
 		private readonly IPasswordHasher _passwordHasher;
 
-		public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
+        private const int MAX_FAILED_ATTEMPTS = 5;
+
+        public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
 		{
 			_userRepository = userRepository;
 			_passwordHasher = passwordHasher;
@@ -24,7 +26,7 @@ namespace KoiFarmShop.Services.Services
 		{
 			if (await _userRepository.IsUserNameExistAsync(user.UserName))
 			{
-				return false; // Tên đăng nhập hoặc email đã tồn tại
+				return false;
 			}
 
 			user.PasswordHasher = _passwordHasher.HashPassword(password);
@@ -32,23 +34,50 @@ namespace KoiFarmShop.Services.Services
 			return true;
 		}
 
-		public async Task<User> LoginAsync(string userName, string password)
-		{
-			var user = await _userRepository.GetUserByUserNameAsync(userName);
-			if (user == null)
-			{
-				return null;
-			}
+        public async Task<(User user, string errorMessage)> LoginAsync(string userName, string password)
+        {
+            var user = await _userRepository.GetUserByUserNameAsync(userName);
+            if (user == null)
+            {
+                return (null, "Tên đăng nhập không tồn tại.");
+            }
 
-			if (_passwordHasher.VerifyHashedPassword(user.PasswordHasher, password))
-			{
-				return user;
-			}
+            // 1. Kiểm tra tài khoản có bị khóa cứng không
+            if (user.IsLocked)
+            {
+                return (null, "Tài khoản của bạn đã bị khóa do nhập sai mật khẩu nhiều lần. Vui lòng liên hệ quản trị viên.");
+            }
 
-			return null;
-		}
+            // 2. Kiểm tra mật khẩu
+            if (_passwordHasher.VerifyHashedPassword(user.PasswordHasher, password))
+            {
+                // Đăng nhập thành công -> Reset lại số lần đếm sai về 0
+                if (user.FailedAttemptCount > 0)
+                {
+                    user.FailedAttemptCount = 0;
+                    await _userRepository.UpdateUserAsync(user);
+                }
+                return (user, string.Empty);
+            }
+            else
+            {
+                // Đăng nhập sai -> Tăng số đếm
+                user.FailedAttemptCount++;
 
-		public async Task<bool> UpdateUserAsync(User user)
+                // Nếu số lần sai đạt ngưỡng -> Khóa tài khoản
+                if (user.FailedAttemptCount >= MAX_FAILED_ATTEMPTS)
+                {
+                    user.IsLocked = true;
+                    await _userRepository.UpdateUserAsync(user);
+                    return (null, "Tài khoản của bạn đã bị khóa do nhập sai mật khẩu quá 5 lần.");
+                }
+
+                // Cập nhật số lần sai vào database
+                await _userRepository.UpdateUserAsync(user);
+                return (null, $"Mật khẩu không chính xác. Bạn còn {MAX_FAILED_ATTEMPTS - user.FailedAttemptCount} lần thử.");
+            }
+        }
+        public async Task<bool> UpdateUserAsync(User user)
 		{
 			await _userRepository.UpdateUserAsync(user);
 			return true;

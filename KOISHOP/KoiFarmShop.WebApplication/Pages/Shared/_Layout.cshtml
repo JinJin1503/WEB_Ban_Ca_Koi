@@ -85,7 +85,7 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        @if (isAuthenticated)
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
                         {
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" asp-page="/Profile/Index">
@@ -129,6 +129,16 @@
 
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
+            @if (User.IsInRole(AppRoles.Manager) || User.IsInRole(AppRoles.Staff))
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" asp-page="/manager/Index">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Trang admin</span>
+                    </a>
+                </li>
+            }
+
             <li class="nav-item">
                 <a class="nav-link" asp-page="/Trangchu/Index">
                     <i class="bi bi-grid"></i>
@@ -142,17 +152,7 @@
                     <span>Sản phẩm</span>
                 </a>
             </li>
-
-            @if (User.IsInRole(AppRoles.Manager) || User.IsInRole(AppRoles.Staff))
-            {
-                <li class="nav-item">
-                    <a class="nav-link collapsed" asp-page="/manager/Index">
-                        <i class="bi bi-speedometer2"></i>
-                        <span>Trang admin</span>
-                    </a>
-                </li>
-            }
-
+           
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-toggle="collapse" href="#cart-menu" role="button" aria-expanded="false" aria-controls="cart-menu">
                     <i class="bi bi-cart"></i>
@@ -209,7 +209,7 @@
                 </a>
             </li>
 
-            @if (isAuthenticated)
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Customer"))
             {
                 <li class="nav-item">
                     <a class="nav-link collapsed" asp-page="/Profile/Index">
@@ -220,7 +220,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" asp-page="/Login/Logout">
                         <i class="bi bi-box-arrow-right"></i>
-                        <span>Thoát</span>
+                        <span>Đăng xuất</span>
                     </a>
                 </li>
             }

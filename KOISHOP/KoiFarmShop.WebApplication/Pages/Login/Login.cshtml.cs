@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using SecurityClaim = System.Security.Claims.Claim;
 
 namespace KoiFarmShop.WebApplication.Pages.Login
 {
@@ -54,15 +55,13 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var loginResult = await _userService.LoginAsync(UserName, Password);
+            var user = await _userService.LoginAsync(UserName, Password);
 
-            if (loginResult.user == null)
+            if (user == null)
             {
-                ErrorMessage = loginResult.errorMessage;
+                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng.";
                 return Page();
             }
-
-            var user = loginResult.user;
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();
@@ -71,12 +70,12 @@ namespace KoiFarmShop.WebApplication.Pages.Login
             if (staff != null)
             {
                 string normalizedRole = NormalizeStaffRole(staff.Role);
-                var claims = new List<Claim>
+                var claims = new List<SecurityClaim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.Role, normalizedRole),
-                    new Claim(AppClaimTypes.StaffId, staff.StaffId.ToString())
+                    new SecurityClaim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                    new SecurityClaim(ClaimTypes.Name, user.UserName),
+                    new SecurityClaim(ClaimTypes.Role, normalizedRole),
+                    new SecurityClaim(AppClaimTypes.StaffId, staff.StaffId.ToString())
                 };
 
                 await SignInUserAsync(claims);
@@ -100,12 +99,12 @@ namespace KoiFarmShop.WebApplication.Pages.Login
                 return Page();
             }
 
-            var customerClaims = new List<Claim>
+            var customerClaims = new List<SecurityClaim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, AppRoles.Customer),
-                new Claim(AppClaimTypes.CustomerId, customer.CustomerId.ToString())
+                new SecurityClaim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new SecurityClaim(ClaimTypes.Name, user.UserName),
+                new SecurityClaim(ClaimTypes.Role, AppRoles.Customer),
+                new SecurityClaim(AppClaimTypes.CustomerId, customer.CustomerId.ToString())
             };
 
             await SignInUserAsync(customerClaims);
@@ -116,7 +115,7 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
             return RedirectToLocalOrDefault("/Trangchu/Index");
         }
-        private async Task SignInUserAsync(IEnumerable<Claim> claims)
+        private async Task SignInUserAsync(IEnumerable<SecurityClaim> claims)
         {
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);

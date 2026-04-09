@@ -73,8 +73,15 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				return Forbid(CookieAuthenticationDefaults.AuthenticationScheme);
 			}
 
-			await _cartService.AddCartItemToCartAsync(customerId.Value, KoiId, 1, 0, 0, 0);
-			TempData["SuccessMessage"] = "Đã thêm sản phẩm vào giỏ hàng.";
+			try
+			{
+				await _cartService.AddCartItemToCartAsync(customerId.Value, KoiId, 1, 0, 0, 0);
+				TempData["SuccessMessage"] = "Đã thêm sản phẩm vào giỏ hàng.";
+			}
+			catch
+			{
+				TempData["ErrorMessage"] = "Không thể thêm sản phẩm vào giỏ hàng.";
+			}
 
 			return RedirectToPage(new { keyword = Keyword });
 		}

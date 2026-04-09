@@ -82,7 +82,10 @@ namespace KoiFarmShop.WebApplication
                 });
 
                 options.AddPolicy(AppPolicies.StaffOrManager, policy =>
-                    policy.RequireRole(AppRoles.Manager, AppRoles.Staff));
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireRole(AppRoles.Staff, AppRoles.Manager);
+                });
 
                 options.AddPolicy(AppPolicies.CustomerOnly, policy =>
                 {

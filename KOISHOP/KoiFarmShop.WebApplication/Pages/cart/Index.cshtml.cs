@@ -65,16 +65,30 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 
 			if (newQuantityPerKoi == 0 && newQuantityPerBatch == 0)
 			{
-				await _cartService.DeleteCartItemAsync(cartItemId);
-				TempData["SuccessMessage"] = "Đã xóa sản phẩm khỏi giỏ hàng.";
+				try
+				{
+					await _cartService.DeleteCartItemAsync(cartItemId);
+					TempData["SuccessMessage"] = "Đã xóa sản phẩm khỏi giỏ hàng.";
+				}
+				catch
+				{
+					TempData["ErrorMessage"] = "Không thể cập nhật giỏ hàng.";
+				}
 				return RedirectToPage();
 			}
 
 			cartItem.QuantityPerKoi = newQuantityPerKoi;
 			cartItem.QuantityPerBatch = newQuantityPerBatch;
 
-			await _cartService.UpdateCartItemAsync(cartItem);
-			TempData["SuccessMessage"] = "Cập nhật giỏ hàng thành công.";
+			try
+			{
+				await _cartService.UpdateCartItemAsync(cartItem);
+				TempData["SuccessMessage"] = "Cập nhật giỏ hàng thành công.";
+			}
+			catch
+			{
+				TempData["ErrorMessage"] = "Không thể cập nhật giỏ hàng.";
+			}
 
 			return RedirectToPage();
 		}
@@ -95,8 +109,16 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 				return RedirectToPage();
 			}
 
-			await _cartService.DeleteCartItemAsync(cartItemId);
-			TempData["SuccessMessage"] = "Đã xóa sản phẩm khỏi giỏ hàng.";
+			try
+			{
+				await _cartService.DeleteCartItemAsync(cartItemId);
+				TempData["SuccessMessage"] = "Đã xóa sản phẩm khỏi giỏ hàng.";
+			}
+			catch
+			{
+				TempData["ErrorMessage"] = "Không thể xóa sản phẩm khỏi giỏ hàng.";
+			}
+
 			return RedirectToPage();
 		}
 

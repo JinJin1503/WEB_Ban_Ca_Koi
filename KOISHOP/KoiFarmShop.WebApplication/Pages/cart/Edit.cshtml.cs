@@ -8,7 +8,6 @@ using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using CartEntities = KoiFarmShop.Repositories.Entities.Cart;  // Alias for Cart class
-using KoiFarmShop.Repositories.Entities;  // Default namespace for other purposes
 
 namespace KoiFarmShop.WebApplication.Pages.Cart
 {
@@ -34,9 +33,17 @@ namespace KoiFarmShop.WebApplication.Pages.Cart
         }
         public async Task<IActionResult> OnPostUpdateCartAsync()
         {
-            await _cartService.UpdateCartItem(CartItem.CartItemId, CartItem.KoiId, CartItem.QuantityPerKoi, CartItem.QuantityPerBatch)
-;
-            return RedirectToPage("/Cart");
+            try
+            {
+                await _cartService.UpdateCartItem(CartItem.CartItemId, CartItem.KoiId, CartItem.QuantityPerKoi, CartItem.QuantityPerBatch);
+                TempData["SuccessMessage"] = "Cập nhật giỏ hàng thành công.";
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Không thể cập nhật giỏ hàng.";
+            }
+
+            return RedirectToPage("/cart/Index");
 
         }
     }

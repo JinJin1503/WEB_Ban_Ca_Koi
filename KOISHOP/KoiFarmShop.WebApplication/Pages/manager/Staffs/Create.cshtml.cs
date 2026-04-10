@@ -92,8 +92,7 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             }
 
             // 4. Đăng nhập nháp để lấy đối tượng User (lấy cái UserId vừa sinh ra)
-            var loginResult = await _userService.LoginAsync(Input.UserName, Input.Password);
-            var createdUser = loginResult.user; 
+            var createdUser = await _userService.LoginAsync(Input.UserName, Input.Password);
 
             if (createdUser != null)
             {

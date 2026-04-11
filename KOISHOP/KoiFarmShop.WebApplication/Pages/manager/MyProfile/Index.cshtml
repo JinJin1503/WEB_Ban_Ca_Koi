@@ -1,0 +1,100 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.manager.MyProfile.IndexModel
+@{
+    ViewData["Title"] = "Hồ sơ của tôi";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle me-1"></i> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card shadow mb-4">
+            <div class="card-body text-center pt-5 pb-4">
+                <img src="~/images/default-avatar.png" alt="Profile" class="rounded-circle img-fluid mb-3" style="width: 120px;" onerror="this.src='https://ui-avatars.com/api/?name=@Model.Input.StaffName&background=random'">
+                <h5 class="font-weight-bold">@Model.Input.StaffName</h5>
+                <p class="text-muted mb-1">
+                    <span class="badge @(Model.Input.Role == "Manager" ? "bg-danger" : "bg-primary")">@Model.Input.Role</span>
+                </p>
+                <p class="text-muted small">Mã NV: #@Model.Input.StaffId</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-8">
+        <div class="card shadow mb-4 border-left-primary">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Chi tiết hồ sơ cá nhân</h6>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" asp-for="Input.StaffId" />
+                    <input type="hidden" asp-for="Input.UserId" />
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Họ và tên (Không được sửa)</label>
+                            <input asp-for="Input.StaffName" class="form-control bg-light" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Tên đăng nhập (Không được sửa)</label>
+                            <input asp-for="Input.UserName" class="form-control bg-light" readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Email công việc (Không được sửa)</label>
+                            <input asp-for="Input.Email" class="form-control bg-light" readonly />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label text-muted small fw-bold">Mức lương (Không được sửa)</label>
+                            <div class="input-group">
+                                <input asp-for="Input.Salary" class="form-control bg-light" readonly />
+                                <span class="input-group-text bg-light">VNĐ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="mt-4 mb-4" />
+                    <h6 class="text-primary mb-3"><i class="bi bi-pencil-square me-1"></i> Thông tin có thể cập nhật</h6>
+
+                    <div class="mb-3">
+                        <label asp-for="Input.Phone" class="form-label fw-bold">Số điện thoại liên hệ <span class="text-danger">*</span></label>
+                        <input asp-for="Input.Phone" class="form-control" placeholder="Nhập số điện thoại" />
+                        <span asp-validation-for="Input.Phone" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="Input.NewPassword" class="form-label fw-bold">Mật khẩu mới</label>
+                            <input asp-for="Input.NewPassword" type="password" class="form-control" placeholder="Để trống nếu không muốn đổi" />
+                            <span asp-validation-for="Input.NewPassword" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Input.ConfirmPassword" class="form-label fw-bold">Xác nhận mật khẩu mới</label>
+                            <input asp-for="Input.ConfirmPassword" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end mt-4">
+                        <button type="submit" class="btn btn-primary px-4">Lưu thay đổi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -5,57 +5,85 @@
     Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
 }
 
-<div class="row justify-content-center">
-    <div class="col-lg-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Cập nhật thông tin: @Model.ExistingStaff.StaffName</h6>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Cập nhật thông tin: @Model.ExistingStaff.StaffName</h6>
+        <a asp-page="./Index" class="btn btn-secondary btn-sm">Quay lại danh sách</a>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <input type="hidden" asp-for="ExistingStaff.StaffId" />
+
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="p-3 border rounded mb-3">
+                        <h6 class="text-primary border-bottom pb-2 mb-3">Thông tin hồ sơ</h6>
+
+                        <div class="form-group mb-3">
+                            <label class="control-label fw-bold">Tên Nhân Viên</label>
+                            <input type="text" class="form-control" asp-for="ExistingStaff.StaffName" required />
+                            <span asp-validation-for="ExistingStaff.StaffName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="control-label fw-bold">Số điện thoại</label>
+                                <input type="text" class="form-control" asp-for="ExistingStaff.Phone" required />
+                                <span asp-validation-for="ExistingStaff.Phone" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="control-label fw-bold">Email</label>
+                                <input type="email" class="form-control" asp-for="ExistingStaff.Email" required />
+                                <span asp-validation-for="ExistingStaff.Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="control-label fw-bold">Vai Trò</label>
+                                <select asp-for="ExistingStaff.Role" class="form-control" required>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Staff">Staff</option>
+                                </select>
+                                <span asp-validation-for="ExistingStaff.Role" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="control-label fw-bold">Lương cơ bản (VNĐ)</label>
+                                <input type="number" class="form-control" asp-for="ExistingStaff.Salary" required />
+                                <span asp-validation-for="ExistingStaff.Salary" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="p-3 border rounded bg-light h-100">
+                        <h6 class="text-primary border-bottom pb-2 mb-3">Cài đặt tài khoản hệ thống</h6>
+
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="IsLocked" id="lockSwitch">
+                            <label class="form-check-label fw-bold" for="lockSwitch">
+                                @(Model.IsLocked ? "Tài khoản đang bị KHÓA" : "Tài khoản đang HOẠT ĐỘNG")
+                            </label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="FailedAttemptCount" class="form-label">Số lần nhập sai mật khẩu</label>
+                            <input asp-for="FailedAttemptCount" type="number" class="form-control form-control-sm" style="width: 80px;" />
+                            <small class="text-muted">Chỉnh về 0 để reset bộ đếm cho nhân viên.</small>
+                        </div>
+
+                        <div class="alert alert-warning small mt-4">
+                            <i class="bi bi-shield-lock me-1"></i> Admin (Manager) có quyền mở khóa tại đây nếu nhân viên thông báo không đăng nhập được do sai mật khẩu quá nhiều lần.
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <form method="post">
-                    <input type="hidden" asp-for="ExistingStaff.StaffId" />
 
-                    <div class="form-group mb-3">
-                        <label class="control-label fw-bold">Tên Nhân Viên</label>
-                        <input type="text" class="form-control" asp-for="ExistingStaff.StaffName" required />
-                        <span asp-validation-for="ExistingStaff.StaffName" class="text-danger small"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="control-label fw-bold">Số điện thoại</label>
-                        <input type="text" class="form-control" asp-for="ExistingStaff.Phone" required />
-                        <span asp-validation-for="ExistingStaff.Phone" class="text-danger small"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="control-label fw-bold">Email</label>
-                        <input type="text" class="form-control" asp-for="ExistingStaff.Email" required />
-                        <span asp-validation-for="ExistingStaff.Email" class="text-danger small"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="control-label fw-bold">Vai Trò</label>
-                        <select asp-for="ExistingStaff.Role" class="form-control" required>
-                            <option value="Manager">Manager</option>
-                            <option value="Staff">Staff</option>
-                        </select>
-                        <span asp-validation-for="ExistingStaff.Role" class="text-danger small"></span>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label class="control-label fw-bold">Lương cơ bản (VNĐ)</label>
-                        <input type="text" class="form-control" asp-for="ExistingStaff.Salary" required />
-                        <span asp-validation-for="ExistingStaff.Salary" class="text-danger small"></span>
-                    </div>
-
-                    <hr />
-                    <div class="form-group mt-3 text-center">
-                        <a asp-page="./Index" class="btn btn-secondary me-2">Hủy</a>
-                        <button type="submit" class="btn btn-warning">Lưu Cập Nhật</button>
-                    </div>
-                </form>
+            <div class="d-flex justify-content-center mt-4 border-top pt-3">
+                <button type="submit" class="btn btn-warning px-5"><i class="bi bi-save me-1"></i> Lưu Cập Nhật</button>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

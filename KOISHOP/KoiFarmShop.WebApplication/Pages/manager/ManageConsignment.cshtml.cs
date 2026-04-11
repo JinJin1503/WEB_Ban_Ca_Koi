@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager
 {
-    [Authorize(Policy = AppPolicies.ManagerOnly)]
+    [Authorize(Policy = AppPolicies.StaffOrManager)]
     public class ManageConsignmentModel : PageModel
     {
         private readonly IConsignmentRequestService _consignmentService;

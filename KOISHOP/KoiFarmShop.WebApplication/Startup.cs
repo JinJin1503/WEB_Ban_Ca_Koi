@@ -49,6 +49,7 @@ namespace KoiFarmShop.WebApplication
             services.AddScoped<IConsignmentRequestService, ConsignmentRequestService>();
             services.AddScoped<ICareServiceService, CareServiceService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<ICartService, CartService>();

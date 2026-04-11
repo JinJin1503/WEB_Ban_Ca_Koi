@@ -1,0 +1,82 @@
+﻿@page "{id:int}"
+@model KoiFarmShop.WebApplication.Pages.manager.Customers.EditModel
+@{
+    ViewData["Title"] = "Sửa Khách hàng";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Cập nhật thông tin khách hàng</h6>
+        <a asp-page="./Index" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left"></i> Quay lại</a>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            <input type="hidden" asp-for="Input.CustomerId" />
+            <input type="hidden" asp-for="Input.UserId" />
+
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="p-3 border rounded mb-3">
+                        <h6 class="text-primary border-bottom pb-2 mb-3">Thông tin hồ sơ</h6>
+                        <div class="mb-3">
+                            <label asp-for="Input.CustomerName" class="form-label">Họ và tên</label>
+                            <input asp-for="Input.CustomerName" class="form-control" />
+                            <span asp-validation-for="Input.CustomerName" class="text-danger small"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Input.Phone" class="form-label">Số điện thoại</label>
+                                <input asp-for="Input.Phone" class="form-control" />
+                                <span asp-validation-for="Input.Phone" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Input.Email" class="form-label">Email</label>
+                                <input asp-for="Input.Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Input.Address" class="form-label">Địa chỉ</label>
+                            <textarea asp-for="Input.Address" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Input.Address" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="p-3 border rounded bg-light h-100">
+                        <h6 class="text-primary border-bottom pb-2 mb-3">Cài đặt tài khoản hệ thống</h6>
+
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" asp-for="Input.IsLocked" id="lockSwitch">
+                            <label class="form-check-label fw-bold" for="lockSwitch">
+                                @(Model.Input.IsLocked ? "Tài khoản đang bị KHÓA" : "Tài khoản đang HOẠT ĐỘNG")
+                            </label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.FailedAttemptCount" class="form-label">Số lần nhập sai mật khẩu</label>
+                            <input asp-for="Input.FailedAttemptCount" class="form-control form-control-sm" style="width: 80px;" />
+                            <small class="text-muted">Chỉnh về 0 để reset bộ đếm cho khách.</small>
+                        </div>
+
+                        <div class="alert alert-info small mt-4">
+                            <i class="bi bi-info-circle me-1"></i> Nếu khách hàng quên mật khẩu, họ nên sử dụng chức năng "Quên mật khẩu" ở trang đăng nhập.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary px-5"><i class="bi bi-check-circle me-1"></i> Lưu thay đổi</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

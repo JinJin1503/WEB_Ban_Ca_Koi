@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace KoiFarmShop.Services
 {
@@ -58,7 +60,21 @@ namespace KoiFarmShop.Services
 
         public async Task<List<Orders>> GetAllOrdersAsync()
         {
-            return await _dbContext.Orders.ToListAsync();
+            var orders = await _dbContext.Orders
+                .Include(o => o.OrderDetails)
+                .ToListAsync();
+
+            foreach (var order in orders)
+            {
+                var details = _dbContext.OrderDetails
+                    .Include(x => x.Koi) // 🔥 QUAN TRỌNG
+                    .Where(x => x.OrderId == order.OrderId)
+                    .ToList();
+
+                order.TotalPrice = details.Sum(x => x.TotalAmount);
+            }
+
+            return orders;
         }
 
     }

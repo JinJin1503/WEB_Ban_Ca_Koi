@@ -42,8 +42,13 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for
 		// more details, see https://aka.ms/RazorPagesCRUD.
-		public async Task<IActionResult> OnPostAsync()
+		public async Task<IActionResult> OnPostAsync(int? id)
 		{
+			if (KoiFish != null && KoiFish.KoiId <= 0 && id.HasValue)
+			{
+				KoiFish.KoiId = id.Value;
+			}
+
 			NormalizeValidation();
 
 			if (!ModelState.IsValid)
@@ -52,7 +57,27 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				return Page();
 			}
 
-			_context.Attach(KoiFish).State = EntityState.Modified;
+			var existingKoiFish = await _context.KoiFishs.FindAsync(KoiFish.KoiId);
+			if (existingKoiFish == null)
+			{
+				return NotFound();
+			}
+
+			existingKoiFish.KoiName = KoiFish.KoiName;
+			existingKoiFish.Origin = KoiFish.Origin;
+			existingKoiFish.Gender = KoiFish.Gender;
+			existingKoiFish.Age = KoiFish.Age;
+			existingKoiFish.Size = KoiFish.Size;
+			existingKoiFish.BreedType = KoiFish.BreedType;
+			existingKoiFish.Personality = KoiFish.Personality;
+			existingKoiFish.DailyFeed = KoiFish.DailyFeed;
+			existingKoiFish.ScreeningRate = KoiFish.ScreeningRate;
+			existingKoiFish.HealthStatus = KoiFish.HealthStatus;
+			existingKoiFish.Awards = KoiFish.Awards;
+			existingKoiFish.PricePerKoi = KoiFish.PricePerKoi;
+			existingKoiFish.PricePerBatch = KoiFish.PricePerBatch;
+			existingKoiFish.ImageURL = KoiFish.ImageURL;
+			existingKoiFish.CategoryId = KoiFish.CategoryId;
 
 			try
 			{

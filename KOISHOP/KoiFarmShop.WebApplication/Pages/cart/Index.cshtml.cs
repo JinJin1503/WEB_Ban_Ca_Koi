@@ -15,6 +15,8 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 {
 	public class IndexModel : PageModel
 	{
+		private const string CartErrorMessageSessionKey = "CartIndexErrorMessage";
+		private const string CartErrorMessageCookieName = "KoiFarmShopCartErrorMessage";
 		private readonly ICartService _cartService;
 		private readonly IOrderService _orderService;  // Add an order service to create orders
 		public IndexModel(ICartService cartService, IOrderService orderService)
@@ -25,9 +27,12 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 
 		public List<CartItem> CartItems { get; set; }
 		public List<CartEntities> Carts { get; set; }
+		public string ErrorMessage { get; private set; }
 
 		public async Task<IActionResult> OnGetAsync()
 		{
+			RestorePendingErrorMessage();
+
 			var authResult = GetAuthorizedCustomerId(out int customerId);
 			if (authResult != null)
 			{
@@ -52,14 +57,14 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 
 			if (newQuantityPerKoi < 0 || newQuantityPerBatch < 0)
 			{
-				TempData["ErrorMessage"] = "Số lượng không được nhỏ hơn 0.";
+				SetErrorMessage("Số lượng không hợp lệ. Số lượng không được nhỏ hơn 0.");
 				return RedirectToPage();
 			}
 
 			var cartItem = await GetOwnedCartItemAsync(customerId, cartItemId);
 			if (cartItem == null)
 			{
-				TempData["ErrorMessage"] = "Không tìm thấy sản phẩm trong giỏ hàng.";
+				SetErrorMessage("Không tìm thấy sản phẩm trong giỏ hàng.");
 				return RedirectToPage();
 			}
 
@@ -72,7 +77,7 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 				}
 				catch
 				{
-					TempData["ErrorMessage"] = "Không thể cập nhật giỏ hàng.";
+					SetErrorMessage("Không thể cập nhật giỏ hàng.");
 				}
 				return RedirectToPage();
 			}
@@ -87,7 +92,7 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 			}
 			catch
 			{
-				TempData["ErrorMessage"] = "Không thể cập nhật giỏ hàng.";
+				SetErrorMessage("Không thể cập nhật giỏ hàng.");
 			}
 
 			return RedirectToPage();
@@ -105,7 +110,7 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 			var cartItem = await GetOwnedCartItemAsync(customerId, cartItemId);
 			if (cartItem == null)
 			{
-				TempData["ErrorMessage"] = "Không tìm thấy sản phẩm trong giỏ hàng.";
+				SetErrorMessage("Không tìm thấy sản phẩm trong giỏ hàng.");
 				return RedirectToPage();
 			}
 
@@ -116,7 +121,7 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 			}
 			catch
 			{
-				TempData["ErrorMessage"] = "Không thể xóa sản phẩm khỏi giỏ hàng.";
+				SetErrorMessage("Không thể xóa sản phẩm khỏi giỏ hàng.");
 			}
 
 			return RedirectToPage();
@@ -200,6 +205,36 @@ namespace KoiFarmShop.WebApplication.Pages.cart
 		{
 			var cartItems = await _cartService.GetCartItemsAsync(customerId);
 			return cartItems.FirstOrDefault(item => item.CartItemId == cartItemId);
+		}
+
+		private void SetErrorMessage(string message)
+		{
+			TempData["ErrorMessage"] = message;
+			HttpContext.Session.SetString(CartErrorMessageSessionKey, message);
+			Response.Cookies.Append(CartErrorMessageCookieName, message, new CookieOptions
+			{
+				HttpOnly = true,
+				IsEssential = true,
+				MaxAge = TimeSpan.FromMinutes(5),
+				SameSite = SameSiteMode.Lax
+			});
+		}
+
+		private void RestorePendingErrorMessage()
+		{
+			var message = Request.Cookies[CartErrorMessageCookieName]
+				?? HttpContext.Session.GetString(CartErrorMessageSessionKey)
+				?? TempData.Peek("ErrorMessage")?.ToString();
+
+			if (string.IsNullOrWhiteSpace(message))
+			{
+				return;
+			}
+
+			ErrorMessage = message;
+			TempData["ErrorMessage"] = message;
+			Response.Cookies.Delete(CartErrorMessageCookieName);
+			HttpContext.Session.Remove(CartErrorMessageSessionKey);
 		}
 	}
 }

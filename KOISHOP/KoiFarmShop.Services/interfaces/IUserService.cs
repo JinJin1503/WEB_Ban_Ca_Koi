@@ -13,8 +13,7 @@ namespace KoiFarmShop.Services.Interfaces
         Task<bool> RegisterUserAsync(User user, string password);
 
         // Đăng nhập người dùng
-        Task<User> LoginAsync(string userName, string password);
-
+        Task<(User user, string errorMessage)> LoginAsync(string userName, string password);
         // Cập nhật thông tin người dùng
         Task<bool> UpdateUserAsync(User user);
 

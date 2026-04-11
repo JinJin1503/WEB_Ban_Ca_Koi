@@ -55,13 +55,19 @@ namespace KoiFarmShop.WebApplication.Pages.Login
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var user = await _userService.LoginAsync(UserName, Password);
-
-            if (user == null)
+            if (!ModelState.IsValid)
             {
-                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                return Page(); 
+            }
+            var loginResult = await _userService.LoginAsync(UserName, Password);
+
+            if (loginResult.user == null)
+            {
+                ErrorMessage = loginResult.errorMessage;
                 return Page();
             }
+            
+            var user = loginResult.user;
 
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Clear();

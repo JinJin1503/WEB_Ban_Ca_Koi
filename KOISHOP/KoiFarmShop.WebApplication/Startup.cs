@@ -49,6 +49,7 @@ namespace KoiFarmShop.WebApplication
             services.AddScoped<IConsignmentRequestService, ConsignmentRequestService>();
             services.AddScoped<ICareServiceService, CareServiceService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<ICartService, CartService>();
@@ -82,7 +83,10 @@ namespace KoiFarmShop.WebApplication
                 });
 
                 options.AddPolicy(AppPolicies.StaffOrManager, policy =>
-                    policy.RequireRole(AppRoles.Manager, AppRoles.Staff));
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireRole(AppRoles.Staff, AppRoles.Manager);
+                });
 
                 options.AddPolicy(AppPolicies.CustomerOnly, policy =>
                 {

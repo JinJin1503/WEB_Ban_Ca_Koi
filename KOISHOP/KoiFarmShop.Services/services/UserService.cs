@@ -1,4 +1,4 @@
-﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Repositories.Interfaces;
 using KoiFarmShop.Services.Interfaces;
 using System;
@@ -77,6 +77,7 @@ namespace KoiFarmShop.Services.Services
                 return (null, $"Mật khẩu không chính xác. Bạn còn {MAX_FAILED_ATTEMPTS - user.FailedAttemptCount} lần thử.");
             }
         }
+
         public async Task<bool> UpdateUserAsync(User user)
         {
             await _userRepository.UpdateUserAsync(user);
@@ -98,10 +99,12 @@ namespace KoiFarmShop.Services.Services
         {
             return !await _userRepository.IsUserNameExistAsync(userName);
         }
+
         public async Task<IEnumerable<User>> GetAllUsersAsync()
         {
             return await _userRepository.GetAllUsersAsync();
         }
+
         // Phương thức băm lại mật khẩu cho tất cả người dùng
         public async Task UpdatePasswordsForAllUsersAsync()
         {
@@ -117,5 +120,4 @@ namespace KoiFarmShop.Services.Services
             }
         }
     }
-
 }

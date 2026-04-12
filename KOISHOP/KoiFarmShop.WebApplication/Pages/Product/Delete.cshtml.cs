@@ -42,15 +42,23 @@ namespace KoiFarmShop.WebApplication.Pages.Product
         {
             if (id == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Không tìm thấy sản phẩm cần xóa.";
+                return RedirectToPage("./Index");
             }
 
             KoiFish = await _context.KoiFishs.FindAsync(id);
 
-            if (KoiFish != null)
+            try
             {
-                _context.KoiFishs.Remove(KoiFish);
-                await _context.SaveChangesAsync();
+                if (KoiFish != null)
+                {
+                    _context.KoiFishs.Remove(KoiFish);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Không thể xóa sản phẩm.";
             }
 
             return RedirectToPage("./Index");

@@ -14,16 +14,23 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
     public class EditModel : PageModel
     {
         private readonly IStaffService _staffService;
+        private readonly IUserService _userService; 
 
-        public EditModel(IStaffService staffService)
+        public EditModel(IStaffService staffService, IUserService userService)
         {
             _staffService = staffService;
+            _userService = userService;
         }
 
         [BindProperty]
         public Staff ExistingStaff { get; set; }
 
-        // Bắt tham số 'id' từ URL truyền vào
+        [BindProperty]
+        public bool IsLocked { get; set; }
+
+        [BindProperty]
+        public int FailedAttemptCount { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var currentStaffId = User.FindFirstValue(AppClaimTypes.StaffId);
@@ -38,6 +45,15 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             {
                 return RedirectToPage("./Index");
             }
+
+            // Lấy thông tin tài khoản (User) để hiển thị trạng thái khóa
+            var user = await _userService.GetUserByIdAsync(ExistingStaff.UserId);
+            if (user != null)
+            {
+                IsLocked = user.IsLocked;
+                FailedAttemptCount = user.FailedAttemptCount;
+            }
+
             return Page();
         }
 
@@ -48,7 +64,6 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
                 return Page();
             }
 
-            // BẮT BUỘC: Lấy lại nhân viên cũ từ DB để không bị mất các trường bị ẩn (UserId, Email, JoinDate...)
             var staffInDb = await _staffService.GetStaffByIdAsync(ExistingStaff.StaffId);
             if (staffInDb == null)
             {
@@ -62,7 +77,7 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
                 return RedirectToPage("./Index");
             }
 
-            // Chỉ cập nhật những trường được phép sửa trên Form
+            // 1. Cập nhật bảng Staff
             staffInDb.StaffName = ExistingStaff.StaffName;
             staffInDb.Role = ExistingStaff.Role;
             staffInDb.Phone = ExistingStaff.Phone;
@@ -71,7 +86,25 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
 
             await _staffService.UpdateStaffAsync(staffInDb);
 
-            // Báo thành công ra ngoài Index
+            // 2. Cập nhật bảng User (Tính năng mở khóa)
+            var userInDb = await _userService.GetUserByIdAsync(staffInDb.UserId);
+            if (userInDb != null)
+            {
+                userInDb.Email = ExistingStaff.Email; 
+                userInDb.IsLocked = IsLocked;
+
+                if (!IsLocked)
+                {
+                    userInDb.FailedAttemptCount = 0; // Tự động reset về 0 nếu Admin gạt mở khóa
+                }
+                else
+                {
+                    userInDb.FailedAttemptCount = FailedAttemptCount;
+                }
+
+                await _userService.UpdateUserAsync(userInDb);
+            }
+
             TempData["SuccessMessage"] = "Cập nhật thông tin nhân viên thành công!";
             return RedirectToPage("./Index");
         }

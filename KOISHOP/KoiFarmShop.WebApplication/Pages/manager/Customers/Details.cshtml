@@ -1,0 +1,124 @@
+﻿@page "{id:int}"
+@model KoiFarmShop.WebApplication.Pages.manager.Customers.DetailsModel
+@{
+    ViewData["Title"] = "Chi tiết khách hàng";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <i class="bi bi-person-lines-fill me-2"></i> Hồ sơ khách hàng: @Model.Customer.CustomerName
+        </h6>
+        <a asp-page="./Index" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left"></i> Quay lại danh sách</a>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-left-primary">
+                    <div class="card-header bg-light">
+                        <h6 class="font-weight-bold text-primary m-0">Thông tin cá nhân</h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless table-sm">
+                            <tbody>
+                                <tr>
+                                    <td class="text-muted" width="150">Mã khách hàng:</td>
+                                    <td class="fw-bold">@Model.Customer.CustomerId</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Họ và tên:</td>
+                                    <td class="fw-bold">@Model.Customer.CustomerName</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Số điện thoại:</td>
+                                    <td>@Model.Customer.Phone</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Email liên hệ:</td>
+                                    <td>@Model.Customer.Email</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Địa chỉ:</td>
+                                    <td>@Model.Customer.Address</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Ngày đăng ký:</td>
+                                    <td>@Model.Customer.RegistrationDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-left-info">
+                    <div class="card-header bg-light">
+                        <h6 class="font-weight-bold text-info m-0">Tài khoản đăng nhập</h6>
+                    </div>
+                    <div class="card-body">
+                        @if (Model.AccountInfo != null)
+                        {
+                            <table class="table table-borderless table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-muted" width="150">ID Tài khoản:</td>
+                                        <td>@Model.AccountInfo.UserId</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Tên đăng nhập:</td>
+                                        <td class="fw-bold text-primary">@Model.AccountInfo.UserName</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Trạng thái:</td>
+                                        <td>
+                                            @if (Model.AccountInfo.IsLocked)
+                                            {
+                                                <span class="badge bg-danger"><i class="bi bi-lock-fill"></i> Đang bị khóa</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-success"><i class="bi bi-unlock-fill"></i> Hoạt động tốt</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Số lần nhập sai:</td>
+                                        <td>
+                                            @if (Model.AccountInfo.FailedAttemptCount > 0)
+                                            {
+                                                <span class="text-danger fw-bold">@Model.AccountInfo.FailedAttemptCount lần</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-success">0 lần</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="alert alert-warning m-0">
+                                <i class="bi bi-exclamation-triangle"></i> Khách hàng này chưa được cấp hoặc chưa liên kết tài khoản đăng nhập.
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3 border-top pt-4">
+            <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerId" class="btn btn-warning me-2">
+                <i class="bi bi-pencil-square"></i> Cập nhật thông tin
+            </a>
+            <a asp-page="./Delete" asp-route-id="@Model.Customer.CustomerId" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Xóa khách hàng
+            </a>
+        </div>
+    </div>
+</div>

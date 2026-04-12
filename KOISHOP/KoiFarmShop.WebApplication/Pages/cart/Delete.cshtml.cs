@@ -26,8 +26,17 @@ namespace KoiFarmShop.WebApplication.Pages.Cart
         public async Task<IActionResult> OnGetDeleteAsync(int cartItemId)
         {
             var customerId = 1; // Replace with actual customer ID
-            await _cartService.RemoveFromCartAsync(customerId, cartItemId);
-            return RedirectToPage("/Cart");
+            try
+            {
+                await _cartService.RemoveFromCartAsync(customerId, cartItemId);
+                TempData["SuccessMessage"] = "Đã xóa sản phẩm khỏi giỏ hàng.";
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Không thể xóa sản phẩm khỏi giỏ hàng.";
+            }
+
+            return RedirectToPage("/cart/Index");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using KoiFarmShop.Repositories.Entities;
-using KoiFarmShop.Services.Implementations;
 using KoiFarmShop.Services.Interfaces;
 using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
@@ -15,17 +14,24 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
     {
         private readonly IConsignmentRequestService _consignmentService;
 
+        // Định nghĩa các hằng số trạng thái để dễ quản lý và tránh lỗi typo
+        private const string STATUS_RECEIVED = "Đã nhận cá";
+        private const string STATUS_CARING = "Đang chăm sóc";
+        private const string STATUS_SOLD = "Đã bán";
+
         public ManageConsignmentModel(IConsignmentRequestService consignmentService)
         {
             _consignmentService = consignmentService;
         }
 
-        public List<ConsignmentRequest> Requests { get; set; }
+        public List<ConsignmentRequest> Requests { get; set; } = new();
 
         public async Task OnGetAsync()
         {
             Requests = await _consignmentService.GetAllConsignmentRequestsAsync();
         }
+
+
 
         public async Task<IActionResult> OnPostApproveAsync(int id)
         {
@@ -40,36 +46,39 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
         }
 
         public async Task<IActionResult> OnPostReceiveKoiAsync(int id)
-        {
-            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
-            if (request != null)
-            {
-                request.Status = "Đã nhận cá";
-                await _consignmentService.UpdateConsignmentRequestAsync(request);
-            }
-            return RedirectToPage();
-        }
+            => await UpdateStatusAsync(id, STATUS_RECEIVED);
 
         public async Task<IActionResult> OnPostStartCareAsync(int id)
+            => await UpdateStatusAsync(id, STATUS_CARING);
+
+        public async Task<IActionResult> OnPostSoldAsync(int id)
+            => await UpdateStatusAsync(id, STATUS_SOLD);
+
+
+
+        /// Hàm dùng chung để cập nhật trạng thái đơn ký gửi
+        private async Task<IActionResult> UpdateStatusAsync(int id, string status)
         {
             var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
             if (request != null)
             {
-                request.Status = "Đang chăm sóc";
+                request.Status = status;
                 await _consignmentService.UpdateConsignmentRequestAsync(request);
             }
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostSoldAsync(int id)
+
+        /// Dịch trạng thái hiển thị cho người dùng
+        public string TranslateStatus(string status) => (status?.ToLower()) switch
         {
-            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
-            if (request != null)
-            {
-                request.Status = "Đã bán";
-                await _consignmentService.UpdateConsignmentRequestAsync(request);
-            }
-            return RedirectToPage();
-        }
+            "approved" => "Đã duyệt",
+            "rejected" => "Từ chối",
+            "pending" => "Chờ duyệt",
+            null or "" => "Không xác định",
+            _ => status // Trả về nguyên bản nếu là tiếng Việt hoặc trạng thái khác
+        };
+
+
     }
 }

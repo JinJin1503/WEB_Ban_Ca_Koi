@@ -40,5 +40,40 @@ namespace KoiFarmShop.WebApplication.Pages.historydichvu
                 }
             }
         }
+        public string GetStatusBadgeClass(string status)
+        {
+            return (status?.ToLower()) switch
+            {
+                "pending" or "chờ duyệt" => "bg-warning text-dark",
+                "approved" or "đã duyệt" => "bg-info",
+                "care" or "đang chăm sóc" => "bg-primary",
+                "rejected" or "từ chối" => "bg-danger",
+                _ => "bg-secondary"
+            };
+        }
+
+        public string TranslateStatus(string status)
+        {
+            if (string.IsNullOrEmpty(status)) return "";
+            return status.ToLower() switch
+            {
+                "approved" => "Đã duyệt",
+                "rejected" => "Từ chối",
+                "pending" => "Chờ duyệt",
+                _ => status
+            };
+        }
+
+        public string TranslateCategory(string category)
+        {
+            if (string.IsNullOrEmpty(category)) return "";
+            return category.ToLower() switch
+            {
+                "imported" => "Nhập khẩu",
+                "domestic" => "Thuần Việt",
+                "hybrid" => "Lai F1",
+                _ => category
+            };
+        }
     }
 }

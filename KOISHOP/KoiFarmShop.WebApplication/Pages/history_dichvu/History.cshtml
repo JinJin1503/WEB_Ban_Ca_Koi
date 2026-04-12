@@ -5,21 +5,25 @@
 }
 
 <div class="container py-5">
-    <h2 class="text-center mb-4">Quản lý lịch sử Ký gửi của bạn</h2>
+    <header class="text-center mb-5">
+        <h2 class="fw-bold text-uppercase">Quản lý lịch sử Ký gửi</h2>
+        <p class="text-muted">Theo dõi trạng thái các đơn ký gửi cá Koi của bạn</p>
+    </header>
 
     @if (Model.MyRequests == null || !Model.MyRequests.Any())
     {
-        <div class="alert alert-info text-center shadow-sm">
-            Bạn chưa có đơn ký gửi nào. Hãy trải nghiệm dịch vụ của chúng tôi nhé!
+        <div class="alert alert-info text-center shadow-sm border-0 py-4">
+            <i class="fas fa-info-circle mb-2 fs-3"></i>
+            <p class="mb-0">Bạn chưa có đơn ký gửi nào. Hãy trải nghiệm dịch vụ của chúng tôi nhé!</p>
         </div>
     }
     else
     {
-        <div class="table-responsive shadow-sm rounded">
-            <table class="table table-bordered table-hover align-middle mb-0">
-                <thead class="table-dark text-center">
-                    <tr>
-                        <th>Mã Đơn</th>
+        <div class="table-responsive shadow-sm rounded-3">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr class="text-center">
+                        <th class="py-3">Mã Đơn</th>
                         <th>Ngày gửi</th>
                         <th>Loại dịch vụ</th>
                         <th>Tên cá Koi</th>
@@ -31,23 +35,24 @@
                     @foreach (var item in Model.MyRequests)
                     {
                         <tr>
-                            <td class="text-center fw-bold">#@item.RequestId</td>
+                            <td class="text-center fw-bold text-muted">#@item.RequestId</td>
                             <td class="text-center">@item.RequestDate.ToString("dd/MM/yyyy HH:mm")</td>
                             <td class="text-center">
-                                <span class="badge @(item.ConsignmentType == "Bán" ? "bg-primary" : "bg-success") px-3 py-2">
-                                    <i class="fas @(item.ConsignmentType == "Bán" ? "fa-store" : "fa-hand-holding-water") me-1"></i>
-                                    @item.ConsignmentType
+                                @{
+                                    var isBan = item.ConsignmentType == "Bán";
+                                    var typeClass = isBan ? "bg-primary-subtle text-primary border-primary" : "bg-success-subtle text-success border-success";
+                                    var icon = isBan ? "fa-store" : "fa-hand-holding-water";
+                                }
+                                <span class="badge border @typeClass px-3 py-2">
+                                    <i class="fas @icon me-1"></i> @item.ConsignmentType
                                 </span>
                             </td>
-                            <td class="fw-semibold text-primary">@item.KoiName</td>
-                            <td class="text-center">@item.KoiBreed</td>
+                            <td class="fw-bold text-dark">@item.KoiName</td>
+                            <td class="text-center">@Model.TranslateCategory(item.KoiBreed)</td>
                             <td class="text-center">
-                                @{
-                                    var badgeColor = item.Status == "Chờ duyệt" ? "bg-warning text-dark" :
-                                    item.Status == "Đã duyệt" ? "bg-info" :
-                                    item.Status == "Đang chăm sóc" ? "bg-primary" : "bg-secondary";
-                                }
-                                <span class="badge @badgeColor">@item.Status</span>
+                                <span class="badge rounded-pill @Model.GetStatusBadgeClass(item.Status) px-3 py-2">
+                                    @Model.TranslateStatus(item.Status)
+                                </span>
                             </td>
                         </tr>
                     }

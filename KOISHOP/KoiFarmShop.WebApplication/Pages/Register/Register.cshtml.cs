@@ -48,6 +48,15 @@ namespace KoiFarmShop.WebApplication.Pages.Register
 
         public string ErrorMessage { get; set; }
 
+        public IActionResult OnGet()
+        {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToPage("/Trangchu/Index"); // Đã đăng nhập thì đuổi ra trang chủ
+            }
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

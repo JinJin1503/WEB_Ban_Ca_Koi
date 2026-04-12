@@ -1,36 +1,30 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.Repositories.Entities;
-using KoiFarmShop.WebApplication.Security;
 
-namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
+namespace KoiFarmShop.WebApplication.Pages.manager.Customers
 {
-    [Authorize(Policy = AppPolicies.ManagerOnly)]
+    [Authorize(Roles = "Manager,Staff")]
     public class CreateModel : PageModel
     {
-        private readonly IStaffService _staffService;
+        private readonly ICustomerService _customerService;
         private readonly IUserService _userService;
-
-        // Tiêm cả 2 Service vào để thao tác với 2 bảng
-        public CreateModel(IStaffService staffService, IUserService userService)
+        public CreateModel(ICustomerService customerService, IUserService userService)
         {
-            _staffService = staffService;
+            _customerService = customerService;
             _userService = userService;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
-        // Class chứa các trường nhập liệu trên Form
         public class InputModel
         {
             [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
-
             [StringLength(40, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 đến 40 ký tự.")]
             public string UserName { get; set; }
 
@@ -39,7 +33,7 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             public string Password { get; set; }
 
             [Required(ErrorMessage = "Họ tên không được để trống")]
-            public string StaffName { get; set; }
+            public string CustomerName { get; set; }
 
             [Required(ErrorMessage = "Số điện thoại không được để trống")]
             [StringLength(10, MinimumLength = 10, ErrorMessage = "Số điện thoại phải có đúng 10 chữ số.")]
@@ -49,22 +43,18 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
             public string Email { get; set; }
 
-            [Required(ErrorMessage = "Vui lòng chọn vai trò")]
-            public string Role { get; set; }
-
-            [Required(ErrorMessage = "Vui lòng nhập lương")]
-            [Range(0, double.MaxValue, ErrorMessage = "Mức lương không được là số âm.")]
-            public int Salary { get; set; }
+            [Required(ErrorMessage = "Địa chỉ không được để trống")]
+            public string Address { get; set; }
         }
 
         public void OnGet()
         {
-            // Hiển thị form trống khi vừa vào trang
+            // Hiển thị form trống
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            // 1. Kiểm tra xem người dùng nhập đủ Form chưa
+            // 1. Kiểm tra Form
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -91,28 +81,29 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
                 return Page();
             }
 
-            // 4. Đăng nhập nháp để lấy đối tượng User (lấy cái UserId vừa sinh ra)
-            var createdUser = await _userService.LoginAsync(Input.UserName, Input.Password);
+            // 4. "Đăng nhập nháp" để lấy đối tượng User (mục đích là lấy UserId)
+            var loginResult = await _userService.LoginAsync(Input.UserName, Input.Password);
+            var createdUser = loginResult.user;
 
             if (createdUser != null)
             {
-                // 5. Tạo thông tin Nhân viên và gắn UserId vào
-                var newStaff = new Staff
+                // 5. Tạo thông tin Hồ sơ Khách hàng và gắn UserId vào
+                var newCustomer = new Customer
                 {
-                    StaffName = Input.StaffName,
+                    CustomerName = Input.CustomerName,
                     Phone = Input.Phone,
                     Email = Input.Email,
-                    Role = Input.Role,
-                    Salary = Input.Salary,
-                    JoinDate = DateTime.Now,
-                    UserId = createdUser.UserId // Móc nối 2 bảng với nhau ở đây
+                    Address = Input.Address,
+                    Points = 0, 
+                    UserId = createdUser.UserId
                 };
 
-                await _staffService.AddStaffAsync(newStaff);
+                // Lưu ý: Ngày đăng ký (RegistrationDate) đã được chúng ta cài tự động sinh ra trong file CustomerService rồi!
+                await _customerService.AddCustomerAsync(newCustomer);
             }
 
-            // 6. Quay lại trang danh sách nhân viên
-            TempData["SuccessMessage"] = "Thêm nhân viên mới thành công!";
+            // 6. Quay lại trang danh sách và báo thành công
+            TempData["SuccessMessage"] = "Thêm khách hàng mới thành công!";
             return RedirectToPage("./Index");
         }
     }

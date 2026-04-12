@@ -1,12 +1,16 @@
 ﻿@{
     Layout = null;
     var currentPath = Context.Request.Path.Value ?? string.Empty;
-    bool isStaffManagement = currentPath.StartsWith("/manager", System.StringComparison.OrdinalIgnoreCase)
+    bool isStaffManagement = currentPath.StartsWith("/manager/Staffs", System.StringComparison.OrdinalIgnoreCase)
         && !currentPath.StartsWith("/manager/products", System.StringComparison.OrdinalIgnoreCase);
     bool isProductManagement = currentPath.StartsWith("/manager/products", System.StringComparison.OrdinalIgnoreCase)
         || currentPath.StartsWith("/Product/Create", System.StringComparison.OrdinalIgnoreCase)
         || currentPath.StartsWith("/Product/Edit", System.StringComparison.OrdinalIgnoreCase)
         || currentPath.StartsWith("/Product/Delete", System.StringComparison.OrdinalIgnoreCase);
+    bool isCustomerManagement = currentPath.StartsWith("/manager/Customers", System.StringComparison.OrdinalIgnoreCase);
+
+    bool isConsignmentManagement = currentPath.StartsWith("/Manager/ManageConsignment", System.StringComparison.OrdinalIgnoreCase);
+    bool isMyProfile = currentPath.StartsWith("/manager/MyProfile", System.StringComparison.OrdinalIgnoreCase);
 }
 <!DOCTYPE html>
 <html lang="vi">
@@ -31,16 +35,27 @@
                         <a class="nav-link @(isStaffManagement ? "active" : null)" asp-page="/manager/Staffs/Index">Quản lý nhân viên</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link @(isCustomerManagement ? "active" : null)" asp-page="/manager/Customers/Index">Quản lý khách hàng</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link @(isProductManagement ? "active" : null)" asp-page="/manager/Products">Quản lý sản phẩm</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-page="/Manager/ManageConsignment">Quản Lý Ký Gửi</a>
+                        <a class="nav-link @(isConsignmentManagement ? "active" : null)" asp-page="/Manager/ManageConsignment">Quản Lý Ký Gửi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-page="manager/Order/Index">Quản lý đơn hàng</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-page="/Trangchu/Index">Về trang chủ</a>
                     </li>
                 </ul>
-                <a class="btn btn-outline-light btn-sm" asp-page="/Logout">Đăng xuất</a>
+                <div class="d-flex gap-2 align-items-center">
+                    <a class="btn btn-info btn-sm text-white @(isMyProfile ? "active" : "")" asp-page="/manager/MyProfile/Index">
+                        <i class="bi bi-person-circle me-1"></i> Hồ sơ của tôi
+                    </a>
+                    <a class="btn btn-outline-light btn-sm" asp-page="/Logout">Đăng xuất</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -69,7 +84,7 @@
                     <div class="card border-0 shadow-sm h-100">
                         <div class="card-body">
                             <div class="text-muted small mb-1">Quyền hiện tại</div>
-                            <h6 class="mb-0">Manager</h6>
+                            <h6 class="mb-0">@(User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value ?? "Manager")</h6>
                         </div>
                     </div>
                 </div>

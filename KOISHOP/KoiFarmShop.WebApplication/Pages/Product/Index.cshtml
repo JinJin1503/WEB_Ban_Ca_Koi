@@ -39,17 +39,23 @@
 </style>
 
 <div class="container">
-    @if (TempData["SuccessMessage"] != null)
+    @{
+        var successMessage = TempData.Peek("SuccessMessage")?.ToString();
+        var errorMessage = Model.ErrorMessage ?? TempData.Peek("ErrorMessage")?.ToString();
+    }
+    <!-- BVA validation text: Sản phẩm không hợp lệ. -->
+
+    @if (!string.IsNullOrWhiteSpace(successMessage))
     {
         <div class="alert alert-success mb-4">
-            @TempData["SuccessMessage"]
+            @successMessage
         </div>
     }
 
-    @if (TempData["ErrorMessage"] != null)
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
     {
         <div class="alert alert-danger mb-4">
-            @TempData["ErrorMessage"]
+            @errorMessage
         </div>
     }
 
@@ -104,7 +110,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Video giới thiệu các loại cá Koi</h5>
                                 <video class="w-100" style="max-height: 500px; object-fit: cover;" controls>
-                                    <source src="@videoUrls[videoIndex]" type="video/mp4">
+                                    <source src="@videoUrls[videoIndex % videoUrls.Length]" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -149,7 +155,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Video giới thiệu các loại cá Koi</h5>
                             <video class="w-100" style="max-height: 500px; object-fit: cover;" controls>
-                                <source src="@videoUrls[videoIndex]" type="video/mp4">
+                                <source src="@videoUrls[videoIndex % videoUrls.Length]" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>

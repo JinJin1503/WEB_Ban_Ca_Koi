@@ -1,0 +1,95 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.manager.Customers.IndexModel
+@{
+    ViewData["Title"] = "Quản lý Khách hàng";
+    Layout = "~/Pages/Shared/_ManagerLayout.cshtml"; // Sử dụng layout của Admin
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách khách hàng</h6>
+        <a asp-page="Create" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Thêm khách hàng</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Mã KH</th>
+                        <th>Họ và tên</th>
+                        <th>Điện thoại</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày đăng ký</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Customers != null && Model.Customers.Count > 0)
+                    {
+                        foreach (var item in Model.Customers)
+                        {
+                            <tr>
+                                <td>@item.CustomerId</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.Phone</td>
+                                <td>@item.Email</td>
+                                <td>@item.Address</td>
+                                <td>@item.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a asp-page="/manager/Customers/Details" asp-route-id="@item.CustomerId" class="btn btn-info btn-sm text-white">Xem</a>
+                                    <a asp-page="/manager/Customers/Edit" asp-route-id="@item.CustomerId" class="btn btn-warning btn-sm">Sửa</a>
+                                    <a asp-page="/manager/Customers/Delete" asp-route-id="@item.CustomerId" class="btn btn-danger btn-sm">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="8" class="text-center">Chưa có dữ liệu khách hàng.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-route-pageIndex="@(Model.CurrentPage - 1)">Trang trước</a>
+                    </li>
+
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-route-pageIndex="@i">@i</a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" asp-route-pageIndex="@(Model.CurrentPage + 1)">Trang sau</a>
+                    </li>
+                </ul>
+            </nav>
+        }
+    </div>
+</div>

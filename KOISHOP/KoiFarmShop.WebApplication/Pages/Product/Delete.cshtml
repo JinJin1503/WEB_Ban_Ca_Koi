@@ -104,6 +104,8 @@
 
     <form method="post">
         <input type="hidden" asp-for="KoiFish.KoiId" />
+        <input type="hidden" asp-for="KoiFish.PricePerKoi" />
+        <input type="hidden" asp-for="KoiFish.PricePerBatch" />
         <input type="submit" value="Xóa sản phẩm" class="btn btn-danger" />
         <a asp-page="/manager/Products" class="btn btn-outline-secondary">Quay lại</a>
     </form>

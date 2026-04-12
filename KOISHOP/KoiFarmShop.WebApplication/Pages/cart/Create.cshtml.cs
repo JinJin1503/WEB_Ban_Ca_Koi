@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.Services.Services;
 
 namespace KoiFarmShop.WebApplication.Pages.Cart
 {
@@ -29,6 +28,9 @@ namespace KoiFarmShop.WebApplication.Pages.Cart
         [BindProperty]
         public KoiFarmShop.Repositories.Entities.Cart Cart { get; set; }
 
+        [BindProperty]
+        public int KoiId { get; set; }
+
         // Dùng để cung cấp danh sách khách hàng và cá Koi cho select list
         public async Task<IActionResult> OnGetAsync()
         {
@@ -45,15 +47,43 @@ namespace KoiFarmShop.WebApplication.Pages.Cart
         // Thực hiện thêm Cart mới khi submit form
         public async Task<IActionResult> OnPostAsync()
         {
+            NormalizeValidation();
+
             if (!ModelState.IsValid)
             {
-                return Page();
+                TempData["ErrorMessage"] = "Dữ liệu giỏ hàng không hợp lệ.";
+                return RedirectToPage("./Index");
             }
 
-            // Thêm giỏ hàng vào CSDL thông qua dịch vụ
-            await _cartService.AddCartItemToCartAsync(Cart.CustomerId, Cart.CartItems.FirstOrDefault().KoiId, 1, 1, 1, 1); // Chỉnh lại cách gửi dữ liệu nếu có nhiều hơn 1 sản phẩm
+            var selectedKoiId = KoiId;
+            if (selectedKoiId <= 0)
+            {
+                selectedKoiId = Cart?.CartItems?.FirstOrDefault()?.KoiId ?? 0;
+            }
+
+            if (Cart == null || Cart.CustomerId <= 0 || selectedKoiId <= 0)
+            {
+                TempData["ErrorMessage"] = "Thiếu thông tin để tạo giỏ hàng.";
+                return RedirectToPage("./Index");
+            }
+
+            try
+            {
+                await _cartService.AddCartItemToCartAsync(Cart.CustomerId, selectedKoiId, 1, 1, 1, 1);
+                TempData["SuccessMessage"] = "Thêm giỏ hàng thành công.";
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Không thể tạo giỏ hàng.";
+            }
 
             return RedirectToPage("./Index");
+        }
+
+        private void NormalizeValidation()
+        {
+            ModelState.Remove("Cart.Customer");
+            ModelState.Remove("Cart.CartItems");
         }
     }
 }

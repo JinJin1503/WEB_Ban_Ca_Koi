@@ -1,41 +1,39 @@
 ﻿using KoiFarmShop.Repositories.Entities;
+using KoiFarmShop.Repositories.Interfaces;
 using KoiFarmShop.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace KoiFarmShop.Services.Implementations
 {
     public class CustomerService : ICustomerService
     {
-        private readonly KoiFarmDbContext _context;
+        private readonly ICustomerRepository _customerRepository;
 
-        public CustomerService(KoiFarmDbContext context)
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            _context = context;
+            _customerRepository = customerRepository;
         }
 
-        // Lấy tất cả khách hàng
         public async Task<List<Customer>> GetAllCustomersAsync()
         {
-            return await _context.Customers.ToListAsync();
+            return await _customerRepository.GetCustomers();
         }
 
-        public async Task<Customer> GetCustomerByUserIdAsync(int userId)
-        {
-            return await _context.Customers
-                                 .FirstOrDefaultAsync(c => c.UserId == userId);
-        }
-
-
-        // Lấy thông tin khách hàng theo ID
+        // Lấy khách hàng theo mã CustomerId
         public async Task<Customer> GetCustomerByIdAsync(int customerId)
         {
-            return await _context.Customers
-                                 .FirstOrDefaultAsync(c => c.CustomerId == customerId);
+            return await _customerRepository.GetCustomerById(customerId);
+        }
+
+        // Lấy khách hàng theo mã UserId (tài khoản đăng nhập)
+        public async Task<Customer> GetCustomerByUserIdAsync(int userId)
+        {
+            var customers = await _customerRepository.GetCustomers();
+            return customers.FirstOrDefault(c => c.UserId == userId);
         }
 
         // Thêm khách hàng mới
@@ -45,9 +43,9 @@ namespace KoiFarmShop.Services.Implementations
             {
                 throw new ArgumentNullException(nameof(customer), "Customer cannot be null");
             }
+            customer.RegistrationDate = DateTime.Now;
 
-            await _context.Customers.AddAsync(customer);
-            await _context.SaveChangesAsync();
+            await _customerRepository.AddCustomer(customer);
         }
 
         // Cập nhật thông tin khách hàng
@@ -58,52 +56,47 @@ namespace KoiFarmShop.Services.Implementations
                 throw new ArgumentNullException(nameof(customer), "Customer cannot be null");
             }
 
-            var existingCustomer = await _context.Customers
-                                                  .FirstOrDefaultAsync(c => c.CustomerId == customer.CustomerId);
+            // 1. Dùng Repository tìm khách hàng cũ trong Database
+            var existingCustomer = await _customerRepository.GetCustomerById(customer.CustomerId);
+
             if (existingCustomer == null)
             {
                 throw new KeyNotFoundException($"Customer with ID {customer.CustomerId} not found.");
             }
 
-            // Cập nhật thông tin khách hàng
+            // 2. Cập nhật các trường thông tin
             existingCustomer.CustomerName = customer.CustomerName;
             existingCustomer.Email = customer.Email;
+            existingCustomer.Phone = customer.Phone;
+            existingCustomer.Address = customer.Address;
 
-            _context.Customers.Update(existingCustomer);
-            await _context.SaveChangesAsync();
+            // 3. Gọi Repository để lưu thay đổi
+            await _customerRepository.UpdateCustomer(existingCustomer);
         }
 
         // Xóa khách hàng theo ID
         public async Task DeleteCustomerAsync(int customerId)
         {
-            var customer = await _context.Customers
-                                         .FirstOrDefaultAsync(c => c.CustomerId == customerId);
-            if (customer == null)
-            {
-                throw new KeyNotFoundException($"Customer with ID {customerId} not found.");
-            }
-
-            _context.Customers.Remove(customer);
-            await _context.SaveChangesAsync();
+            // Repository của bạn đã tự xử lý logic tìm và xóa rồi, chỉ cần gọi nó
+            await _customerRepository.DeleteCustomer(customerId);
         }
 
         // Áp dụng điểm thưởng cho khách hàng
         public async Task ApplyLoyaltyPointsAsync(int customerId, int points)
         {
-            var customer = await _context.Customers
-                                         .FirstOrDefaultAsync(c => c.CustomerId == customerId);
+            // 1. Tìm khách hàng
+            var customer = await _customerRepository.GetCustomerById(customerId);
+
             if (customer == null)
             {
                 throw new KeyNotFoundException($"Customer with ID {customerId} not found.");
             }
 
-            // Cập nhật điểm thưởng
+            // 2. Cộng điểm
             customer.Points += points;
 
-            _context.Customers.Update(customer);
-            await _context.SaveChangesAsync();
+            // 3. Gọi Update của Repository để lưu lại
+            await _customerRepository.UpdateCustomer(customer);
         }
-
-       
     }
 }

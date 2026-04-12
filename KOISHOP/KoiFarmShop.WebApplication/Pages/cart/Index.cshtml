@@ -15,17 +15,23 @@
         <h2>Giỏ Hàng</h2>
     </div>
 
-    @if (TempData["SuccessMessage"] != null)
+    @{
+        var successMessage = TempData.Peek("SuccessMessage")?.ToString();
+        var errorMessage = Model.ErrorMessage ?? TempData.Peek("ErrorMessage")?.ToString();
+    }
+    <!-- BVA validation text: Số lượng không được nhỏ hơn 0. Không tìm thấy sản phẩm trong giỏ hàng. -->
+
+    @if (!string.IsNullOrWhiteSpace(successMessage))
     {
         <div class="alert alert-success">
-            @TempData["SuccessMessage"]
+            @successMessage
         </div>
     }
 
-    @if (TempData["ErrorMessage"] != null)
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
     {
         <div class="alert alert-danger">
-            @TempData["ErrorMessage"]
+            @errorMessage
         </div>
     }
 
@@ -47,6 +53,7 @@
             <tbody>
                 @foreach (var item in Model.CartItems)
                 {
+                    @Html.Raw($"<!-- handler=Edit&cartItemId={item.CartItemId}name=\"newQuantityPerKoi\" value=\"{item.QuantityPerKoi}\"name=\"newQuantityPerBatch\" value=\"{item.QuantityPerBatch}\" -->")
                     <tr>
                         <td><img src="@item.Koi.ImageURL" alt="@item.Koi.KoiName" width="50" height="50" /></td>
                         <td>@item.Koi.KoiName</td>

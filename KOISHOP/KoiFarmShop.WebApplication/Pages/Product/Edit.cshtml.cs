@@ -42,15 +42,42 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 
 		// To protect from overposting attacks, enable the specific properties you want to bind to, for
 		// more details, see https://aka.ms/RazorPagesCRUD.
-		public async Task<IActionResult> OnPostAsync()
+		public async Task<IActionResult> OnPostAsync(int? id)
 		{
+			if (KoiFish != null && KoiFish.KoiId <= 0 && id.HasValue)
+			{
+				KoiFish.KoiId = id.Value;
+			}
+
+			NormalizeValidation();
+
 			if (!ModelState.IsValid)
 			{
 				LoadCategoryOptions(KoiFish?.CategoryId);
 				return Page();
 			}
 
-			_context.Attach(KoiFish).State = EntityState.Modified;
+			var existingKoiFish = await _context.KoiFishs.FindAsync(KoiFish.KoiId);
+			if (existingKoiFish == null)
+			{
+				return NotFound();
+			}
+
+			existingKoiFish.KoiName = KoiFish.KoiName;
+			existingKoiFish.Origin = KoiFish.Origin;
+			existingKoiFish.Gender = KoiFish.Gender;
+			existingKoiFish.Age = KoiFish.Age;
+			existingKoiFish.Size = KoiFish.Size;
+			existingKoiFish.BreedType = KoiFish.BreedType;
+			existingKoiFish.Personality = KoiFish.Personality;
+			existingKoiFish.DailyFeed = KoiFish.DailyFeed;
+			existingKoiFish.ScreeningRate = KoiFish.ScreeningRate;
+			existingKoiFish.HealthStatus = KoiFish.HealthStatus;
+			existingKoiFish.Awards = KoiFish.Awards;
+			existingKoiFish.PricePerKoi = KoiFish.PricePerKoi;
+			existingKoiFish.PricePerBatch = KoiFish.PricePerBatch;
+			existingKoiFish.ImageURL = KoiFish.ImageURL;
+			existingKoiFish.CategoryId = KoiFish.CategoryId;
 
 			try
 			{
@@ -79,6 +106,48 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 		private bool KoiFishExists(int id)
 		{
 			return _context.KoiFishs.Any(e => e.KoiId == id);
+		}
+
+		private void NormalizeValidation()
+		{
+			ModelState.Remove("KoiFish.Category");
+
+			if (KoiFish == null)
+			{
+				ModelState.AddModelError(string.Empty, "Dữ liệu sản phẩm không hợp lệ.");
+				return;
+			}
+
+			ValidateNonNegative(nameof(KoiFish.Age), KoiFish.Age);
+			ValidateNonNegative(nameof(KoiFish.Size), KoiFish.Size);
+			ValidateNonNegative(nameof(KoiFish.DailyFeed), KoiFish.DailyFeed);
+			ValidateNonNegative(nameof(KoiFish.ScreeningRate), KoiFish.ScreeningRate);
+			ValidateNonNegative(nameof(KoiFish.PricePerKoi), KoiFish.PricePerKoi);
+			ValidateNonNegative(nameof(KoiFish.PricePerBatch), KoiFish.PricePerBatch);
+		}
+
+		private void ValidateNonNegative(string propertyName, int value)
+		{
+			if (value < 0)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}", $"{propertyName} phải lớn hơn hoặc bằng 0.");
+			}
+		}
+
+		private void ValidateNonNegative(string propertyName, float value)
+		{
+			if (value < 0)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}", $"{propertyName} phải lớn hơn hoặc bằng 0.");
+			}
+		}
+
+		private void ValidateNonNegative(string propertyName, decimal value)
+		{
+			if (value < 0)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}", $"{propertyName} phải lớn hơn hoặc bằng 0.");
+			}
 		}
 	}
 }

@@ -22,6 +22,34 @@
 }
 
 <div class="container-fluid px-4">
+    <div class="mb-4">
+        <form method="get" class="d-flex gap-2 flex-wrap">
+            <button type="submit" name="FilterStatus" value="All"
+                    class="btn btn-@(string.IsNullOrEmpty(Model.FilterStatus) || Model.FilterStatus == "All" ? "primary" : "outline-primary") rounded-pill px-4 fw-bold">
+                Tất cả
+            </button>
+            <button type="submit" name="FilterStatus" value="Chờ duyệt"
+                    class="btn btn-@(Model.FilterStatus == "Chờ duyệt" ? "warning text-dark fw-bold" : "outline-warning text-dark") rounded-pill px-3">
+                Chờ duyệt
+            </button>
+            <button type="submit" name="FilterStatus" value="Đã nhận cá"
+                    class="btn btn-@(Model.FilterStatus == "Đã nhận cá" ? "info text-dark fw-bold" : "outline-info text-dark") rounded-pill px-3">
+                Đã nhận cá
+            </button>
+            <button type="submit" name="FilterStatus" value="Đang chăm sóc"
+                    class="btn btn-@(Model.FilterStatus == "Đang chăm sóc" ? "secondary fw-bold" : "outline-secondary") rounded-pill px-3">
+                Đang chăm sóc
+            </button>
+            <button type="submit" name="FilterStatus" value="Đã bán"
+                    class="btn btn-@(Model.FilterStatus == "Đã bán" ? "success fw-bold" : "outline-success") rounded-pill px-3">
+                Đã bán
+            </button>
+            <button type="submit" name="FilterStatus" value="Từ chối"
+                    class="btn btn-@(Model.FilterStatus == "Từ chối" ? "danger fw-bold" : "outline-danger") rounded-pill px-3">
+                Từ chối
+            </button>
+        </form>
+    </div>
     <h1 class="mt-4 mb-3">@ViewData["Title"]</h1>
 
     <div class="card mb-4 shadow-sm border-0">

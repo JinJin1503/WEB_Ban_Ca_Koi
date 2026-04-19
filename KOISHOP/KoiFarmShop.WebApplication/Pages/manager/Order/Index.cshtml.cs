@@ -2,57 +2,97 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using KoiFarmShop.Services.Interfaces;
 using KoiFarmShop.Repositories.Entities;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-namespace KoiFarmShop.WebApplication.Pages.Order;
+using System;
 
-public class IndexModel : PageModel
+namespace KoiFarmShop.WebApplication.Pages.Order
 {
-    private readonly IOrderService _orderService;
-
-    public IndexModel(IOrderService orderService)
+    public class IndexModel : PageModel
     {
-        _orderService = orderService;
-    }
-    public string StatusFilter { get; set; }
-    public List<Orders> Orders { get; set; }
+        private readonly IOrderService _orderService;
 
-    public async Task OnGetAsync(string status)
-    {
-        StatusFilter = status;
-
-        var orders = await _orderService.GetAllOrdersAsync();
-
-        if (!string.IsNullOrEmpty(status))
+        public IndexModel(IOrderService orderService)
         {
-            orders = orders.Where(o => o.Status == status).ToList();
+            _orderService = orderService;
         }
 
-        Orders = orders;
-    }
+        public string StatusFilter { get; set; }
+        public List<Orders> Orders { get; set; }
 
-    public async Task<IActionResult> OnPostApproveAsync(int orderId)
-    {
-        await _orderService.UpdateStatus(orderId, "Approved");
-        return RedirectToPage();
-    }
+        // =========================
+        // GET
+        // =========================
+        public async Task OnGetAsync(string status)
+        {
+            StatusFilter = status;
 
-    public async Task<IActionResult> OnPostShippingAsync(int orderId)
-    {
-        await _orderService.UpdateStatus(orderId, "Shipping");
-        return RedirectToPage();
-    }
+            var orders = await _orderService.GetAllOrdersAsync();
 
-    public async Task<IActionResult> OnPostDeliveredAsync(int orderId)
-    {
-        await _orderService.UpdateStatus(orderId, "Delivered");
-        return RedirectToPage();
-    }
-    public async Task<IActionResult> OnGetTestAsync()
-    {
-        await _orderService.UpdateStatus(1, "Shipping");
-        return Content("Updated!");
+            if (!string.IsNullOrEmpty(status))
+            {
+                orders = orders.Where(o => o.Status == status).ToList();
+            }
+
+            Orders = orders;
+        }
+
+        // =========================
+        // APPROVE
+        // =========================
+        public async Task<IActionResult> OnPostApproveAsync(int orderId)
+        {
+            try
+            {
+                await _orderService.UpdateStatus(orderId, "Approved");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                await OnGetAsync(null);
+                return Page();
+            }
+
+            return RedirectToPage();
+        }
+
+        // =========================
+        // SHIPPING
+        // =========================
+        public async Task<IActionResult> OnPostShippingAsync(int orderId)
+        {
+            try
+            {
+                await _orderService.UpdateStatus(orderId, "Shipping");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                await OnGetAsync(null);
+                return Page();
+            }
+
+            return RedirectToPage();
+        }
+
+        // =========================
+        // COMPLETED
+        // =========================
+        public async Task<IActionResult> OnPostCompletedAsync(int orderId)
+        {
+            try
+            {
+                await _orderService.UpdateStatus(orderId, "Completed");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                await OnGetAsync(null);
+                return Page();
+            }
+
+            return RedirectToPage();
+        }
     }
 }

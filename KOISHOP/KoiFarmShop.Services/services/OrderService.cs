@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace KoiFarmShop.Services
 {
@@ -19,63 +17,90 @@ namespace KoiFarmShop.Services
             _dbContext = dbContext;
         }
 
-        // Method to create a new order
+        // =========================
+        // CREATE ORDER
+        // =========================
         public async Task CreateOrderAsync(Orders order)
         {
             if (order == null)
                 throw new ArgumentNullException(nameof(order));
 
-            // Add the order to the database
+            if (order.OrderDetails == null || !order.OrderDetails.Any())
+                throw new ArgumentException("Order must have at least one detail");
+
             _dbContext.Orders.Add(order);
-
-            // Add the order details associated with the order
-            foreach (var orderDetail in order.OrderDetails)
-            {
-                _dbContext.OrderDetails.Add(orderDetail);
-            }
-
-            // Save changes to the database asynchronously
             await _dbContext.SaveChangesAsync();
         }
 
-        // Method to get an order by its ID
+        // =========================
+        // GET ORDER BY ID
+        // =========================
         public async Task<Orders> GetOrderByIdAsync(int orderId)
         {
-            // Fetch the order along with its details from the database
+            if (orderId <= 0)
+                throw new ArgumentException("Invalid OrderId");
+
             var order = await _dbContext.Orders
                 .Include(o => o.OrderDetails)
-                .ThenInclude(od => od.Koi)  // Including the related Koi details
+                .ThenInclude(od => od.Koi)
                 .FirstOrDefaultAsync(o => o.OrderId == orderId);
+
+            if (order == null)
+                throw new Exception("Order not found");
+
+            // tính tổng tiền
+            order.TotalPrice = order.OrderDetails.Sum(x => x.TotalAmount);
 
             return order;
         }
+
+        // =========================
+        // UPDATE STATUS
+        // =========================
         public async Task UpdateStatus(int orderId, string status)
         {
+            if (orderId <= 0)
+                throw new ArgumentException("Invalid OrderId");
+
             var order = await _dbContext.Orders.FindAsync(orderId);
-            if (order == null) throw new Exception("Order not found");
+
+            if (order == null)
+                throw new Exception("Order not found");
+
+            if (string.IsNullOrWhiteSpace(status))
+                throw new ArgumentException("Status is required");
+
+            var validStatus = new List<string>
+            {
+                "Pending",
+                "Shipping",
+                "Approved",
+                "Completed"
+            };
+
+            if (!validStatus.Contains(status))
+                throw new ArgumentException("Invalid status");
 
             order.Status = status;
             await _dbContext.SaveChangesAsync();
         }
 
+        // =========================
+        // GET ALL ORDERS
+        // =========================
         public async Task<List<Orders>> GetAllOrdersAsync()
         {
             var orders = await _dbContext.Orders
                 .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Koi)
                 .ToListAsync();
 
             foreach (var order in orders)
             {
-                var details = _dbContext.OrderDetails
-                    .Include(x => x.Koi) // 🔥 QUAN TRỌNG
-                    .Where(x => x.OrderId == order.OrderId)
-                    .ToList();
-
-                order.TotalPrice = details.Sum(x => x.TotalAmount);
+                order.TotalPrice = order.OrderDetails.Sum(x => x.TotalAmount);
             }
 
             return orders;
         }
-
     }
 }

@@ -74,11 +74,37 @@
                         {
                             foreach (var item in Model.Requests)
                             {
-                                // Đưa về chữ thường để so sánh cho an toàn, tránh lỗi chữ hoa chữ thường
+                                // Đưa về chữ thường để so sánh cho an toàn
                                 var currentStatus = item.Status?.ToLower();
 
-                                <tr>
-                                    <td class="ps-3"><strong>#@item.RequestId</strong></td>
+                                // --- BẮT ĐẦU: LOGIC TÍNH TOÁN CẢNH BÁO ---
+                                var rowClass = "";
+                                var alertBadge = "";
+
+                                if (item.ConsignmentType == "Chăm sóc" && currentStatus == "đang chăm sóc")
+                                {
+                                    var startDate = item.ConsignmentDate;
+                                    var endDate = startDate.AddMonths(item.ConsignmentDuration);
+                                    var daysLeft = (endDate - DateTime.Now).TotalDays;
+
+                                    if (daysLeft < 0)
+                                    {
+                                        rowClass = "table-danger"; // Tô đỏ cả dòng nếu quá hạn
+                                        alertBadge = "<span class='badge bg-danger ms-2 heartbeat'><i class='fas fa-exclamation-triangle'></i> Quá hạn</span>";
+                                    }
+                                    else if (daysLeft <= 3)
+                                    {
+                                        rowClass = "table-warning"; // Tô vàng nếu còn dưới 3 ngày
+                                        alertBadge = $"<span class='badge bg-warning text-dark ms-2'><i class='fas fa-bell'></i> Sắp hạn ({Math.Ceiling(daysLeft)} ngày)</span>";
+                                    }
+                                }
+                                // --- KẾT THÚC LOGIC ---
+
+                                <tr class="@rowClass">
+                                    <td class="ps-3">
+                                        <strong>#@item.RequestId</strong>
+                                        @Html.Raw(alertBadge)
+                                    </td>
                                     <td>@(item.Customer?.CustomerName ?? "Khách lẻ")</td>
                                     <td>
                                         <span class="badge @(item.ConsignmentType == "Bán" ? "bg-info text-dark" : "bg-success")">

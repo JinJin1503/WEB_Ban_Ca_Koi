@@ -27,8 +27,6 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 		[BindProperty]
 		public KoiFish KoiFish { get; set; }
 
-		// To protect from overposting attacks, enable the specific properties you want to bind to, for
-		// more details, see https://aka.ms/RazorPagesCRUD.
 		public async Task<IActionResult> OnPostAsync()
 		{
 			NormalizeValidation();
@@ -60,12 +58,15 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				return;
 			}
 
-			ValidateNonNegative(nameof(KoiFish.Age), KoiFish.Age);
-			ValidateNonNegative(nameof(KoiFish.Size), KoiFish.Size);
-			ValidateNonNegative(nameof(KoiFish.DailyFeed), KoiFish.DailyFeed);
-			ValidateNonNegative(nameof(KoiFish.ScreeningRate), KoiFish.ScreeningRate);
-			ValidateNonNegative(nameof(KoiFish.PricePerKoi), KoiFish.PricePerKoi);
-			ValidateNonNegative(nameof(KoiFish.PricePerBatch), KoiFish.PricePerBatch);
+			TryValidateModel(KoiFish, nameof(KoiFish));
+			ModelState.Remove("KoiFish.Category");
+
+			ValidateRange(nameof(KoiFish.Age), KoiFish.Age, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxAge);
+			ValidateRange(nameof(KoiFish.Size), KoiFish.Size, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxSize);
+			ValidateRange(nameof(KoiFish.DailyFeed), KoiFish.DailyFeed, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxDailyFeed);
+			ValidateRange(nameof(KoiFish.ScreeningRate), KoiFish.ScreeningRate, 0, 100);
+			ValidateRange(nameof(KoiFish.PricePerKoi), KoiFish.PricePerKoi, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxPricePerKoi);
+			ValidateRange(nameof(KoiFish.PricePerBatch), KoiFish.PricePerBatch, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxPricePerBatch);
 		}
 
 		private void ValidateNonNegative(string propertyName, int value)
@@ -91,6 +92,32 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				ModelState.AddModelError($"KoiFish.{propertyName}", $"{propertyName} phải lớn hơn hoặc bằng 0.");
 			}
 		}
+	
+		private void ValidateRange(string propertyName, int value, int min, int max)
+		{
+			if (value < min || value > max)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}",
+					$"{propertyName} phải nằm trong khoảng {min} - {max}.");
+			}
+		}
+
+		private void ValidateRange(string propertyName, float value, float min, float max)
+		{
+			if (value < min || value > max)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}",
+					$"{propertyName} phải nằm trong khoảng {min} - {max}.");
+			}
+		}
+
+		private void ValidateRange(string propertyName, decimal value, decimal min, decimal max)
+		{
+			if (value < min || value > max)
+			{
+				ModelState.AddModelError($"KoiFish.{propertyName}",
+					$"{propertyName} phải nằm trong khoảng {min} - {max}.");
+			}
+		}
 	}
 }
-

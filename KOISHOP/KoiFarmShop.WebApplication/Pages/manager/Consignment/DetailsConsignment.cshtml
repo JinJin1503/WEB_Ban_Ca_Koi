@@ -1,5 +1,5 @@
 ﻿@page
-@model KoiFarmShop.WebApplication.Pages.Manager.DetailsConsignmentModel
+@model KoiFarmShop.WebApplication.Pages.Manager.Consignment.DetailsConsignmentModel
 @{
     Layout = "_ManagerLayout";
     ViewData["Title"] = "Chi Tiết Đơn Ký Gửi";
@@ -47,7 +47,7 @@
 <div class="container-fluid px-4 mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Chi Tiết Đơn Ký Gửi #@Model.ConsignmentRequest.RequestId</h2>
-        <a href="/manager/ManageConsignment" class="btn btn-outline-secondary">Quay lại danh sách</a>
+        <a href="/manager/Consignment/ManageConsignment" class="btn btn-outline-secondary">Quay lại danh sách</a>
     </div>
 
     <div class="row">

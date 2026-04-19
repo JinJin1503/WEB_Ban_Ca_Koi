@@ -1,6 +1,6 @@
 ﻿using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.WebApplication.Pages.Manager;
+using KoiFarmShop.WebApplication.Pages.Manager.Consignment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Moq;

@@ -30,7 +30,6 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
         public class InputModel
         {
             [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
-
             [StringLength(40, MinimumLength = 3, ErrorMessage = "Tên đăng nhập phải từ 3 đến 40 ký tự.")]
             public string UserName { get; set; }
 
@@ -92,7 +91,8 @@ namespace KoiFarmShop.WebApplication.Pages.manager.Staffs
             }
 
             // 4. Đăng nhập nháp để lấy đối tượng User (lấy cái UserId vừa sinh ra)
-            var createdUser = await _userService.LoginAsync(Input.UserName, Input.Password);
+            var loginResult = await _userService.LoginAsync(Input.UserName, Input.Password);
+            var createdUser = loginResult.user;
 
             if (createdUser != null)
             {

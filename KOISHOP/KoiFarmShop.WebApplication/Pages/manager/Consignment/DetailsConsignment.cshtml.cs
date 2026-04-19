@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 
-namespace KoiFarmShop.WebApplication.Pages.Manager
+namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
 {
     [Authorize(Policy = AppPolicies.StaffOrManager)]
     public class DetailsConsignmentModel : PageModel
@@ -55,7 +55,7 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
                 request.Status = "Đã nhận cá";
                 await _consignmentService.UpdateConsignmentRequestAsync(request);
             }
-            return RedirectToPage(new { id = id }); // Reload lại trang hiện tại
+            return RedirectToPage(new { id }); // Reload lại trang hiện tại
         }
 
         // 3. Hàm xử lý nút ĐANG CHĂM SÓC
@@ -70,7 +70,7 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
 
                 await _consignmentService.UpdateConsignmentRequestAsync(request);
             }
-            return RedirectToPage(new { id = id });
+            return RedirectToPage(new { id });
         }
 
         // 4. Hàm xử lý nút ĐÃ BÁN
@@ -82,7 +82,7 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
                 request.Status = "Đã bán";
                 await _consignmentService.UpdateConsignmentRequestAsync(request);
             }
-            return RedirectToPage(new { id = id });
+            return RedirectToPage(new { id });
         }
     }
 }

@@ -8,6 +8,7 @@ using Moq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.AspNetCore.Hosting;
 
 namespace BVA.Tests
 {
@@ -37,8 +38,8 @@ namespace BVA.Tests
                 mockCustomerService.Setup(s => s.GetCustomerByUserIdAsync(It.IsAny<int>()))
                                    .ReturnsAsync((Customer)null);
             }
-
-            var pageModel = new IndexModel(mockConsignService.Object, mockCustomerService.Object)
+            var mockEnvironment = new Mock<IWebHostEnvironment>();
+            var pageModel = new IndexModel(mockConsignService.Object, mockCustomerService.Object, mockEnvironment.Object)
             {
                 ConsignmentRequest = new ConsignmentRequest { KoiName = "Koi Test", ConsignmentFee = 1000000 }
             };

@@ -44,23 +44,26 @@ namespace KoiFarmShop.WebApplication.Pages.historydichvu
         {
             return (status?.ToLower()) switch
             {
+                "approved" or "đã duyệt" => "bg-primary text-white",
                 "pending" or "chờ duyệt" => "bg-warning text-dark",
-                "approved" or "đã duyệt" => "bg-info",
-                "care" or "đang chăm sóc" => "bg-primary",
-                "rejected" or "từ chối" => "bg-danger",
-                _ => "bg-secondary"
+                "đã nhận cá" => "bg-info text-dark",
+                "đang chăm sóc" or "care" => "bg-secondary text-white",
+                "đã bán" => "bg-success text-white",
+                "hoàn thành" => "bg-success text-white",
+                "rejected" or "từ chối" => "bg-danger text-white",
+                _ => "bg-light text-dark"
             };
         }
 
         public string TranslateStatus(string status)
         {
-            if (string.IsNullOrEmpty(status)) return "";
+            if (string.IsNullOrEmpty(status)) return "Không xác định";
             return status.ToLower() switch
             {
                 "approved" => "Đã duyệt",
                 "rejected" => "Từ chối",
                 "pending" => "Chờ duyệt",
-                _ => status
+                _ => status // Trả về nguyên bản nếu đã là tiếng Việt
             };
         }
 

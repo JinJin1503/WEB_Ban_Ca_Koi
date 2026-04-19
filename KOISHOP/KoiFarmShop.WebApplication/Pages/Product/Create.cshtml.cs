@@ -58,12 +58,15 @@ namespace KoiFarmShop.WebApplication.Pages.Product
 				return;
 			}
 
-			ValidateRange(nameof(KoiFish.Age), KoiFish.Age, 0, 100);
-			ValidateRange(nameof(KoiFish.Size), KoiFish.Size, 0, 200);
-			ValidateRange(nameof(KoiFish.DailyFeed), KoiFish.DailyFeed, 0, 1000);
+			TryValidateModel(KoiFish, nameof(KoiFish));
+			ModelState.Remove("KoiFish.Category");
+
+			ValidateRange(nameof(KoiFish.Age), KoiFish.Age, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxAge);
+			ValidateRange(nameof(KoiFish.Size), KoiFish.Size, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxSize);
+			ValidateRange(nameof(KoiFish.DailyFeed), KoiFish.DailyFeed, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxDailyFeed);
 			ValidateRange(nameof(KoiFish.ScreeningRate), KoiFish.ScreeningRate, 0, 100);
-			ValidateRange(nameof(KoiFish.PricePerKoi), KoiFish.PricePerKoi, 0, 100000000);
-			ValidateRange(nameof(KoiFish.PricePerBatch), KoiFish.PricePerBatch, 0, 1000000000);
+			ValidateRange(nameof(KoiFish.PricePerKoi), KoiFish.PricePerKoi, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxPricePerKoi);
+			ValidateRange(nameof(KoiFish.PricePerBatch), KoiFish.PricePerBatch, 0, KoiFarmShop.Repositories.Entities.KoiFish.MaxPricePerBatch);
 		}
 
 		private void ValidateNonNegative(string propertyName, int value)

@@ -22,10 +22,7 @@ namespace KoiFarmShop.WebApplication.Pages.Trangchu
 
 		public async Task<IActionResult> OnGetAsync()
 		{
-			// Lấy danh sách danh mục Koi từ service
-			var categories = await _koiCategoryService.GetAllCategoriesAsync();
-			CategoryList = new SelectList(categories, "CategoryId", "CategoryName");
-
+			await LoadCategoryOptionsAsync();
 			return Page();
 		}
 
@@ -34,8 +31,20 @@ namespace KoiFarmShop.WebApplication.Pages.Trangchu
 
 		public async Task<IActionResult> OnPostAsync()
 		{
+			ModelState.Remove("KoiFish.Category");
+			if (KoiFish == null)
+			{
+				ModelState.AddModelError(string.Empty, "Du lieu san pham khong hop le.");
+			}
+			else
+			{
+				TryValidateModel(KoiFish, nameof(KoiFish));
+				ModelState.Remove("KoiFish.Category");
+			}
+
 			if (!ModelState.IsValid)
 			{
+				await LoadCategoryOptionsAsync(KoiFish?.CategoryId);
 				return Page();
 			}
 
@@ -43,6 +52,13 @@ namespace KoiFarmShop.WebApplication.Pages.Trangchu
 			await _koiFishService.AddKoiAsync(KoiFish);
 
 			return RedirectToPage("./Index");
+		}
+
+		private async Task LoadCategoryOptionsAsync(int? selectedCategoryId = null)
+		{
+			var categories = await _koiCategoryService.GetAllCategoriesAsync();
+			CategoryList = new SelectList(categories, "CategoryId", "CategoryName", selectedCategoryId);
+			ViewData["CategoryId"] = CategoryList;
 		}
 	}
 }

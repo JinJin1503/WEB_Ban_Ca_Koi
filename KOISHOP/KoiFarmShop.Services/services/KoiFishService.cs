@@ -3,6 +3,7 @@ using KoiFarmShop.Repositories.Interfaces;
 using KoiFarmShop.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,7 +22,8 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				return await _koiFishRepository.GetKoiFishes();
+				var koiFishList = await _koiFishRepository.GetKoiFishes();
+				return koiFishList.Where(IsValidKoi).ToList();
 			}
 			catch (Exception ex)
 			{
@@ -33,7 +35,8 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				return await _koiFishRepository.GetKoiFishById(koiId);
+				var koi = await _koiFishRepository.GetKoiFishById(koiId);
+				return IsValidKoi(koi) ? koi : null;
 			}
 			catch (Exception ex)
 			{
@@ -45,7 +48,7 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				var koiFishList = await _koiFishRepository.GetKoiFishes();
+				var koiFishList = await GetAllKoisAsync();
 				return koiFishList
 					.Where(k => k.CategoryId == categoryId)
 					.ToList();
@@ -60,7 +63,8 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				return await _koiFishRepository.SearchKoiFishAsync(keyword);
+				var koiFishList = await _koiFishRepository.SearchKoiFishAsync(keyword);
+				return koiFishList.Where(IsValidKoi).ToList();
 			}
 			catch (Exception ex)
 			{
@@ -70,6 +74,8 @@ namespace KoiFarmShop.Services.Services
 
 		public async Task AddKoiAsync(KoiFish koi)
 		{
+			ValidateKoi(koi);
+
 			try
 			{
 				await _koiFishRepository.AddKoiFish(koi);
@@ -82,6 +88,8 @@ namespace KoiFarmShop.Services.Services
 
 		public async Task UpdateKoiAsync(KoiFish koi)
 		{
+			ValidateKoi(koi);
+
 			try
 			{
 				await _koiFishRepository.UpdateKoiFish(koi);
@@ -108,7 +116,7 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				var koiFishList = await _koiFishRepository.GetKoiFishes();
+				var koiFishList = await GetAllKoisAsync();
 				return koiFishList.Where(k =>
 					(string.IsNullOrEmpty(breedType) || k.BreedType.Equals(breedType, StringComparison.OrdinalIgnoreCase)) &&
 					(string.IsNullOrEmpty(category) || k.Category.CategoryName.Equals(category, StringComparison.OrdinalIgnoreCase)))
@@ -123,12 +131,46 @@ namespace KoiFarmShop.Services.Services
 		{
 			try
 			{
-				return await _koiFishRepository.GetKoiFishByIdsAsync(koiId);
+				var koiFishList = await _koiFishRepository.GetKoiFishByIdsAsync(koiId);
+				return koiFishList.Where(IsValidKoi).ToList();
 			}
 			catch (Exception ex)
 			{
 				throw new Exception("An error occurred while comparing Koi fish.", ex);
 			}
+		}
+
+		private static void ValidateKoi(KoiFish koi)
+		{
+			if (koi == null)
+			{
+				throw new ValidationException("Du lieu san pham khong hop le.");
+			}
+
+			var validationResults = GetValidationResults(koi);
+			if (validationResults.Any())
+			{
+				throw new ValidationException(string.Join("; ", validationResults.Select(result => result.ErrorMessage)));
+			}
+		}
+
+		private static bool IsValidKoi(KoiFish koi)
+		{
+			return koi != null && !GetValidationResults(koi).Any();
+		}
+
+		private static List<ValidationResult> GetValidationResults(KoiFish koi)
+		{
+			var validationResults = new List<ValidationResult>();
+			if (koi == null)
+			{
+				validationResults.Add(new ValidationResult("Du lieu san pham khong hop le."));
+				return validationResults;
+			}
+
+			var validationContext = new ValidationContext(koi);
+			Validator.TryValidateObject(koi, validationContext, validationResults, true);
+			return validationResults;
 		}
 
 

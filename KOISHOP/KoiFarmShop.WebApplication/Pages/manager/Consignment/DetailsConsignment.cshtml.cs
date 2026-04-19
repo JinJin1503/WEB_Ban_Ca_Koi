@@ -4,6 +4,7 @@ using KoiFarmShop.WebApplication.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
@@ -32,10 +33,26 @@ namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
             return Page();
         }
 
-        public async Task<IActionResult> OnPostApproveAsync(int id)
+        public async Task<IActionResult> OnPostApproveAsync(int id, int? fee, int? commission, string notes)
         {
+            var request = await _consignmentService.GetConsignmentRequestByIdAsync(id);
+            if (request != null)
+            {
+                if (request.ConsignmentType == "Chăm sóc" && fee.HasValue)
+                {
+                    request.ConsignmentFee = fee.Value;
+                }
+                // LOGIC MỚI: Nếu là Đơn Bán và Admin có nhập Hoa hồng -> Mượn cột Duration để lưu
+                else if (request.ConsignmentType == "Bán" && commission.HasValue)
+                {
+                    request.ConsignmentDuration = commission.Value;
+                }
+
+                request.Notes = notes;
+                await _consignmentService.UpdateConsignmentRequestAsync(request);
+            }
+
             await _consignmentService.ApproveRequestAsync(id);
-            //Reload lại đúng trang chi tiết của ID này
             return RedirectToPage(new { id });
         }
 
@@ -84,5 +101,7 @@ namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
             }
             return RedirectToPage(new { id });
         }
+
+
     }
 }

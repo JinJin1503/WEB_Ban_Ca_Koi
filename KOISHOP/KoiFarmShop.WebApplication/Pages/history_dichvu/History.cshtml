@@ -51,7 +51,29 @@
                                 </span>
                             </td>
 
-                            <td class="fw-bold text-dark">@item.KoiName</td>
+                            <td class="fw-bold text-dark">
+                                <span class="fs-6">@item.KoiName</span>
+                                @if (item.ConsignmentFee > 0)
+                                {
+                                    <div class="text-danger fw-bold mb-1">
+                                        <i class="fas @(item.ConsignmentType == "Bán" ? "fa-tag" : "fa-money-bill-wave") me-1"></i>
+                                        @(item.ConsignmentType == "Bán" ? "Giá bán: " : "Phí: ") @item.ConsignmentFee.ToString("N0") VNĐ
+                                    </div>
+
+                                    // IN RA HOA HỒNG CHO ĐƠN BÁN
+                                    @if (item.ConsignmentType == "Bán" && item.ConsignmentDuration > 0)
+                                    {
+                                        var shopCut = (item.ConsignmentFee * (double)item.ConsignmentDuration) / 100;
+                                        var customerGet = item.ConsignmentFee - shopCut;
+                                        <div class="text-warning mb-1" style="font-size: 0.8rem; font-weight: 600;">
+                                            <i class="fas fa-handshake me-1"></i>Chiết khấu shop: @item.ConsignmentDuration%
+                                        </div>
+                                        <div class="text-success fw-bold mb-1" style="font-size: 0.85rem;">
+                                            <i class="fas fa-wallet me-1"></i>Thực nhận: @customerGet.ToString("N0") VNĐ
+                                        </div>
+                                    }
+                                }
+                            </td>
 
                             <td class="text-center">@Model.TranslateCategory(item.KoiBreed)</td>
 
@@ -88,13 +110,7 @@
                                             <span class="text-success">Đã xong</span>
                                         }
                                     </div>
-                                    <div class="progress shadow-sm" style="height: 10px;">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated @(percent >= 100 ? "bg-success" : "bg-info")"
-                                             role="progressbar"
-                                             style="width: @percent%;"
-                                             aria-valuenow="@percent" aria-valuemin="0" aria-valuemax="100">
-                                        </div>
-                                    </div>
+                                    <progress value="@((int)percent)" max="100" class="w-100 shadow-sm" style="height: 10px; border-radius: 5px;" title="@((int)percent)% hoàn thành"></progress>
                                 }
                                 else
                                 {

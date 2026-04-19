@@ -2,6 +2,8 @@ using KoiFarmShop.Repositories.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KoiFarmShop.WebApplication.Pages.Manager
@@ -22,6 +24,20 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
 			ProductList = await _context.KoiFishs
 				.Include(k => k.Category)
 				.ToListAsync();
+
+			ProductList = ProductList.Where(IsValidProduct).ToList();
+		}
+
+		private static bool IsValidProduct(KoiFish koi)
+		{
+			if (koi == null)
+			{
+				return false;
+			}
+
+			var validationResults = new List<ValidationResult>();
+			var validationContext = new ValidationContext(koi);
+			return Validator.TryValidateObject(koi, validationContext, validationResults, true);
 		}
 	}
 }

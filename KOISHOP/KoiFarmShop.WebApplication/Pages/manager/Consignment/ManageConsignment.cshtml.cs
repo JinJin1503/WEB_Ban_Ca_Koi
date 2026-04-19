@@ -5,9 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace KoiFarmShop.WebApplication.Pages.Manager
+namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
 {
     [Authorize(Policy = AppPolicies.StaffOrManager)]
     public class ManageConsignmentModel : PageModel
@@ -26,9 +27,24 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
 
         public List<ConsignmentRequest> Requests { get; set; } = new();
 
+        [BindProperty(SupportsGet = true)]
+        public string FilterStatus { get; set; }
         public async Task OnGetAsync()
         {
-            Requests = await _consignmentService.GetAllConsignmentRequestsAsync();
+            var allRequests = await _consignmentService.GetAllConsignmentRequestsAsync();
+
+            // Nếu Admin có bấm nút lọc (và không phải nút "Tất cả")
+            if (!string.IsNullOrEmpty(FilterStatus) && FilterStatus != "All")
+            {
+                Requests = allRequests.Where(r => r.Status?.ToLower() == FilterStatus.ToLower()).ToList();
+            }
+            else
+            {
+                Requests = allRequests;
+            }
+
+            // Mặc định: Luôn sắp xếp đơn hàng mới nhất lên đầu tiên
+            Requests = Requests.OrderByDescending(r => r.RequestDate).ToList();
         }
 
 

@@ -1,15 +1,39 @@
 ﻿@page
 @model KoiFarmShop.WebApplication.Pages.Order.IndexModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Quản lý đơn hàng";
+}
 
 <a asp-page="/Manager/Index" class="btn btn-secondary mb-3">
     ⬅ Quay lại Admin
 </a>
+
 <h2>Quản Lý Đơn Hàng</h2>
 
+<!-- HIỂN THỊ LỖI -->
+<div class="text-danger">
+    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+    {
+        <p>@error.ErrorMessage</p>
+    }
+</div>
+
+<!-- FILTER -->
 <div class="mb-3">
-    <a class="btn btn-secondary" href="/Order">Tất cả</a>
-    <a class="btn btn-warning" href="/Order?status=Shipping">Shipping</a>
-    <a class="btn btn-success" href="/Order?status=Approved">Approved</a>
+    <a asp-page="/manager/Order/Index" asp-route-status="" class="btn btn-secondary">Tất cả</a>
+
+    <a asp-page="/manager/Order/Index" asp-route-status="Giao Hàng" class="btn btn-warning">
+        Giao Hàng
+    </a>
+
+    <a asp-page="/manager/Order/Index" asp-route-status="Duyệt đơn hàng" class="btn btn-success">
+        Duyệt đơn hàng
+    </a>
+
+    <a asp-page="/manager/Order/Index" asp-route-status="Hoàn thành đơn hàng" class="btn btn-primary">
+        Hoàn thành đơn hàng
+    </a>
 </div>
 
 <table class="table table-bordered">
@@ -21,33 +45,56 @@
             <th>Trạng thái</th>
             <th>Tổng tiền</th>
             <th>Hành động</th>
-
         </tr>
     </thead>
     <tbody>
         @foreach (var order in Model.Orders)
         {
-        <tr>
-            <td>@order.OrderId</td>
-            <td>@order.CustomerId</td>
-            <td>@order.OrderDate</td>
-            <td>@order.Status</td>
-            <td>@order.TotalPrice</td>
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.CustomerId</td>
+                <td>@order.OrderDate</td>
 
-            <td>
-                <form method="post">
-                    <input type="hidden" name="orderId" value="@order.OrderId" />
+                <!-- STATUS BADGE -->
+                <td>
+                    @if (order.Status == "Pending")
+                    {
+                        <span class="badge bg-secondary">Pending</span>
+                    }
+                    else if (order.Status == "Shipping")
+                    {
+                        <span class="badge bg-warning">Giao Hàng</span>
+                    }
+                    else if (order.Status == "Duyệt đơn hàng")
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else if (order.Status == "Completed")
+                    {
+                        <span class="badge bg-primary">Hoàn thành đơn hàng</span>
+                    }
+                </td>
 
-                    <button type="submit" asp-page-handler="Approve" class="btn btn-success">
-                        Duyệt
-                    </button>
+                <td>@order.TotalPrice</td>
 
-                    <button type="submit" asp-page-handler="Shipping" class="btn btn-warning">
-                        Giao hàng
-                    </button>
-                </form>
-            </td>
-        </tr>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="orderId" value="@order.OrderId" />
+
+                        <button type="submit" asp-page-handler="Approve" class="btn btn-success">
+                            Duyệt
+                        </button>
+
+                        <button type="submit" asp-page-handler="Shipping" class="btn btn-warning">
+                            Giao hàng
+                        </button>
+
+                        <button type="submit" asp-page-handler="Completed" class="btn btn-primary">
+                            Hoàn thành
+                        </button>
+                    </form>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

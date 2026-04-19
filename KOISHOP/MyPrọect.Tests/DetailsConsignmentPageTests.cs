@@ -1,6 +1,6 @@
 ﻿using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
-using KoiFarmShop.WebApplication.Pages.Manager;
+using KoiFarmShop.WebApplication.Pages.Manager.Consignment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Moq;
@@ -29,7 +29,7 @@ namespace BVA.Tests
             var mockService = new Mock<IConsignmentRequestService>();
             var pageModel = new DetailsConsignmentModel(mockService.Object);
 
-            var result = await pageModel.OnPostApproveAsync(1);
+            var result = await pageModel.OnPostApproveAsync(1, null, 15, "Shop nhận bán với chiết khấu 15% nhé");
 
             mockService.Verify(s => s.ApproveRequestAsync(1), Times.Once);
             var redirectResult = Assert.IsType<RedirectToPageResult>(result);

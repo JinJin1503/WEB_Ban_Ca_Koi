@@ -1,0 +1,144 @@
+﻿@page
+@model KoiFarmShop.WebApplication.Pages.Manager.Consignment.ManageConsignmentModel
+@{
+    Layout = "_ManagerLayout";
+    ViewData["Title"] = "Quản lý Ký gửi Bán & Chăm sóc";
+    ViewData["HideDashboard"] = true;
+
+    string GetStatusBadgeClass(string status)
+    {
+        return (status?.ToLower()) switch
+        {
+            "approved" or "đã duyệt" => "bg-primary",
+            "pending" or "chờ duyệt" => "bg-warning text-dark",
+            "đã nhận cá" => "bg-info text-dark",
+            "đang chăm sóc" => "bg-secondary",
+            "đã bán" => "bg-success",
+            "hoàn thành" => "bg-success",
+            "rejected" or "từ chối" => "bg-danger",
+            _ => "bg-light text-dark"
+        };
+    }
+}
+
+<div class="container-fluid px-4">
+    <div class="mb-4">
+        <form method="get" class="d-flex gap-2 flex-wrap">
+            <button type="submit" name="FilterStatus" value="All"
+                    class="btn btn-@(string.IsNullOrEmpty(Model.FilterStatus) || Model.FilterStatus == "All" ? "primary" : "outline-primary") rounded-pill px-4 fw-bold">
+                Tất cả
+            </button>
+            <button type="submit" name="FilterStatus" value="Chờ duyệt"
+                    class="btn btn-@(Model.FilterStatus == "Chờ duyệt" ? "warning text-dark fw-bold" : "outline-warning text-dark") rounded-pill px-3">
+                Chờ duyệt
+            </button>
+            <button type="submit" name="FilterStatus" value="Đã nhận cá"
+                    class="btn btn-@(Model.FilterStatus == "Đã nhận cá" ? "info text-dark fw-bold" : "outline-info text-dark") rounded-pill px-3">
+                Đã nhận cá
+            </button>
+            <button type="submit" name="FilterStatus" value="Đang chăm sóc"
+                    class="btn btn-@(Model.FilterStatus == "Đang chăm sóc" ? "secondary fw-bold" : "outline-secondary") rounded-pill px-3">
+                Đang chăm sóc
+            </button>
+            <button type="submit" name="FilterStatus" value="Đã bán"
+                    class="btn btn-@(Model.FilterStatus == "Đã bán" ? "success fw-bold" : "outline-success") rounded-pill px-3">
+                Đã bán
+            </button>
+            <button type="submit" name="FilterStatus" value="Từ chối"
+                    class="btn btn-@(Model.FilterStatus == "Từ chối" ? "danger fw-bold" : "outline-danger") rounded-pill px-3">
+                Từ chối
+            </button>
+        </form>
+    </div>
+    <h1 class="mt-4 mb-3">@ViewData["Title"]</h1>
+
+    <div class="card mb-4 shadow-sm border-0">
+        <div class="card-header bg-primary text-white fw-bold">
+            <i class="fas fa-table me-1"></i> Danh sách yêu cầu từ khách hàng
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">Mã đơn</th>
+                            <th>Khách hàng</th>
+                            <th>Loại dịch vụ</th>
+                            <th>Tên cá Koi</th>
+                            <th>Trạng thái</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Requests != null && Model.Requests.Any())
+                        {
+                            foreach (var item in Model.Requests)
+                            {
+                                // Đưa về chữ thường để so sánh cho an toàn
+                                var currentStatus = item.Status?.ToLower();
+
+                                // --- BẮT ĐẦU: LOGIC TÍNH TOÁN CẢNH BÁO ---
+                                var rowClass = "";
+                                var alertBadge = "";
+
+                                if (item.ConsignmentType == "Chăm sóc" && currentStatus == "đang chăm sóc")
+                                {
+                                    var startDate = item.ConsignmentDate;
+                                    var endDate = startDate.AddMonths(item.ConsignmentDuration);
+                                    var daysLeft = (endDate - DateTime.Now).TotalDays;
+
+                                    if (daysLeft < 0)
+                                    {
+                                        rowClass = "table-danger"; // Tô đỏ cả dòng nếu quá hạn
+                                        alertBadge = "<span class='badge bg-danger ms-2 heartbeat'><i class='fas fa-exclamation-triangle'></i> Quá hạn</span>";
+                                    }
+                                    else if (daysLeft <= 3)
+                                    {
+                                        rowClass = "table-warning"; // Tô vàng nếu còn dưới 3 ngày
+                                        alertBadge = $"<span class='badge bg-warning text-dark ms-2'><i class='fas fa-bell'></i> Sắp hạn ({Math.Ceiling(daysLeft)} ngày)</span>";
+                                    }
+                                }
+                                // --- KẾT THÚC LOGIC ---
+
+                                <tr class="@rowClass">
+                                    <td class="ps-3">
+                                        <strong>#@item.RequestId</strong>
+                                        @Html.Raw(alertBadge)
+                                    </td>
+                                    <td>@(item.Customer?.CustomerName ?? "Khách lẻ")</td>
+                                    <td>
+                                        <span class="badge @(item.ConsignmentType == "Bán" ? "bg-info text-dark" : "bg-success")">
+                                            @item.ConsignmentType
+                                        </span>
+                                    </td>
+                                    <td>@item.KoiName</td>
+                                    <td>
+                                        <span class="badge @GetStatusBadgeClass(item.Status)">
+                                            @Model.TranslateStatus(item.Status)
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <a class="btn btn-outline-primary btn-sm" asp-page="./DetailsConsignment" asp-route-id="@item.RequestId">
+                                                <i class="fas fa-eye"></i> Xem chi tiết
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted py-4">
+                                    <i class="fas fa-box-open fa-2x mb-2 text-secondary"></i>
+                                    <p class="mb-0">Hiện tại chưa có yêu cầu ký gửi nào.</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -75,6 +75,14 @@
                     {
                         <p><strong>Yêu cầu đặc biệt:</strong> <span class="text-danger fw-bold">Có sử dụng dịch vụ chăm sóc</span></p>
                     }
+                    <p class="mb-1">
+                        <strong>@(Model.ConsignmentRequest.ConsignmentType == "Bán" ? "Giá khách muốn bán:" : "Phí dịch vụ:")</strong>
+                        <span class="text-danger fw-bold fs-5">@Model.ConsignmentRequest.ConsignmentFee.ToString("N0") VNĐ</span>
+                    </p>
+                    <p class="mb-0">
+                        <strong>Ghi chú từ cửa hàng:</strong>
+                        <span class="text-primary fst-italic">@(string.IsNullOrEmpty(Model.ConsignmentRequest.Notes) ? "Không có" : Model.ConsignmentRequest.Notes)</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -89,7 +97,17 @@
                     <p><strong>Giống cá:</strong> @TranslateCategory(Model.ConsignmentRequest.KoiBreed)</p>
                     <p><strong>Tuổi:</strong> @Model.ConsignmentRequest.KoiAge tháng</p>
                     <p><strong>Kích thước:</strong> @Model.ConsignmentRequest.KoiSize cm</p>
-                    <p><strong>Mô tả chi tiết:</strong> @Model.ConsignmentRequest.Remarks</p>
+                    <p>
+                        <strong>Mô tả chi tiết:</strong>
+                        @if (!string.IsNullOrWhiteSpace(Model.ConsignmentRequest.Remarks))
+                        {
+                            <span>@Model.ConsignmentRequest.Remarks</span>
+                        }
+                        else
+                        {
+                            <span class="fst-italic text-muted">Không có mô tả thêm</span>
+                        }
+                    </p>
                     <hr />
                     <p class="mb-2"><strong>Hình ảnh đính kèm:</strong></p>
                     @if (!string.IsNullOrEmpty(Model.ConsignmentRequest.KoiImage))
@@ -141,14 +159,9 @@
                                 }
                                 <span class="text-muted">Kết thúc: <strong>@endDate.ToString("dd/MM/yyyy")</strong></span>
                             </div>
-
-                            <div class="progress" style="height: 20px;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated @(percent >= 100 ? "bg-success" : "bg-info")"
-                                     role="progressbar"
-                                     style="width: @percent%;"
-                                     aria-valuenow="@percent" aria-valuemin="0" aria-valuemax="100">
-                                    @Math.Round(percent)%
-                                </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <progress value="@((int)percent)" max="100" class="w-100" style="height: 20px; border-radius: 5px; flex-grow: 1;" title="@Math.Round(percent)% hoàn thành"></progress>
+                                <span class="fw-bold" style="font-size: 0.85rem;">@Math.Round(percent)%</span>
                             </div>
                         </div>
                     }
@@ -165,11 +178,45 @@
             @{
                 var currentStatus = Model.ConsignmentRequest.Status?.ToLower();
             }
-
             @if (currentStatus == "chờ duyệt" || currentStatus == "pending")
             {
-                <button type="submit" asp-page-handler="Approve" class="btn btn-success me-2">Phê duyệt</button>
-                <button type="submit" asp-page-handler="Reject" class="btn btn-danger" formnovalidate>Từ chối</button>
+                <div class="mb-4 border border-primary p-3 rounded bg-primary-subtle bg-opacity-10 shadow-sm">
+                    <h6 class="fw-bold text-primary mb-3"><i class="fas fa-edit me-2"></i>Báo giá & Phản hồi (Dành cho Admin)</h6>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            @if (Model.ConsignmentRequest.ConsignmentType == "Chăm sóc")
+                            {
+                                <label class="form-label fw-bold">Báo giá dịch vụ (VNĐ):</label>
+                                <input type="number" name="fee" class="form-control border-primary" placeholder="Ví dụ: 500000" min="0" required />
+                                <small class="text-muted">Bắt buộc nhập phí</small>
+                            }
+                            else
+                            {
+                                <label class="form-label fw-bold">Giá khách muốn bán:</label>
+                                <input type="number" class="form-control border-primary bg-light mb-2" value="@Model.ConsignmentRequest.ConsignmentFee" disabled />
+
+                                <label class="form-label fw-bold text-warning"><i class="fas fa-percentage me-1"></i>Hoa hồng Shop (%):</label>
+                                <input type="number" name="commission" class="form-control border-warning" placeholder="VD: 10" min="0" max="100" required />
+                                <small class="text-muted">Tỉ lệ chiết khấu cho cửa hàng</small>
+                            }
+                        </div>
+
+                        <div class="col-md-8 mb-3">
+                            <label class="form-label fw-bold">Ghi chú cho khách hàng:</label>
+                            <textarea name="notes" class="form-control border-primary" rows="2" placeholder="Ví dụ: Cá đạt chuẩn, cửa hàng đồng ý nhận bán..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <button type="submit" asp-page-handler="Approve" class="btn btn-success me-2 fw-bold">
+                            <i class="fas fa-check-circle me-1"></i> Phê duyệt & Gửi báo giá
+                        </button>
+                        <button type="submit" asp-page-handler="Reject" class="btn btn-danger fw-bold" formnovalidate>
+                            <i class="fas fa-times-circle me-1"></i> Từ chối
+                        </button>
+                    </div>
+                </div>
             }
             else if (currentStatus == "approved" || currentStatus == "đã duyệt")
             {

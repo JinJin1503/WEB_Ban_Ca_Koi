@@ -1,14 +1,15 @@
 ﻿using KoiFarmShop.Repositories.Entities;
 using KoiFarmShop.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting; 
+using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
+using System.IO; 
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http; 
-using Microsoft.AspNetCore.Hosting; 
-using System.IO; 
+using System.Linq;
 
 namespace KoiFarmShop.WebApplication.Pages.dichvukiban
 {
@@ -88,30 +89,43 @@ namespace KoiFarmShop.WebApplication.Pages.dichvukiban
             ConsignmentRequest.Status = "Chờ duyệt";
             ConsignmentRequest.ConsignmentType = "Bán"; // Đánh dấu là dịch vụ Bán
 
-            // XỬ LÝ UPLOAD ẢNH
+            // XỬ LÝ UPLOAD ẢNH BẢO MẬT
             if (ImageUpload != null && ImageUpload.Length > 0)
             {
-                // 1. Tạo tên file độc nhất để không bị trùng
-                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUpload.FileName);
+                // --- LỚP BẢO VỆ 1: Kiểm tra định dạng (Chỉ cho phép ảnh) ---
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp" };
+                var extension = Path.GetExtension(ImageUpload.FileName).ToLowerInvariant();
 
-                // 2. Đường dẫn lưu file (Thư mục wwwroot/images/consignment)
+                if (!allowedExtensions.Contains(extension))
+                {
+                    ModelState.AddModelError("ImageUpload", "Bảo mật: Chỉ chấp nhận file ảnh định dạng (.jpg, .png, .jpeg, .gif, .webp).");
+                    // TẠM DỪNG: Ở đây ta gọi return Page(); nhưng cần xử lý nạp lại dữ liệu Dropdown (nếu có)
+                    return Page();
+                }
+
+                // --- LỚP BẢO VỆ 2: Kiểm tra dung lượng (Tối đa 5MB) ---
+                const int maxFileSize = 5 * 1024 * 1024; // 5MB
+                if (ImageUpload.Length > maxFileSize)
+                {
+                    ModelState.AddModelError("ImageUpload", "Dung lượng ảnh quá lớn. Vui lòng chọn ảnh dưới 5MB.");
+                    return Page();
+                }
+
+                // --- VƯỢT QUA BẢO VỆ: Tiến hành lưu file ---
+                string fileName = Guid.NewGuid().ToString() + extension;
                 string uploadFolder = Path.Combine(_environment.WebRootPath, "images", "consignment");
 
-                // Tạo thư mục nếu chưa có
                 if (!Directory.Exists(uploadFolder))
                 {
                     Directory.CreateDirectory(uploadFolder);
                 }
 
                 string filePath = Path.Combine(uploadFolder, fileName);
-
-                // 3. Copy file vào ổ cứng
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await ImageUpload.CopyToAsync(fileStream);
                 }
 
-                // 4. Gán đường dẫn vào ConsignmentRequest để lưu xuống DB
                 ConsignmentRequest.KoiImage = "/images/consignment/" + fileName;
             }
 

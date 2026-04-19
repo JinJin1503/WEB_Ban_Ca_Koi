@@ -24,6 +24,7 @@ namespace KoiFarmShop.Repositories.Entities
 		public decimal ScreeningRate { get; set; }
 		public string HealthStatus { get; set; }
 		public string Awards { get; set; }
+		[Range(0, 100000000)]
 		public int  PricePerKoi { get; set; }
 		public int PricePerBatch { get; set; }
 		public string ImageURL { get; set; }

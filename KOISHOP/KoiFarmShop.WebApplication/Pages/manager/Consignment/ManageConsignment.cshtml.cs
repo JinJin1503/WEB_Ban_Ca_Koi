@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KoiFarmShop.WebApplication.Pages.Manager
+namespace KoiFarmShop.WebApplication.Pages.Manager.Consignment
 {
     [Authorize(Policy = AppPolicies.StaffOrManager)]
     public class ManageConsignmentModel : PageModel

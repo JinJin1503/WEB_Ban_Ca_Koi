@@ -14,6 +14,7 @@
             "đã nhận cá" => "bg-info text-dark",
             "đang chăm sóc" => "bg-secondary",
             "đã bán" => "bg-success",
+            "hoàn thành" => "bg-success",
             "rejected" or "từ chối" => "bg-danger",
             _ => "bg-light text-dark"
         };
@@ -65,25 +66,8 @@
                                     <td>
                                         <div class="d-flex justify-content-center gap-2">
                                             <a class="btn btn-outline-primary btn-sm" asp-page="./DetailsConsignment" asp-route-id="@item.RequestId">
-                                                <i class="fas fa-eye"></i> Chi tiết
+                                                <i class="fas fa-eye"></i> Xem chi tiết
                                             </a>
-
-                                            <form method="post" class="d-inline m-0">
-                                                @if (currentStatus == "chờ duyệt" || currentStatus == "pending")
-                                                {
-                                                    <button type="submit" asp-page-handler="Approve" asp-route-id="@item.RequestId" class="btn btn-success btn-sm" onclick="return confirm('Xác nhận duyệt đơn #@item.RequestId?')">Duyệt</button>
-                                                    <button type="submit" asp-page-handler="Reject" asp-route-id="@item.RequestId" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận từ chối đơn #@item.RequestId?')">Từ chối</button>
-                                                }
-                                                else if (currentStatus == "approved" || currentStatus == "đã duyệt")
-                                                {
-                                                    <button type="submit" asp-page-handler="ReceiveKoi" asp-route-id="@item.RequestId" class="btn btn-info btn-sm text-dark">Nhận cá</button>
-                                                }
-                                                else if (currentStatus == "đã nhận cá")
-                                                {
-                                                    <button type="submit" asp-page-handler="StartCare" asp-route-id="@item.RequestId" class="btn btn-warning btn-sm text-dark">Chăm sóc</button>
-                                                    <button type="submit" asp-page-handler="Sold" asp-route-id="@item.RequestId" class="btn btn-success btn-sm">Đã bán</button>
-                                                }
-                                            </form>
                                         </div>
                                     </td>
                                 </tr>

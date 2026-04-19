@@ -1,8 +1,8 @@
-﻿using KoiFarmShop.WebApplication.Pages.Manager;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using Xunit;
-using KoiFarmShop.WebApplication.Security; // Thêm dòng này
+using KoiFarmShop.WebApplication.Security;
+using KoiFarmShop.WebApplication.Pages.Manager.Consignment;
 
 namespace BVA.Tests
 {

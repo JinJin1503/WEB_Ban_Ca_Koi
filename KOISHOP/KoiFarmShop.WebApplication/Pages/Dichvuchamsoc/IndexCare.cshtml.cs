@@ -7,6 +7,9 @@ using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http; 
+using Microsoft.AspNetCore.Hosting; 
+using System.IO; 
 
 namespace KoiFarmShop.WebApplication.Pages.Dichvuchamsoc
 {
@@ -17,16 +20,22 @@ namespace KoiFarmShop.WebApplication.Pages.Dichvuchamsoc
         private readonly ICareServiceService _careService;
         private readonly IConsignmentRequestService _consignmentService;
         private readonly ICustomerService _customerService; // Thêm service để lấy thông tin khách hàng
+        private readonly IWebHostEnvironment _environment;
 
-        public IndexCareModel(ICareServiceService careService, IConsignmentRequestService consignmentService, ICustomerService customerService)
+        public IndexCareModel(ICareServiceService careService, IConsignmentRequestService consignmentService, ICustomerService customerService, IWebHostEnvironment environment)
         {
             _careService = careService;
             _consignmentService = consignmentService;
             _customerService = customerService;
+            _environment = environment;
         }
 
         [BindProperty]
         public ConsignmentRequest ConsignmentRequest { get; set; }
+
+        //  Khai báo biến hứng file ảnh từ giao diện gửi lên
+        [BindProperty]
+        public IFormFile? ImageUpload { get; set; }
 
         public IList<CareService> CareServices { get; set; }
 
@@ -47,6 +56,7 @@ namespace KoiFarmShop.WebApplication.Pages.Dichvuchamsoc
             ModelState.Remove("ConsignmentRequest.Notes");
             ModelState.Remove("ConsignmentRequest.KoiImage"); // Tạm bỏ qua ảnh
             ModelState.Remove("ConsignmentRequest.ConsignmentFee"); // Form chăm sóc không có nhập phí ngay lúc đầu
+            ModelState.Remove("ConsignmentRequest.KoiImage");
 
             if (!ModelState.IsValid)
             {
@@ -81,11 +91,27 @@ namespace KoiFarmShop.WebApplication.Pages.Dichvuchamsoc
             ConsignmentRequest.RequestDate = DateTime.Now;
             ConsignmentRequest.Status = "Chờ duyệt";
             ConsignmentRequest.ConsignmentType = "Chăm sóc"; // Đánh dấu đây là đơn Chăm sóc
+            // 4. LOGIC XỬ LÝ LƯU FILE ẢNH
+            if (ImageUpload != null && ImageUpload.Length > 0)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUpload.FileName);
+                string uploadFolder = Path.Combine(_environment.WebRootPath, "images", "consignment");
 
-            // 4. Lưu đơn ký gửi vào Database
+                if (!Directory.Exists(uploadFolder)) Directory.CreateDirectory(uploadFolder);
+
+                string filePath = Path.Combine(uploadFolder, fileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImageUpload.CopyToAsync(fileStream);
+                }
+                // Gán đường dẫn vào database
+                ConsignmentRequest.KoiImage = "/images/consignment/" + fileName;
+            }
+
+            // 5. Lưu đơn ký gửi vào Database
             await _consignmentService.AddConsignmentRequestAsync(ConsignmentRequest);
 
-            // 5. Thành công -> Chuyển hướng sang trang Lịch sử ký gửi 
+            // 6. Thành công -> Chuyển hướng sang trang Lịch sử ký gửi 
             return RedirectToPage("/history_dichvu/History");
         }
     }

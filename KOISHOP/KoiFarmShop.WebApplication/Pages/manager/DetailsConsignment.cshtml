@@ -5,6 +5,44 @@
     ViewData["Title"] = "Chi Tiết Đơn Ký Gửi";
     ViewData["HideDashboard"] = true;
 }
+@functions {
+    string GetStatusBadgeClass(string status)
+    {
+        return (status?.ToLower()) switch
+        {
+            "approved" or "đã duyệt" => "bg-primary",
+            "pending" or "chờ duyệt" => "bg-warning text-dark",
+            "đã nhận cá" => "bg-info text-dark",
+            "đang chăm sóc" => "bg-secondary",
+            "đã bán" => "bg-success",
+            "hoàn thành" => "bg-success",
+            "rejected" or "từ chối" => "bg-danger",
+            _ => "bg-light text-dark"
+        };
+    }
+
+    string TranslateStatus(string status)
+    {
+        return (status?.ToLower()) switch
+        {
+            "approved" => "Đã duyệt",
+            "rejected" => "Từ chối",
+            "pending" => "Chờ duyệt",
+            _ => status ?? "Không xác định"
+        };
+    }
+    string TranslateCategory(string category)
+    {
+        if (string.IsNullOrEmpty(category)) return "Không xác định";
+        return category.ToLower() switch
+        {
+            "imported" => "Nhập khẩu",
+            "domestic" => "Thuần Việt",
+            "hybrid" => "Lai F1",
+            _ => category
+        };
+    }
+}
 
 <div class="container-fluid px-4 mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -29,8 +67,8 @@
                     <p><strong>Ngày gửi yêu cầu:</strong> @Model.ConsignmentRequest.RequestDate.ToString("dd/MM/yyyy HH:mm")</p>
                     <p>
                         <strong>Trạng thái hiện tại:</strong>
-                        <span class="badge @(Model.ConsignmentRequest.Status == "Approved" ? "bg-secondary" : "bg-warning text-dark")">
-                            @Model.ConsignmentRequest.Status
+                        <span class="badge @GetStatusBadgeClass(Model.ConsignmentRequest.Status)">
+                            @TranslateStatus(Model.ConsignmentRequest.Status)
                         </span>
                     </p>
                     @if (Model.ConsignmentRequest.CareService)
@@ -48,10 +86,73 @@
                 </div>
                 <div class="card-body">
                     <p><strong>Tên cá:</strong> @Model.ConsignmentRequest.KoiName</p>
-                    <p><strong>Giống cá (Breed):</strong> @Model.ConsignmentRequest.KoiBreed</p>
+                    <p><strong>Giống cá:</strong> @TranslateCategory(Model.ConsignmentRequest.KoiBreed)</p>
                     <p><strong>Tuổi:</strong> @Model.ConsignmentRequest.KoiAge tháng</p>
                     <p><strong>Kích thước:</strong> @Model.ConsignmentRequest.KoiSize cm</p>
                     <p><strong>Mô tả chi tiết:</strong> @Model.ConsignmentRequest.Remarks</p>
+                    <hr />
+                    <p class="mb-2"><strong>Hình ảnh đính kèm:</strong></p>
+                    @if (!string.IsNullOrEmpty(Model.ConsignmentRequest.KoiImage))
+                    {
+                        <div class="text-center">
+                            <img src="@Model.ConsignmentRequest.KoiImage" alt="Ảnh cá Koi ký gửi" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: cover;" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary text-center py-2 mb-0" role="alert">
+                            <i class="fas fa-image text-muted me-2"></i>
+                            <span class="fst-italic text-muted">Khách hàng không gửi hình ảnh</span>
+                        </div>
+                    }
+                    @if (Model.ConsignmentRequest.ConsignmentType == "Chăm sóc" &&
+                                        (Model.ConsignmentRequest.Status == "Đang chăm sóc" || Model.ConsignmentRequest.Status == "Hoàn thành"))
+                    {
+                        var startDate = Model.ConsignmentRequest.ConsignmentDate;
+                        // Lưu ý: Nếu ConsignmentDuration  tính bằng NGÀY thì đổi AddMonths thành AddDays nhé
+                        var endDate = startDate.AddMonths(Model.ConsignmentRequest.ConsignmentDuration);
+                        var today = DateTime.Now;
+
+                        var totalDays = (endDate - startDate).TotalDays;
+                        var daysPassed = (today - startDate).TotalDays;
+
+                        // Xử lý các trường hợp vượt giới hạn
+                        if (daysPassed < 0) daysPassed = 0;
+                        if (daysPassed > totalDays) daysPassed = totalDays;
+
+                        var percent = totalDays > 0 ? (daysPassed / totalDays) * 100 : 0;
+                        var daysLeft = Math.Max(0, Math.Ceiling((endDate - today).TotalDays));
+
+                        <hr />
+                        <div class="mt-3 bg-light p-3 rounded border">
+                            <h6 class="fw-bold text-primary mb-3">
+                                <i class="fas fa-calendar-check me-2"></i>Tiến độ chăm sóc
+                            </h6>
+
+                            <div class="d-flex justify-content-between mb-1" style="font-size: 0.85rem;">
+                                <span class="text-muted">Bắt đầu: <strong>@startDate.ToString("dd/MM/yyyy")</strong></span>
+                                @if (daysLeft > 0)
+                                {
+                                    <span class="text-danger fw-bold heartbeat">Còn lại: @daysLeft ngày</span>
+                                }
+                                else
+                                {
+                                    <span class="text-success fw-bold">Đã hết hạn chăm sóc</span>
+                                }
+                                <span class="text-muted">Kết thúc: <strong>@endDate.ToString("dd/MM/yyyy")</strong></span>
+                            </div>
+
+                            <div class="progress" style="height: 20px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated @(percent >= 100 ? "bg-success" : "bg-info")"
+                                     role="progressbar"
+                                     style="width: @percent%;"
+                                     aria-valuenow="@percent" aria-valuemin="0" aria-valuemax="100">
+                                    @Math.Round(percent)%
+                                </div>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
@@ -61,22 +162,30 @@
         <input type="hidden" asp-for="ConsignmentRequest.RequestId" name="id" />
 
         <div class="mt-4 mb-4">
-            @if (Model.ConsignmentRequest.Status == "Chờ duyệt")
+            @{
+                var currentStatus = Model.ConsignmentRequest.Status?.ToLower();
+            }
+
+            @if (currentStatus == "chờ duyệt" || currentStatus == "pending")
             {
                 <button type="submit" asp-page-handler="Approve" class="btn btn-success me-2">Phê duyệt</button>
-
                 <button type="submit" asp-page-handler="Reject" class="btn btn-danger" formnovalidate>Từ chối</button>
             }
-            else if (Model.ConsignmentRequest.Status == "Approved")
+            else if (currentStatus == "approved" || currentStatus == "đã duyệt")
             {
                 <button type="submit" asp-page-handler="ReceiveKoi" class="btn btn-info text-white">Xác nhận: Đã nhận cá</button>
             }
-            else if (Model.ConsignmentRequest.Status == "Đã nhận cá")
+            else if (currentStatus == "đã nhận cá")
             {
-                <button type="submit" asp-page-handler="StartCare" class="btn btn-primary me-2">Đưa vào chăm sóc</button>
-                <button type="submit" asp-page-handler="Sold" class="btn btn-warning">Xác nhận: Đã bán</button>
+                // LOGIC PHÂN LUỒNG NGHIỆP VỤ Ở ĐÂY
+                @if (Model.ConsignmentRequest.ConsignmentType == "Bán")
+                {
+                    <button type="submit" asp-page-handler="Sold" class="btn btn-warning">Xác nhận: Đã bán</button>
+                }
+                else if (Model.ConsignmentRequest.ConsignmentType == "Chăm sóc")
+                {
+                    <button type="submit" asp-page-handler="StartCare" class="btn btn-primary me-2">Đưa vào chăm sóc</button>
+                }
             }
-
-            <a asp-page="./ManageConsignment" class="btn btn-secondary ms-2">Quay lại danh sách</a>
         </div>
     </form>

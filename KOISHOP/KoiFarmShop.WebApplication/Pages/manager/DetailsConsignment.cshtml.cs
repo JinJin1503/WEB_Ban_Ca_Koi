@@ -35,16 +35,15 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
         public async Task<IActionResult> OnPostApproveAsync(int id)
         {
             await _consignmentService.ApproveRequestAsync(id);
-            return RedirectToPage("/manager/ManageConsignment");
+            //Reload lại đúng trang chi tiết của ID này
+            return RedirectToPage(new { id });
         }
 
         public async Task<IActionResult> OnPostRejectAsync(int id)
         {
-           
             await _consignmentService.RejectRequestAsync(id);
-
-           
-            return RedirectToPage("/manager/ManageConsignment");
+            // Reload lại đúng trang chi tiết của ID này
+            return RedirectToPage(new { id });
         }
 
         // 2. Hàm xử lý nút ĐÃ NHẬN CÁ
@@ -66,6 +65,9 @@ namespace KoiFarmShop.WebApplication.Pages.Manager
             if (request != null)
             {
                 request.Status = "Đang chăm sóc";
+                // THÊM DÒNG NÀY: Chốt ngày giờ bắt đầu chăm sóc là ngay lúc Admin bấm nút
+                request.ConsignmentDate = System.DateTime.Now;
+
                 await _consignmentService.UpdateConsignmentRequestAsync(request);
             }
             return RedirectToPage(new { id = id });

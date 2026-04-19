@@ -89,7 +89,17 @@
                     <p><strong>Giống cá:</strong> @TranslateCategory(Model.ConsignmentRequest.KoiBreed)</p>
                     <p><strong>Tuổi:</strong> @Model.ConsignmentRequest.KoiAge tháng</p>
                     <p><strong>Kích thước:</strong> @Model.ConsignmentRequest.KoiSize cm</p>
-                    <p><strong>Mô tả chi tiết:</strong> @Model.ConsignmentRequest.Remarks</p>
+                    <p>
+                        <strong>Mô tả chi tiết:</strong>
+                        @if (!string.IsNullOrWhiteSpace(Model.ConsignmentRequest.Remarks))
+                        {
+                            <span>@Model.ConsignmentRequest.Remarks</span>
+                        }
+                        else
+                        {
+                            <span class="fst-italic text-muted">Không có mô tả thêm</span>
+                        }
+                    </p>
                     <hr />
                     <p class="mb-2"><strong>Hình ảnh đính kèm:</strong></p>
                     @if (!string.IsNullOrEmpty(Model.ConsignmentRequest.KoiImage))

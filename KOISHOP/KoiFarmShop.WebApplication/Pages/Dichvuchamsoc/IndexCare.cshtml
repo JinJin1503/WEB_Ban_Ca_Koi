@@ -24,12 +24,12 @@
                     </div>
                     <div class="mb-3">
                         <label asp-for="ConsignmentRequest.KoiAge" class="form-label">Tuổi cá (năm)</label>
-                        <input asp-for="ConsignmentRequest.KoiAge" class="form-control" />
+                        <input asp-for="ConsignmentRequest.KoiAge" type="number" min="1" max="1200" class="form-control" required />
                         <span asp-validation-for="ConsignmentRequest.KoiAge" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label asp-for="ConsignmentRequest.KoiSize" class="form-label">Kích thước cá (cm)</label>
-                        <input asp-for="ConsignmentRequest.KoiSize" class="form-control" />
+                        <input asp-for="ConsignmentRequest.KoiSize" type="number" step="0.1" min="5" max="200" class="form-control" required />
                         <span asp-validation-for="ConsignmentRequest.KoiSize" class="text-danger"></span>
                     </div>
                     <div class="mb-3">

@@ -9,7 +9,7 @@
 <div class="container-fluid px-4 mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Chi Tiết Đơn Ký Gửi #@Model.ConsignmentRequest.RequestId</h2>
-        <a href="/manager/ManageConsignment" class="btn btn-outline-secondary">Quay lại danh sách</a>
+        <a href="/manager/Consignment/ManageConsignment" class="btn btn-outline-secondary">Quay lại danh sách</a>
     </div>
 
     <div class="row">
@@ -52,6 +52,21 @@
                     <p><strong>Tuổi:</strong> @Model.ConsignmentRequest.KoiAge tháng</p>
                     <p><strong>Kích thước:</strong> @Model.ConsignmentRequest.KoiSize cm</p>
                     <p><strong>Mô tả chi tiết:</strong> @Model.ConsignmentRequest.Remarks</p>
+                    <hr />
+                    <p class="mb-2"><strong>Hình ảnh đính kèm:</strong></p>
+                    @if (!string.IsNullOrEmpty(Model.ConsignmentRequest.KoiImage))
+                    {
+                        <div class="text-center">
+                            <img src="@Model.ConsignmentRequest.KoiImage" alt="Ảnh cá Koi ký gửi" class="img-fluid rounded shadow" style="max-height: 350px; object-fit: cover;" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary text-center py-2 mb-0" role="alert">
+                            <i class="fas fa-image text-muted me-2"></i>
+                            <span class="fst-italic text-muted">Khách hàng không gửi hình ảnh</span>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

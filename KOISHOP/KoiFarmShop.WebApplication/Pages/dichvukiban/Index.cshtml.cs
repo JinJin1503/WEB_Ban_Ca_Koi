@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http; 
+using Microsoft.AspNetCore.Hosting; 
+using System.IO; 
 
 namespace KoiFarmShop.WebApplication.Pages.dichvukiban
 {
@@ -15,16 +18,21 @@ namespace KoiFarmShop.WebApplication.Pages.dichvukiban
     {
         private readonly IConsignmentRequestService _consignmentRequestService;
         private readonly ICustomerService _customerService;
+        private readonly IWebHostEnvironment _environment;
 
-        public IndexModel(IConsignmentRequestService consignmentRequestService, ICustomerService customerService)
+        public IndexModel(IConsignmentRequestService consignmentRequestService, ICustomerService customerService, IWebHostEnvironment environment)
         {
             _consignmentRequestService = consignmentRequestService;
             _customerService = customerService;
+            _environment = environment;
         }
 
         // Khai báo 1 đối tượng duy nhất để hứng dữ liệu từ Form
         [BindProperty]
         public ConsignmentRequest ConsignmentRequest { get; set; }
+        // Thêm biến này để hứng file ảnh thật từ HTML gửi lên
+        [BindProperty]
+        public IFormFile? ImageUpload { get; set; }
 
         public void OnGet()
         {
@@ -79,6 +87,33 @@ namespace KoiFarmShop.WebApplication.Pages.dichvukiban
             ConsignmentRequest.ConsignmentDate = DateTime.Now; // Ngày gửi
             ConsignmentRequest.Status = "Chờ duyệt";
             ConsignmentRequest.ConsignmentType = "Bán"; // Đánh dấu là dịch vụ Bán
+
+            // XỬ LÝ UPLOAD ẢNH
+            if (ImageUpload != null && ImageUpload.Length > 0)
+            {
+                // 1. Tạo tên file độc nhất để không bị trùng
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUpload.FileName);
+
+                // 2. Đường dẫn lưu file (Thư mục wwwroot/images/consignment)
+                string uploadFolder = Path.Combine(_environment.WebRootPath, "images", "consignment");
+
+                // Tạo thư mục nếu chưa có
+                if (!Directory.Exists(uploadFolder))
+                {
+                    Directory.CreateDirectory(uploadFolder);
+                }
+
+                string filePath = Path.Combine(uploadFolder, fileName);
+
+                // 3. Copy file vào ổ cứng
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ImageUpload.CopyToAsync(fileStream);
+                }
+
+                // 4. Gán đường dẫn vào ConsignmentRequest để lưu xuống DB
+                ConsignmentRequest.KoiImage = "/images/consignment/" + fileName;
+            }
 
             // 4. Lưu vào Database
             await _consignmentRequestService.AddConsignmentRequestAsync(ConsignmentRequest);
